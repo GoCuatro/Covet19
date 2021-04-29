@@ -1,6 +1,6 @@
-package com.javeriana.web.four.covet19.DDD.Veterinarios.Veterinario.Domain.Ports;
+package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports;
 
-import com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.Persona;
+import com.javeriana.web.four.covet19.Shared.Domain.Persona.Persona;
 
 import java.util.List;
 import java.util.Optional;

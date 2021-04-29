@@ -1,6 +1,6 @@
-package com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.ValueObjects;
+package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
 
-import com.javeriana.web.four.covet19.DDD.Shared.Domain.CustomUUID;
+import com.javeriana.web.four.covet19.Shared.Domain.CustomUUID;
 
 public class IdPersona extends CustomUUID
 {

@@ -1,6 +1,6 @@
-package com.javeriana.web.four.covet19.DDD.Veterinarios.Veterinario.Domain.ValueObjects;
+package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects;
 
-import com.javeriana.web.four.covet19.DDD.Shared.Domain.StringValueObject;
+import com.javeriana.web.four.covet19.Shared.Domain.StringValueObject;
 
 public class TarjetaProfesional extends StringValueObject {
 

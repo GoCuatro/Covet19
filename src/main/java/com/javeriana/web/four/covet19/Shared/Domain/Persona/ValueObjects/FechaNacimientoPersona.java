@@ -1,4 +1,4 @@
-package com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.ValueObjects;
+package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
 
 import java.util.Calendar;
 import java.util.Date;

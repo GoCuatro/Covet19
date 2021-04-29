@@ -1,8 +1,8 @@
-package com.javeriana.web.four.covet19.DDD.Veterinarios.Veterinario.Domain;
+package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain;
 
-import com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.Persona;
-import com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.ValueObjects.*;
-import com.javeriana.web.four.covet19.DDD.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesional;
+import com.javeriana.web.four.covet19.Shared.Domain.Persona.Persona;
+import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesional;
 
 public class Veterinario extends Persona {
     private TarjetaProfesional tarjetaProfesional;
