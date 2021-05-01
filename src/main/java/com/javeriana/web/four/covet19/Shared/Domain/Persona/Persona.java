@@ -1,6 +1,6 @@
-package com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona;
+package com.javeriana.web.four.covet19.Shared.Domain.Persona;
 
-import com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.ValueObjects.*;
+import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 
 import java.util.Objects;
 

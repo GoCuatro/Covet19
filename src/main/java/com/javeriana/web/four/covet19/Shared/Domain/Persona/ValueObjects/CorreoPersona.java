@@ -1,6 +1,6 @@
-package com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.ValueObjects;
+package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
 
-import com.javeriana.web.four.covet19.DDD.Shared.Domain.StringValueObject;
+import com.javeriana.web.four.covet19.Shared.Domain.StringValueObject;
 
 public class CorreoPersona extends StringValueObject {
 

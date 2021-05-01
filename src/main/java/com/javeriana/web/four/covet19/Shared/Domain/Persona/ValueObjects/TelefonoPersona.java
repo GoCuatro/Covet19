@@ -1,33 +1,23 @@
-package com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.ValueObjects;
+package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
+
+import com.javeriana.web.four.covet19.Shared.Domain.LongValueObject;
 
 import java.util.Objects;
 
-public class TelefonoPersona {
+public class TelefonoPersona extends LongValueObject {
 
-    private long value;
+    private TelefonoPersona() {}
 
-    public TelefonoPersona(long telefono) {
+    public TelefonoPersona(Long telefono) {
         this.validate(telefono);
-        value = telefono;
+        this.value = telefono;
     }
 
-    private void validate(long telefono) {
+    private void validate(Long telefono) {
         if (telefono < 0)
         {
             throw new RuntimeException("El teléfono: " +  telefono + " no puede ser negativo");
         }
-    }
-
-    public long value() {
-        return value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TelefonoPersona that = (TelefonoPersona) o;
-        return Objects.equals(value, that.value);
     }
 
 }

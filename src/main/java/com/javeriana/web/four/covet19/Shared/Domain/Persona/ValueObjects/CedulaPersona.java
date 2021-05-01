@@ -1,33 +1,23 @@
-package com.javeriana.web.four.covet19.DDD.Shared.Domain.Persona.ValueObjects;
+package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
+
+import com.javeriana.web.four.covet19.Shared.Domain.LongValueObject;
 
 import java.util.Objects;
 
-public class CedulaPersona {
+public class CedulaPersona extends LongValueObject {
 
-    private long value;
+    private CedulaPersona() {}
 
-    public CedulaPersona(long cedula) {
+    public CedulaPersona(Long cedula) {
         this.validate(cedula);
-        value = cedula;
+        this.value = cedula;
     }
 
-    private void validate(long cedula) {
+    private void validate(Long cedula) {
         if (cedula < 0)
         {
             throw new RuntimeException("La cédula: " +  cedula + " no puede ser negativa");
         }
-    }
-
-    public long value() {
-        return value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CedulaPersona that = (CedulaPersona) o;
-        return Objects.equals(value, that.value);
     }
 
 }
