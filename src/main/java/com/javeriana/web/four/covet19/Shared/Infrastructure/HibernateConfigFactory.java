@@ -27,8 +27,8 @@ public class HibernateConfigFactory {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
 
-        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/webDevelopment/inventorySytemDDD/Products/Product/Infrastructure/hibernate/Product.hbm.xml");
-        FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/webDevelopment/inventorySytemDDD/Products/ProductColor/Infrastructure/hibernate/ProductColor.hbm.xml");
+        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Cita/Infrastructure/Hibernate/Cita.hbm.xml");
+        FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Veterinario/Infrastructure/Hibernate/Veterinario.hbm.xml");
         FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/webDevelopment/inventorySytemDDD/Orders/Order/Infrastructure/hibernate/Order.hbm.xml");
 
         sessionFactory.setMappingLocations(resource1, resource2, resource3);

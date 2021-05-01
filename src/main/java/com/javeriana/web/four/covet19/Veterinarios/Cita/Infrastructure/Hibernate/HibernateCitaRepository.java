@@ -1,8 +1,9 @@
 package com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate;
 
+
 import com.javeriana.web.four.covet19.Shared.Domain.Citas.IdCita;
+import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Cita;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Ports.CitaRepository;
-import com.javeriana.web.four.covet19.models.Cita;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
