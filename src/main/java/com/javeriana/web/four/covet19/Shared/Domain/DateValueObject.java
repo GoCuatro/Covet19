@@ -1,11 +1,12 @@
 package com.javeriana.web.four.covet19.Shared.Domain;
 
+import java.util.Date;
 import java.util.Objects;
 
-public class IntegerValueObject {
-    protected Integer value;
+public class DateValueObject {
+    protected Date value;
 
-    public Integer value() {
+    public Date value() {
         return value;
     }
 
@@ -13,7 +14,7 @@ public class IntegerValueObject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        IntegerValueObject that = (IntegerValueObject) o;
+        DateValueObject that = (DateValueObject) o;
         return Objects.equals(value, that.value);
     }
 }

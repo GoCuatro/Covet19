@@ -1,16 +1,18 @@
 package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
 
+import com.javeriana.web.four.covet19.Shared.Domain.DateValueObject;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-public class FechaNacimientoPersona {
+public class FechaNacimientoPersona extends DateValueObject {
 
-    private Date value;
+    private FechaNacimientoPersona() {}
 
     public FechaNacimientoPersona(Date fecha) {
         this.validate(fecha);
-        value = fecha;
+        this.value = fecha;
     }
 
     private void validate(Date fecha) {
@@ -21,15 +23,4 @@ public class FechaNacimientoPersona {
         }
     }
 
-    public Date value() {
-        return value;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FechaNacimientoPersona that = (FechaNacimientoPersona) o;
-        return Objects.equals(value, that.value);
-    }
 }

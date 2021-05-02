@@ -1,13 +1,13 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Persona.Persona;
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface VeterinarioRepository {
-    void update(Persona persona);
-    Optional<Persona> find (String ProductId);
-    void save(Persona persona);
-    Optional<List<Persona>> all();
+    void update(Veterinario veterinario);
+    Optional<Veterinario> find (String idVeterinario);
+    void save(Veterinario veterinario);
+    Optional<List<Veterinario>> all();
 }

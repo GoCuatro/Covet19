@@ -2,10 +2,10 @@ package com.javeriana.web.four.covet19.Shared.Domain;
 
 import java.util.Objects;
 
-public class IntegerValueObject {
-    protected Integer value;
+public class LongValueObject {
+    protected Long value;
 
-    public Integer value() {
+    public Long value() {
         return value;
     }
 
@@ -13,7 +13,7 @@ public class IntegerValueObject {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        IntegerValueObject that = (IntegerValueObject) o;
+        LongValueObject that = (LongValueObject) o;
         return Objects.equals(value, that.value);
     }
 }
