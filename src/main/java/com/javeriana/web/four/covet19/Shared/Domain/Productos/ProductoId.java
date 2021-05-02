@@ -1,4 +1,4 @@
-package com.javeriana.web.four.covet19.Shared.Productos;
+package com.javeriana.web.four.covet19.Shared.Domain.Productos;
 
 import com.javeriana.web.four.covet19.Shared.Domain.CustomUUID;
 

@@ -1,7 +1,7 @@
 package com.javeriana.web.four.covet19.Productos.Producto.Domain;
 
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.ValueObjects.*;
-import com.javeriana.web.four.covet19.Shared.Productos.ProductoId;
+import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoId;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -30,6 +30,7 @@ public class Producto {
             put("id", productoId.value());
             put("nombre", nombreProducto.value());
             put("descripcion", descripcionProducto.value());
+            put("precio", precioProducto.value());
             put("marca", marcaProducto.value());
         }};
     }
