@@ -3,6 +3,20 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="HibernateVeterinarioRepository" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Hibernate.HibernateVeterinarioRepository"/>
 
+    <bean id="HibernateCitaRepository" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository"/>
+
+    <bean id="CitaVerCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.VerCita.CitaVerCita">
+        <constructor-arg ref="HibernateCitaRepository" />
+    </bean>
+
+    <bean id="CitaAgregarDiagnostico" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AñadirDiagnostico.CitaAgregarDiagnostico">
+        <constructor-arg ref="HibernateCitaRepository" />
+    </bean>
+
+    <bean id="VeterinarioVerAgenda" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerAgenda.VeterinarioVerAgenda">
+        <constructor-arg ref="HibernateVeterinarioRepository" />
+    </bean>
 
 </beans>

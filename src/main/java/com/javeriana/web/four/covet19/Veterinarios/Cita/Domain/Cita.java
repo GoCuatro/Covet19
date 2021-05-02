@@ -24,4 +24,8 @@ public class Cita {
     public static Cita create(IdCita idCita, DiagnosticoCita diagnosticoCita, FechaCita fechaCita, IdPersona idVeterinario, IdMascota idMascota) {
         return new Cita(idCita, diagnosticoCita, fechaCita, idVeterinario, idMascota);
     }
+
+    public void agregarDiagnostico(DiagnosticoCita diagnosticoCita) {
+        this.diagnosticoCita = diagnosticoCita;
+    }
 }

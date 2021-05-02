@@ -85,6 +85,10 @@ public class Veterinario {
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
     }
 
+    public Optional<List<CitaDetails>> getAgenda() {
+        return agendaVeterinario;
+    }
+
     private Veterinario() {}
 
 }
