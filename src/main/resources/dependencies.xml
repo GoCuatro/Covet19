@@ -3,6 +3,26 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="HibernateProductoRepository" class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
+    <bean id="ProductoCreator" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
 
+    <bean id="RabbitMqPublisher" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqPublisher"/>
+
+    <bean id="RabbitMqEventBus" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqEventBus">
+        <constructor-arg ref="RabbitMqPublisher"/>
+    </bean>
+
+    <bean id="DomainEventsInformation" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.DomainEventsInformation"/>
+
+    <bean id="DomainEventJsonDeserializer" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.Serializable.DomainEventJsonDeserializer">
+        <constructor-arg ref="DomainEventsInformation"/>
+    </bean>
+
+    <bean id="RabbitMqDomainEventsConsumer" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqDomainEventsConsumer">
+        <constructor-arg ref="DomainEventJsonDeserializer"/>
+        <constructor-arg ref="DomainEventsInformation"/>
+    </bean>
 
 </beans>

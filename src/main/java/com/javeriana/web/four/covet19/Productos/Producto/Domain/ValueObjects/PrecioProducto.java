@@ -10,6 +10,9 @@ public class PrecioProducto extends DoubleValueObject {
         this.value = value;
     }
 
+    public PrecioProducto() {
+    }
+
     public void validate(double value){
         if(value<0){
             throw new NegativeValue("Valor negativo invalido");

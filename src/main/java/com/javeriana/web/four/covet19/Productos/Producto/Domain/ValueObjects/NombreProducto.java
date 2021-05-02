@@ -9,6 +9,9 @@ public class NombreProducto extends StringValueObject {
         this.value = value;
     }
 
+    public NombreProducto() {
+    }
+
     public void validate(String value) {
         if (value.equals("")) {
             throw new NonValue("El nombre no puede estar vacio");

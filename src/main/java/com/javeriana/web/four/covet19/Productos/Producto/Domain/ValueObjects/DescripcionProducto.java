@@ -4,6 +4,9 @@ import com.javeriana.web.four.covet19.Productos.Producto.Domain.Exceptions.NonVa
 import com.javeriana.web.four.covet19.Shared.Domain.StringValueObject;
 
 public class DescripcionProducto extends StringValueObject {
+    public DescripcionProducto() {
+    }
+
     public DescripcionProducto(String value) {
         this.validate(value);
         this.value = value;

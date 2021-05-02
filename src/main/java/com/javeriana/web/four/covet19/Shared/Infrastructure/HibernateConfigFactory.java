@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -27,11 +28,13 @@ public class HibernateConfigFactory {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
 
-        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Cita/Infrastructure/Hibernate/Cita.hbm.xml");
-        FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Veterinario/Infrastructure/Hibernate/Veterinario.hbm.xml");
-        FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/webDevelopment/inventorySytemDDD/Orders/Order/Infrastructure/hibernate/Order.hbm.xml");
+//        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Cita/Infrastructure/Hibernate/Cita.hbm.xml");
+//        FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Veterinario/Infrastructure/Hibernate/Veterinario.hbm.xml");
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Productos/Producto/Infrastructure/Hibernate/Producto.hbm.xml");
 
-        sessionFactory.setMappingLocations(resource1, resource2, resource3);
+//        sessionFactory.setMappingLocations(resource1, resource2, resource3);
+        sessionFactory.setMappingLocations(resource3);
         return sessionFactory;
     }
 
@@ -47,12 +50,13 @@ public class HibernateConfigFactory {
         String url = env.getProperty("datasource.url");
         String userName = env.getProperty("datasource.username");
         String password = env.getProperty("datasource.password");
+        String driver = env.getProperty("datasource.driver-class-name");
 
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mariadb://" + url);
+        dataSource.setUrl(url);
         dataSource.setUsername(userName);
         dataSource.setPassword(password);
-        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+        dataSource.setDriverClassName(driver);
         return dataSource;
     }
 

@@ -35,6 +35,10 @@ public class Producto {
         }};
     }
 
+    public static Producto create(ProductoId productoId, NombreProducto nombreProducto, DescripcionProducto descripcionProducto, PrecioProducto precioProducto, MarcaProducto marcaProducto){
+        return new Producto(productoId, nombreProducto, descripcionProducto, precioProducto, marcaProducto, new InventarioProducto(0), new HabilitadoProducto(true));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
