@@ -11,14 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping(value = "/productos")
 public class CreateProductoPostController {
 
     @Autowired
     private ProductoCreator creator;
 
-    @PostMapping(value = "/health", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/crear", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request){
-        creator.execute(request.id, request.nombre, request.descripcion, request.precio, request.marca);
+        try{
+            creator.execute(request.id, request.nombre, request.descripcion, request.precio, request.marca);
+        }catch (Exception e){
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
