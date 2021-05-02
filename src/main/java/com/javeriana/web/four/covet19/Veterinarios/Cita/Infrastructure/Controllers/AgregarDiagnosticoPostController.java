@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/cita")
+@RequestMapping(value = "/citas")
 public class AgregarDiagnosticoPostController {
 
     @Autowired

@@ -15,15 +15,16 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/cita")
+@RequestMapping(value = "/citas")
 public class VerCitaGetController {
 
     @Autowired
     private CitaVerCita verCita;
 
     @GetMapping(value="/{idCita}")
-    public ResponseEntity<Cita> execute(@PathVariable("idCita") String idCita)
+    public ResponseEntity<HashMap> execute(@PathVariable("idCita") String idCita)
     {
-        return ResponseEntity.status(HttpStatus.OK).body(verCita.execute(idCita));
+        Cita cita = verCita.execute(idCita);
+        return ResponseEntity.status(HttpStatus.OK).body(cita.data());
     }
 }
