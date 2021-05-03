@@ -4,5 +4,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
+    <bean id="HibernateMascotaRepository" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HibernateMascotaRepository"/>
+    <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+
+    <bean id="MascotaFinder" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+
+    <bean id="MascotaAll" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.All.MascotaAll">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+
+    <bean id="MascotaUpdate" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Update.MascotaUpdate">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
 
 </beans>
