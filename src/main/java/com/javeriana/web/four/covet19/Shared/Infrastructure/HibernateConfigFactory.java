@@ -29,8 +29,9 @@ public class HibernateConfigFactory {
 
         FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Veterinarios/Cita/Infrastructure/Hibernate/Cita.hbm.xml");
         FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Veterinarios/Veterinario/Infrastructure/Hibernate/Veterinario.hbm.xml");
+        FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admins/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
 
-        sessionFactory.setMappingLocations(resource1, resource2);
+        sessionFactory.setMappingLocations(resource1, resource2, resource3);
         return sessionFactory;
     }
 

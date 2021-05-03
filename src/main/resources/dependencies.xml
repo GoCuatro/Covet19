@@ -7,6 +7,8 @@
 
     <bean id="HibernateCitaRepository" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository"/>
 
+    <bean id="HibernateAdminRepository" class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
+
     <bean id="CitaVerCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.VerCita.CitaVerCita">
         <constructor-arg ref="HibernateCitaRepository" />
     </bean>
@@ -17,6 +19,14 @@
 
     <bean id="VeterinarioVerAgenda" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerAgenda.VeterinarioVerAgenda">
         <constructor-arg ref="HibernateVeterinarioRepository" />
+    </bean>
+
+    <bean id="VeterinarioVerVeterinarios" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerVeterinarios.VeterinarioVerVeterinarios">
+        <constructor-arg ref="HibernateVeterinarioRepository" />
+    </bean>
+
+    <bean id="AdminVerAdmins" class="com.javeriana.web.four.covet19.Admins.Admin.Application.VerAdmins.AdminVerAdmins">
+        <constructor-arg ref="HibernateAdminRepository" />
     </bean>
 
 </beans>
