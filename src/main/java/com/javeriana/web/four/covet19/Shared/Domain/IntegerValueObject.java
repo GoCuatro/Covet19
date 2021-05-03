@@ -3,6 +3,7 @@ package com.javeriana.web.four.covet19.Shared.Domain;
 import java.util.Objects;
 
 public class IntegerValueObject {
+
     protected Integer value;
 
     public Integer value() {

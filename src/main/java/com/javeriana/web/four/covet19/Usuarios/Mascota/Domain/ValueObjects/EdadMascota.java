@@ -1,19 +1,17 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects;
 
+import com.javeriana.web.four.covet19.Shared.Domain.DoubleValueObject;
 import com.javeriana.web.four.covet19.Shared.Domain.IntegerValueObject;
 
 public class EdadMascota extends IntegerValueObject {
-    private EdadMascota() {}
+    private EdadMascota() {
+    }
 
-    public EdadMascota(int edad) {
+    public EdadMascota(Integer edad) {
         this.validate(edad);
         this.value = edad;
     }
 
-    private void validate(int edad) {
-        if (edad < 0)
-        {
-            throw new RuntimeException("La edad: " +  edad + " no puede ser negativa");
-        }
+    private void validate(Integer edad) {
     }
 }

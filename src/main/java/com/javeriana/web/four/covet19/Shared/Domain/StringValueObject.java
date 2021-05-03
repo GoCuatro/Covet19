@@ -3,6 +3,7 @@ package com.javeriana.web.four.covet19.Shared.Domain;
 import java.util.Objects;
 
 public class StringValueObject {
+
     protected String value;
 
     @Override

@@ -7,6 +7,7 @@ import java.util.UUID;
 public class CustomUUID implements Serializable {
 
     private String value;
+    
 
     public CustomUUID(String value) {
 //        this.validate(value);
@@ -38,5 +39,10 @@ public class CustomUUID implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         CustomUUID that = (CustomUUID) o;
         return Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

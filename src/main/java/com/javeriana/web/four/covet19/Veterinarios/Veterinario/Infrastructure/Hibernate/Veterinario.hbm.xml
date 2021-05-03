@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario" table="veterinarios">
+    <class name="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario" table="Veterinarios">
         <composite-id name="idVeterinario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona" access="field">
             <key-property name="value" column="id" access="field" length="36"/>
         </composite-id>
@@ -34,7 +34,7 @@
         </component>
 
         <component name="fechaNacimientoVeterinario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.FechaNacimientoPersona" access="field">
-            <property name="value" column="fechaNacimiento" access="field" type="date"/>
+            <property name="value" column="fechaNacimiento" access="field" type="timestamp"/>
         </component>
 
         <component name="tarjetaProfesionalVeterinario" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesionalVeterinario" access="field">

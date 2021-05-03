@@ -1,5 +1,7 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
@@ -7,10 +9,10 @@ import java.util.Objects;
 public class CitaDetails {
     private String idCita;
     private String diagnostico;
-    private Date fecha;
+    private String fecha;
     private String idMascota;
 
-    public CitaDetails(String idCita, String diagnostico, Date fecha, String idMascota) {
+    public CitaDetails(String idCita, String diagnostico, String fecha, String idMascota) {
         this.idCita = idCita;
         this.diagnostico = diagnostico;
         this.fecha = fecha;
@@ -48,5 +50,13 @@ public class CitaDetails {
         return this.idCita.equals(productColorDetails.getIdCita());
     }
 
+    public boolean equalsIdCita(String idCita) {
+        return this.idCita.equals(idCita);
+    }
+
     private CitaDetails () {}
+
+    public void updateDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
 }

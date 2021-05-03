@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 
 public class PasswordPersona extends StringValueObject {
-
+    
     public PasswordPersona(String value) {
         this.validate(value);
         this.value = value;
@@ -44,4 +44,6 @@ public class PasswordPersona extends StringValueObject {
 //            throw new RuntimeException("The password doesn't contains any symbol of these: *&=$");
 //        }
     }
+
+    private PasswordPersona() {}
 }
