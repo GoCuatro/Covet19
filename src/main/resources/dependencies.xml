@@ -6,9 +6,12 @@
     <bean id="HibernateVeterinarioRepository" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Hibernate.HibernateVeterinarioRepository"/>
 
     <bean id="HibernateCitaRepository" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository"/>
+    <bean id="HibernateMascotaRepository" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HibernateMascotaRepository"/>
+    <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
 
     <bean id="HibernateAdminRepository" class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
-
     <bean id="CitaVerCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.VerCita.CitaVerCita">
         <constructor-arg ref="HibernateCitaRepository" />
     </bean>
@@ -23,10 +26,22 @@
 
     <bean id="VeterinarioVerVeterinarios" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerVeterinarios.VeterinarioVerVeterinarios">
         <constructor-arg ref="HibernateVeterinarioRepository" />
-    </bean>
 
+    </bean>
     <bean id="AdminVerAdmins" class="com.javeriana.web.four.covet19.Admins.Admin.Application.VerAdmins.AdminVerAdmins">
         <constructor-arg ref="HibernateAdminRepository" />
+
+    </bean>
+    <bean id="MascotaFinder" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+
+    <bean id="MascotaAll" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.All.MascotaAll">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+
+    <bean id="MascotaUpdate" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Update.MascotaUpdate">
+        <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
 </beans>
