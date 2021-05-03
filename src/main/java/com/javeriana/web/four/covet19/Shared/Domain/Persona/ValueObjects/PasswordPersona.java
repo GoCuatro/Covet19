@@ -44,4 +44,6 @@ public class PasswordPersona extends StringValueObject {
 //            throw new RuntimeException("The password doesn't contains any symbol of these: *&=$");
 //        }
     }
+
+    private PasswordPersona() {}
 }

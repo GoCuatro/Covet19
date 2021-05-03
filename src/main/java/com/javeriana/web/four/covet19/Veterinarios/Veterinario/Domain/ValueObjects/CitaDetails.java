@@ -21,7 +21,7 @@ public class CitaDetails {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idCita);
             put("diagnostico", diagnostico);
-            put("fecha", fecha);
+            put("fecha", fecha.toString());
             put("idMascota", idMascota);
         }};
         return data;

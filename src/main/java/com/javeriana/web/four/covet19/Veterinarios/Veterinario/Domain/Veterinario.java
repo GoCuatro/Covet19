@@ -152,6 +152,21 @@ public class Veterinario {
         return agendaVeterinario;
     }
 
+    public HashMap<String, Object> data() {
+        return new HashMap<String, Object>() {{
+            put("id", idVeterinario.value());
+            put("cedula", cedulaVeterinario.value());
+            put("correo", correoVeterinario.value());
+            put("direccion", direccionVeterinario.value());
+            put("fecha", fechaNacimientoVeterinario.value().toString());
+            put("nombre", nombreVeterinario.value());
+            put("password", passwordVeterinario.value());
+            put("telefono", telefonoVeterinario.value());
+            put("tarjetaProfesional", tarjetaProfesionalVeterinario.value());
+            put("agenda", getAgendaVeterinario());
+        }};
+    }
+
     private Veterinario() {}
 
 }

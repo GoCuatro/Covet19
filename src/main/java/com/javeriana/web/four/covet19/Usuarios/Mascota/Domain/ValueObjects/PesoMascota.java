@@ -3,17 +3,14 @@ package com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects;
 import com.javeriana.web.four.covet19.Shared.Domain.DoubleValueObject;
 
 public class PesoMascota extends DoubleValueObject {
-    private PesoMascota() {}
-
-    public PesoMascota(Double peso) {
-        this.validate(peso);
-        this.value = peso;
+    private PesoMascota() {
     }
 
-    private void validate(Double peso) {
-        if (peso < 0)
-        {
-            throw new RuntimeException("El peso: " +  peso + " no puede ser negativo");
-        }
+    public PesoMascota(Double pesoMascota) {
+        this.validate(pesoMascota);
+        this.value = pesoMascota;
+    }
+
+    private void validate(Double pesoMascota) {
     }
 }
