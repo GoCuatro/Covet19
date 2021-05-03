@@ -43,4 +43,12 @@ public class Cita {
     }
 
     private Cita() {}
+
+    public String getIdVeterinario() {
+        return idVeterinario.value();
+    }
+
+    public String getIdMascota() {
+        return idMascota.value();
+    }
 }

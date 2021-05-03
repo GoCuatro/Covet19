@@ -4,8 +4,10 @@ import com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class Mascota {
@@ -15,7 +17,7 @@ public class Mascota {
     private PesoMascota pesoMascota;
     private TipoMascota tipoMascota;
     private RazaMascota razaMascota;
-    private Optional<HistorialClinicoMascota> historialClinicoMascota;
+    private Optional<List<CitaHistorialMascota>> historialClinicoMascota;
 
     public Mascota(
             IdMascota idMascota,
@@ -24,14 +26,14 @@ public class Mascota {
             PesoMascota pesoMascota,
             TipoMascota tipoMascota,
             RazaMascota razaMascota,
-            Optional<HistorialClinicoMascota> historialClinicoMascota) {
+            List<CitaHistorialMascota> citaHistorialMascota) {
         this.idMascota = idMascota;
         this.edadMascota = edadMascota;
         this.nombreMascota = nombreMascota;
         this.pesoMascota = pesoMascota;
         this.tipoMascota = tipoMascota;
         this.razaMascota = razaMascota;
-        this.historialClinicoMascota = historialClinicoMascota;
+        this.historialClinicoMascota = Optional.ofNullable(citaHistorialMascota);
     }
     public static Mascota create(
             IdMascota idMascota,
@@ -64,10 +66,20 @@ public class Mascota {
             put("raza", razaMascota.value());
             put("edad", edadMascota.value());
             put("tipo", tipoMascota.value());
+            put("historialClinico", getHistorialClinico());
 
         }};
         return data;
     }
+
+    public Optional<List<HashMap<String, Object>>> getHistorialClinico() {
+        Optional<List<HashMap<String, Object>>> response = Optional.empty();
+        if(this.historialClinicoMascota.isPresent()) {
+            response = Optional.of(this.historialClinicoMascota.get().stream().map(cita -> cita.data()).collect(Collectors.toList()));
+        }
+        return response;
+    }
+
     public void update(Mascota mascota){
         this.idMascota = mascota.idMascota;
         this.edadMascota = mascota.edadMascota;
@@ -77,6 +89,15 @@ public class Mascota {
         this.razaMascota = mascota.razaMascota;
         this.historialClinicoMascota = null;
     }
+
     private Mascota(){
+    }
+
+    public void updateCitaDiagnostico(String idCita, String diagnostico) {
+        List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
+        CitaHistorialMascota historialActual = citasDetailsList.stream().
+                filter(cita -> cita.equalsIdCita(idCita)).findFirst().get();
+        historialActual.updateDiagnostico(diagnostico);
+        this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
     }
 }

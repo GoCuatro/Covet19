@@ -45,7 +45,7 @@ public class AgendaCustomDetail implements UserType {
                 response = objects.stream().map(cita ->
                         new CitaDetails((String) cita.get("id"),
                                 (String) cita.get("diagnostico"),
-                                (Date) cita.get("fecha"),
+                                (String) cita.get("fecha"),
                                 (String) cita.get("idMascota"))).collect(Collectors.toList());
             }
         }

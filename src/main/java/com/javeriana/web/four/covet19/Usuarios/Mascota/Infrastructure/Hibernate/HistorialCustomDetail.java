@@ -1,7 +1,7 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects.HistorialClinicoMascota;
+import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects.CitaHistorialMascota;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
@@ -37,15 +37,15 @@ public class HistorialCustomDetail implements UserType {
 
     @Override
     public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-        List<HistorialClinicoMascota> response = null;
+        List<CitaHistorialMascota> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()){
                 List<HashMap<String,Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(historia ->
-                        new HistorialClinicoMascota((String) historia.get("id"),
+                        new CitaHistorialMascota((String) historia.get("id"),
                                 (String) historia.get("diagnostico"),
-                                (Date) historia.get("fecha"),
+                                (String) historia.get("fecha"),
                                 (String) historia.get("idVeterinario"))).collect(Collectors.toList());
 
             }
@@ -57,7 +57,7 @@ public class HistorialCustomDetail implements UserType {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<HistorialClinicoMascota>> historiales = (value == null) ? Optional.empty() : (Optional<List<HistorialClinicoMascota>>) value;
+        Optional<List<CitaHistorialMascota>> historiales = (value == null) ? Optional.empty() : (Optional<List<CitaHistorialMascota>>) value;
         try{
             if(historiales.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);

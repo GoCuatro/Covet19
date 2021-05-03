@@ -6,19 +6,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class HistorialClinicoMascota {
+public class CitaHistorialMascota {
     private String idHistorial;
     private String diagnostico;
-    private Date fecha;
+    private String fecha;
     private String idVeterinario;
 
-    public HistorialClinicoMascota(String idHistorial, String diagnostico, Date fecha, String idPersona) {
+    public CitaHistorialMascota(String idHistorial, String diagnostico, String fecha, String idPersona) {
         this.idHistorial = idHistorial;
         this.diagnostico = diagnostico;
         this.fecha = fecha;
         this.idVeterinario = idPersona;
     }
-    public HistorialClinicoMascota(){}
+    public CitaHistorialMascota(){}
 
     public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
@@ -34,7 +34,7 @@ public class HistorialClinicoMascota {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HistorialClinicoMascota that = (HistorialClinicoMascota) o;
+        CitaHistorialMascota that = (CitaHistorialMascota) o;
         return Objects.equals(idHistorial, that.idHistorial) && Objects.equals(diagnostico, that.diagnostico) && Objects.equals(fecha, that.fecha) && Objects.equals(idVeterinario, that.idVeterinario);
     }
 
@@ -47,7 +47,15 @@ public class HistorialClinicoMascota {
         return this.idHistorial;
     }
 
-    public boolean equalsIdHistorial(HistorialClinicoMascota historialClinicoMascota) {
-        return this.idHistorial.equals(historialClinicoMascota.getIdHistorial());
+    public boolean equalsIdHistorial(CitaHistorialMascota citaHistorialMascota) {
+        return this.idHistorial.equals(citaHistorialMascota.getIdHistorial());
+    }
+
+    public boolean equalsIdCita(String idCita) {
+        return this.idHistorial.equals(idCita);
+    }
+
+    public void updateDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
     }
 }
