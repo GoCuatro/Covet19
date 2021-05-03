@@ -15,6 +15,9 @@ public class Producto {
     private InventarioProducto inventarioProducto;
     private HabilitadoProducto habilitadoProducto;
 
+    public Producto() {
+    }
+
     public Producto(ProductoId productoId, NombreProducto nombreProducto, DescripcionProducto descripcionProducto, PrecioProducto precioProducto, MarcaProducto marcaProducto, InventarioProducto inventarioProducto, HabilitadoProducto habilitadoProducto) {
         this.productoId = productoId;
         this.nombreProducto = nombreProducto;
@@ -48,5 +51,13 @@ public class Producto {
                 Objects.equals(nombreProducto, product.nombreProducto) &&
                 Objects.equals(descripcionProducto, product.descripcionProducto) &&
                 Objects.equals(marcaProducto, product.marcaProducto);
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "productoId=" + productoId.value() +
+                ", nombreProducto=" + nombreProducto.value() +
+                '}';
     }
 }

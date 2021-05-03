@@ -2,10 +2,16 @@ package com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hiberna
 
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Ports.ProductoRepository;
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
+import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoId;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,12 +28,14 @@ public class HibernateProductoRepository implements ProductoRepository {
 
     @Override
     public void update(Producto producto) {
-
+        this.sessionFactory.getCurrentSession().update(producto);
+        this.sessionFactory.getCurrentSession().flush();
+        this.sessionFactory.getCurrentSession().clear();
     }
 
     @Override
     public Optional<Producto> find(String productoId) {
-        return Optional.empty();
+        return sessionFactory.getCurrentSession().byId(aggregateClass).loadOptional(new ProductoId(productoId));
     }
 
     @Override
@@ -39,6 +47,12 @@ public class HibernateProductoRepository implements ProductoRepository {
 
     @Override
     public Optional<List<Producto>> all() {
-        return Optional.empty();
+        CriteriaBuilder cb = sessionFactory.getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<Producto> cq = cb.createQuery(Producto.class);
+        Root<Producto> root = cq.from(Producto.class);
+        CriteriaQuery<Producto> all = cq.select(root);
+        TypedQuery<Producto> allQuery = sessionFactory.getCurrentSession().createQuery(all);
+        System.out.println(allQuery.getResultList());
+        return Optional.ofNullable(allQuery.getResultList());
     }
 }

@@ -8,6 +8,18 @@
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
+    <bean id="AllProductos" class="com.javeriana.web.four.covet19.Productos.Producto.Application.All.AllProductos">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
+    <bean id="AllAvaliableProductos" class="com.javeriana.web.four.covet19.Productos.Producto.Application.AllAvaliable.AllAvaliableProductos">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
+    <bean id="FindProducto" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Find.FindProducto">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
     <bean id="RabbitMqPublisher" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqPublisher"/>
 
     <bean id="RabbitMqEventBus" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqEventBus">
