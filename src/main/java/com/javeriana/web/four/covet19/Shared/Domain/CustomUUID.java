@@ -40,4 +40,9 @@ public class CustomUUID implements Serializable {
         CustomUUID that = (CustomUUID) o;
         return Objects.equals(value, that.value);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
 }

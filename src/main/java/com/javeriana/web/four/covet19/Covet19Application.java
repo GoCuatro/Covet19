@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 @ImportResource("classpath:dependencies.xml")
-@EnableAutoConfiguration(exclude = { HibernateJpaAutoConfiguration.class })
 public class Covet19Application {
 
 	public static void main(String[] args) {
