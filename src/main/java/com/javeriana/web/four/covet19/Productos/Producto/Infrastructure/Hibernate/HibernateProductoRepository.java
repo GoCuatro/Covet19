@@ -52,7 +52,6 @@ public class HibernateProductoRepository implements ProductoRepository {
         Root<Producto> root = cq.from(Producto.class);
         CriteriaQuery<Producto> all = cq.select(root);
         TypedQuery<Producto> allQuery = sessionFactory.getCurrentSession().createQuery(all);
-        System.out.println(allQuery.getResultList());
         return Optional.ofNullable(allQuery.getResultList());
     }
 }

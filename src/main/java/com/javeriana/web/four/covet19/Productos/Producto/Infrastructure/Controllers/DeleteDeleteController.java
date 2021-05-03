@@ -1,27 +1,24 @@
 package com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator;
+import com.javeriana.web.four.covet19.Productos.Producto.Application.Delete.DeleteProducto;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.Update.UpdateProducto;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.Update.UpdateRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping(value = "/producto")
-public class UptatePatchController {
+public class DeleteDeleteController {
 
     @Autowired
-    private UpdateProducto updateProducto;
+    private DeleteProducto deleteProducto;
 
-    @PatchMapping(value = "")
-    public ResponseEntity execute(@RequestBody UpdateRequest request) {
+    @DeleteMapping(value = "")
+    public ResponseEntity execute(@RequestParam String id) {
         try {
-            updateProducto.execute(request);
+            deleteProducto.execute(id);
         } catch (Exception e) {
             System.out.println(e);
             return ResponseEntity.status(400).body(e.getMessage());

@@ -20,6 +20,14 @@
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
+    <bean id="UpdateProducto" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Update.UpdateProducto">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
+    <bean id="DeleteProducto" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Delete.DeleteProducto">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
     <bean id="RabbitMqPublisher" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqPublisher"/>
 
     <bean id="RabbitMqEventBus" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqEventBus">

@@ -38,7 +38,7 @@ public class Producto {
         }};
     }
 
-    public static Producto create(ProductoId productoId, NombreProducto nombreProducto, DescripcionProducto descripcionProducto, PrecioProducto precioProducto, MarcaProducto marcaProducto){
+    public static Producto create(ProductoId productoId, NombreProducto nombreProducto, DescripcionProducto descripcionProducto, PrecioProducto precioProducto, MarcaProducto marcaProducto) {
         return new Producto(productoId, nombreProducto, descripcionProducto, precioProducto, marcaProducto, new InventarioProducto(0), new HabilitadoProducto(true));
     }
 
@@ -59,5 +59,29 @@ public class Producto {
                 "productoId=" + productoId.value() +
                 ", nombreProducto=" + nombreProducto.value() +
                 '}';
+    }
+
+    public void updateNombreProducto(String nombre) {
+        this.nombreProducto = new NombreProducto(nombre);
+    }
+
+    public void updateDescripcionProducto(String descripcion) {
+        this.descripcionProducto = new DescripcionProducto(descripcion);
+    }
+
+    public void updatePrecioProducto(Double precio) {
+        this.precioProducto = new PrecioProducto(precio);
+    }
+
+    public void updateMarcaProducto(String marca) {
+        this.marcaProducto = new MarcaProducto(marca);
+    }
+
+    public void deshabilitarProducto(){
+        this.habilitadoProducto = new HabilitadoProducto(false);
+    }
+
+    public boolean isHabilitado(){
+        return this.habilitadoProducto.value();
     }
 }

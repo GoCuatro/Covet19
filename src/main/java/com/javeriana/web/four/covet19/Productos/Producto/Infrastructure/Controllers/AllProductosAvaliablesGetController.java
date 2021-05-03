@@ -27,6 +27,7 @@ public class AllProductosAvaliablesGetController {
             List<HashMap<String, Object>> productos = allAvaliableProductos.execute().stream().map(Producto::data).collect(Collectors.toList());
             return ResponseEntity.ok(productos);
         }catch (Exception e){
+            System.out.println(e);
             return ResponseEntity.status(400).body(null);
         }
     }
