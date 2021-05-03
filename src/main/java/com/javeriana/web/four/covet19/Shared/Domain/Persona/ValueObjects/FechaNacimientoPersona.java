@@ -4,7 +4,6 @@ import com.javeriana.web.four.covet19.Shared.Domain.DateValueObject;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
 public class FechaNacimientoPersona extends DateValueObject {
 
