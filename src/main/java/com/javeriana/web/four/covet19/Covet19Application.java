@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 @ImportResource("classpath:dependencies.xml")
 @EnableAutoConfiguration(exclude = { HibernateJpaAutoConfiguration.class })
 public class Covet19Application {

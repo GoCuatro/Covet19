@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -32,8 +33,9 @@ public class HibernateConfigFactory {
         FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admins/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
         FileSystemResource resource4 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/HistorialClinico/Infrastructure/Hibernate/Historial.hbm.xml");
         FileSystemResource resource5 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/Mascota/Infrastructure/Hibernate/Mascota.hbm.xml");
+        FileSystemResource resource6 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Productos/Producto/Infrastructure/Hibernate/Producto.hbm.xml");
 
-        sessionFactory.setMappingLocations(resource1, resource2, resource3, resource4, resource5);
+        sessionFactory.setMappingLocations(resource1, resource2, resource3, resource4, resource5, resource6);
         return sessionFactory;
     }
 
