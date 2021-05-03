@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Shared.Infrastructure;
 
+
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Autowired;
