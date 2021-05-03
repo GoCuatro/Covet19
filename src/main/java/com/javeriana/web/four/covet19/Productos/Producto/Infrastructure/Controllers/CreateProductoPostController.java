@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/productos")
+@RequestMapping(value = "/producto")
 public class CreateProductoPostController {
 
     @Autowired
     private ProductoCreator creator;
 
-    @PostMapping(value = "/crear", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request){
         try{
             creator.execute(request.id, request.nombre, request.descripcion, request.precio, request.marca);
