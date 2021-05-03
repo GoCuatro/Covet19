@@ -14,12 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/mascota")
+@RequestMapping(value = "/mascotas")
 public class AllMascotaGetController {
     @Autowired
     private MascotaAll mascotaAll;
 
-    @GetMapping(value="/")
+    @GetMapping
     public ResponseEntity<List<HashMap>> execute()
     {
         MascotaAllResponse response = new MascotaAllResponse(mascotaAll.execute());
