@@ -45,6 +45,5 @@
             <type name="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Hibernate.AgendaCustomDetail">
             </type>
         </property>
-
     </class>
 </hibernate-mapping>

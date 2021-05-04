@@ -28,10 +28,10 @@
         <component name="idUsuario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona" access="field">
             <property name="value" column="idUsuario" access="field" type="string"/>
         </component>
-        <!--<property name="compraPedidos" column="agenda" access="field">
-            <type name="com.javeriana.web.four.covet19.Usuarios.Pedidos.CompraPedido.Domain.CompraPedido">
+        <property name="compraPedidos" column="compraPedido" access="field">
+            <type name="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Hibernate.CompraPedidoCustomDetail">
             </type>
-        </property>-->
+        </property>
 
     </class>
 </hibernate-mapping>
