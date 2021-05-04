@@ -16,10 +16,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .addFilterAfter(new JWTAuthFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "*").permitAll()
-                .antMatchers(HttpMethod.POST, "*").permitAll()
-                .antMatchers(HttpMethod.PATCH, "*").permitAll()
-                .antMatchers(HttpMethod.DELETE, "*").permitAll()
+                .antMatchers(HttpMethod.PATCH, "/producto").hasAuthority("ROLE_ADMIN");
+        http.csrf().disable()
+                .addFilterAfter(new JWTAuthFilter(), UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
+                .antMatchers(HttpMethod.DELETE, "/producto").hasAuthority("ROLE_ADMIN");
+        http.csrf().disable()
+                .addFilterAfter(new JWTAuthFilter(), UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
                 .anyRequest().permitAll();
     }
 }

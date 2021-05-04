@@ -1,9 +1,9 @@
 package com.javeriana.web.four.covet19.Shared.Domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class StringValueObject {
-
+public class StringValueObject implements Serializable {
     protected String value;
 
     @Override

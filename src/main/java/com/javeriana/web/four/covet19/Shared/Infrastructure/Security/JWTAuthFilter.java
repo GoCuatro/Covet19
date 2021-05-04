@@ -13,7 +13,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,20 +21,22 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
     private final String HEADER = "Authorization";
     private final String PREFIX = "Bearer ";
+    private final String PASS = "pandillaDeCuatro";
+
     @Autowired
     private Environment env;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
-            if(tokenExists(request)){
+            if (tokenExists(request)) {
                 Claims claims = validate(request);
-                if(claims.get("authorities") != null){
+                if (claims.get("authorities") != null) {
                     setUpSpringAuthentication(claims);
-                }else{
+                } else {
                     SecurityContextHolder.clearContext();
                 }
-            }else{
+            } else {
                 SecurityContextHolder.clearContext();
             }
             filterChain.doFilter(request, response);
@@ -45,9 +46,9 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         }
     }
 
-    private boolean tokenExists(HttpServletRequest request){
+    private boolean tokenExists(HttpServletRequest request) {
         String authenticationHeader = request.getHeader(HEADER);
-        if(authenticationHeader == null || !authenticationHeader.startsWith(PREFIX)){
+        if (authenticationHeader == null || !authenticationHeader.startsWith(PREFIX)) {
             return false;
         }
         return true;
@@ -55,10 +56,10 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
     private Claims validate(HttpServletRequest request) {
         String jwtToken = request.getHeader(HEADER).replace(PREFIX, "");
-        return Jwts.parser().setSigningKey(env.getProperty("jwt.pass")).parseClaimsJws(jwtToken).getBody();
+        return Jwts.parser().setSigningKey(PASS.getBytes()).parseClaimsJws(jwtToken).getBody();
     }
 
-    private void setUpSpringAuthentication(Claims claims){
+    private void setUpSpringAuthentication(Claims claims) {
         List<String> authorities = (List<String>) claims.get("authorities");
         UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(claims.getSubject(), null,
                 authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));

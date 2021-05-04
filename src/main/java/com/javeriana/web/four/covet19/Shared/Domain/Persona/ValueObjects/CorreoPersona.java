@@ -2,7 +2,9 @@ package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
 
 import com.javeriana.web.four.covet19.Shared.Domain.StringValueObject;
 
-public class CorreoPersona extends StringValueObject {
+import java.io.Serializable;
+
+public class CorreoPersona extends StringValueObject implements Serializable {
 
     private CorreoPersona() {}
 
