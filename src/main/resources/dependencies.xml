@@ -106,4 +106,8 @@
         <constructor-arg ref="HibernatePedidoRepository"/>
     </bean>
 
+    <bean id="PedidoFinderEnviar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Enviar.PedidoFinderEnviar">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
+
 </beans>

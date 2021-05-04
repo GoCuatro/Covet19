@@ -1,20 +1,17 @@
-package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar;
-
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Exceptions.MascotaNotExist;
+package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Enviar;
 
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoEnviado;
-import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoFinalizado;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoNotExist;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Pedido;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Ports.PedidoRepository;
 
 import java.util.Optional;
 
-public class PedidoFinderFinalizar {
+public class PedidoFinderEnviar {
 
     private PedidoRepository repository;
 
-    public PedidoFinderFinalizar(PedidoRepository repository) {
+    public PedidoFinderEnviar(PedidoRepository repository) {
         this.repository = repository;
     }
 
@@ -24,13 +21,11 @@ public class PedidoFinderFinalizar {
             throw new PedidoNotExist("The pedido " + id + " not exists");
         }
         Pedido pedidoUpdate = pedido.get();
-        if(!pedidoUpdate.getfinalizadoPedido() && pedidoUpdate.getEnviadoPedido()){
-            pedidoUpdate.finalizarPedido();
+        if(!pedidoUpdate.getEnviadoPedido()){
+            pedidoUpdate.enviarPedido();
             repository.update(pedidoUpdate);
-        }else if(pedidoUpdate.getfinalizadoPedido() ){
-            throw new PedidoFinalizado("The pedido " + id + " is already finished");
-        }else {
-            throw new PedidoEnviado("The pedido " + id + " has not been sent ");
+        }else{
+            throw new PedidoEnviado("The pedido " + id + " is already sent");
         }
 
     }

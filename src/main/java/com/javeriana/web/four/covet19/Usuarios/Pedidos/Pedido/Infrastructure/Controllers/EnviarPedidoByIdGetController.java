@@ -1,9 +1,6 @@
 package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinderResponse;
-import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar;
-import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Pedido;
+import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Enviar.PedidoFinderEnviar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +14,15 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/pedidos")
-public class FinalizarPedidoByIdGetController {
+public class EnviarPedidoByIdGetController {
     @Autowired
-    private PedidoFinderFinalizar finder;
+    private PedidoFinderEnviar finder;
 
-    @GetMapping(value="/finalizar/{id}")
+    @GetMapping(value="/enviar/{id}")
     public ResponseEntity<HashMap> execute(@PathVariable("id") String id)
     {
         finder.execute(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }
+

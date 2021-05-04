@@ -64,8 +64,17 @@ public class Pedido {
         this.fechaFinalizadoPedido = new FechaFinalizadoPedido(fecha);
 
     }
+    public void enviarPedido(){
+        Date fecha = new Date();
+        this.enviadoPedido = new EnviadoPedido(true);
+        this.fechaEnviadoPedido = new FechaEnviadoPedido(fecha);
+
+    }
     public Boolean getfinalizadoPedido(){
         return this.finalizadoPedido.value();
+    }
+    public Boolean getEnviadoPedido(){
+        return this.enviadoPedido.value();
     }
     private Pedido(){}
 
