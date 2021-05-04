@@ -181,4 +181,7 @@
         <constructor-arg ref="DomainEventJsonDeserializer"/>
         <constructor-arg ref="DomainEventsInformation"/>
     </bean>
+
+    <bean id="MailSender" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Mail.SendGrid.MailSenderSendGridImpl" />
+
 </beans>
