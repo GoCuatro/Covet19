@@ -1,15 +1,15 @@
-package com.javeriana.web.four.covet19.Productos.Producto.Application.Update;
+package com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Controllers;
 
 import java.util.Optional;
 
-public class UpdateRequest {
+public class UpdateProductoRequest {
     private Optional<String> id;
     private Optional<String> nombre;
     private Optional<String> descripcion;
     private Optional<Double> precio;
     private Optional<String> marca;
 
-    public UpdateRequest() {
+    public UpdateProductoRequest() {
         this.id = Optional.empty();
         this.nombre = Optional.empty();
         this.descripcion = Optional.empty();

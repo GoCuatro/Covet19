@@ -51,6 +51,10 @@
         <constructor-arg ref="HibernateAdminRepository"/>
     </bean>
 
+    <bean id="UpdateAdmin" class="com.javeriana.web.four.covet19.Admin.Application.Update.UpdateAdmin">
+        <constructor-arg ref="HibernateAdminRepository"/>
+    </bean>
+
     <bean id="Login" class="com.javeriana.web.four.covet19.Shared.Application.Login">
         <constructor-arg ref="HibernateIndexRepository"/>
         <constructor-arg ref="FindAdmin"/>

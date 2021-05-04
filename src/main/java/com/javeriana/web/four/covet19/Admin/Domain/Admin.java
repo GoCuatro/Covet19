@@ -63,4 +63,32 @@ public class Admin implements AuthEntity {
             throw new IncorrectCredentials("Credenciales incorrectas");
         }
     }
+
+    public void updateCedula(long cedula){
+        this.cedulaAdmin = new CedulaPersona(cedula);
+    }
+
+    public void updateNombre(String nombre){
+        this.nombreAdmin = new NombrePersona(nombre);
+    }
+
+    public void updateCorreo(String correo){
+        this.correoAdmin = new CorreoPersona(correo);
+    }
+
+    public void updateDireccion(String direccion){
+        this.direccionAdmin = new DireccionPersona(direccion);
+    }
+
+    public void updatePassword(String password){
+        this.passwordAdmin = new PasswordPersona(password);
+    }
+
+    public void updateFechaNacimiento(String fechaNacimiento){
+        this.fechaNacimientoAdmin = new FechaNacimientoPersona(fechaNacimiento);
+    }
+
+    public void updateTelefonoAdmin(long telefono){
+        this.telefonoAdmin = new TelefonoPersona(telefono);
+    }
 }
