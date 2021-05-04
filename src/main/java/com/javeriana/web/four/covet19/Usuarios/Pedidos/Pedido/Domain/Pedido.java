@@ -63,5 +63,8 @@ public class Pedido {
         this.fechaFinalizadoPedido = new FechaFinalizadoPedido(fecha);
 
     }
+    public Boolean getfinalizadoPedido(){
+        return this.finalizadoPedido.value();
+    }
     private Pedido(){}
 }

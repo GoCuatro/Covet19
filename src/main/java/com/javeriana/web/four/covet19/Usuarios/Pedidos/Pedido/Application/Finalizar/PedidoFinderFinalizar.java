@@ -2,6 +2,8 @@ package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Final
 
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Exceptions.MascotaNotExist;
 
+import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoFinalizado;
+import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoNotExist;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Pedido;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Ports.PedidoRepository;
 
@@ -18,10 +20,15 @@ public class PedidoFinderFinalizar {
     public void execute(String id) {
         Optional<Pedido> pedido = repository.find(id);
         if (pedido.isEmpty()) {
-            throw new MascotaNotExist("The product " + id + " not exists");
+            throw new PedidoNotExist("The pedido " + id + " not exists");
         }
         Pedido pedidoUpdate = pedido.get();
-        pedidoUpdate.finalizarPedido();
-        repository.update(pedidoUpdate);
+        if(!pedidoUpdate.getfinalizadoPedido()){
+            pedidoUpdate.finalizarPedido();
+            repository.update(pedidoUpdate);
+        }else{
+            throw new PedidoFinalizado("The pedido " + id + " is already finished");
+        }
+
     }
 }
