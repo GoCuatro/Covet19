@@ -29,13 +29,15 @@ public class HibernateConfigFactory {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setHibernateProperties(hibernateProperties());
 
-        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Veterinarios/Cita/Infrastructure/Hibernate/Cita.hbm.xml");
+
         FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Veterinarios/Veterinario/Infrastructure/Hibernate/Veterinario.hbm.xml");
+        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Veterinarios/Cita/Infrastructure/Hibernate/Cita.hbm.xml");
         FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admins/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
         FileSystemResource resource4 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/HistorialClinico/Infrastructure/Hibernate/Historial.hbm.xml");
         FileSystemResource resource5 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/Mascota/Infrastructure/Hibernate/Mascota.hbm.xml");
+        FileSystemResource resource6 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/User/Infrastructure/Hibernate/User.hbm.xml");
 
-        sessionFactory.setMappingLocations(resource1, resource2, resource3, resource4, resource5);
+        sessionFactory.setMappingLocations(resource1, resource2, resource3, resource4, resource5, resource6);
         return sessionFactory;
     }
 
@@ -55,7 +57,7 @@ public class HibernateConfigFactory {
         dataSource.setUrl(url);
         dataSource.setUsername(userName);
         dataSource.setPassword(password);
-        dataSource.setDriverClassName(driver);
+        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
         return dataSource;
     }
 

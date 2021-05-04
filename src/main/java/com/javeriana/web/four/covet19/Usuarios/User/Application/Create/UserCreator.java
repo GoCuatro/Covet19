@@ -1,7 +1,10 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Application.Create;
 
-import com.javeriana.web.four.covet19.Shared.Domain.User.UserId;
+import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.*;
+
+import java.util.Date;
+import java.util.List;
 
 public class UserCreator {
     private UserRepository repository;
@@ -16,11 +19,16 @@ public class UserCreator {
         this.finder = new UserDomainFinder(repository);
     }
 
-    public void execute(String userId, String userFirstName, String userLastName, String userNickName, String userPassword)
+    public void execute(String userId, String userFirstName, String userPassword,
+                        String  userMail, long userPhone, long userCedule,
+                        String userAdresss, Date userBirth)
     {
         this.validate(userId);
-        validator.execute(new UserNickName(userNickName).value());
-        User user = new User(new UserId(userId), new UserName(userFirstName), new UserLastName(userLastName) , new UserNickName(userNickName),new UserPassword(userPassword));
+        validator.execute(new NombrePersona(userFirstName).value());
+        User user = User.create(new IdPersona(userId), new NombrePersona(userFirstName),
+                new PasswordPersona(userPassword) , new CorreoPersona(userMail),
+                new TelefonoPersona(userPhone), new CedulaPersona(userCedule),
+                new DireccionPersona(userAdresss), new FechaNacimientoPersona(userBirth));
         repository.save(user);
     }
 

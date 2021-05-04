@@ -4,9 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="HibernateVeterinarioRepository" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Hibernate.HibernateVeterinarioRepository"/>
-
+    <bean id="HibernateUserRepository" class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Hibernate.HibernateUserRepository"/>
+    <bean id="HibernateProductoRepository" class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
     <bean id="HibernateCitaRepository" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository"/>
     <bean id="HibernateMascotaRepository" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HibernateMascotaRepository"/>
+    <bean id="BadWordService" class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.BadWordsService"/>
     <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
@@ -42,6 +44,23 @@
 
     <bean id="MascotaUpdate" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Update.MascotaUpdate">
         <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+    <bean id="ProductoCreator" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
+    <bean id="UserFinder" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinder">
+        <constructor-arg ref="HibernateUserRepository"/>
+    </bean>
+
+    <bean id="UserCreator" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Create.UserCreator">
+        <constructor-arg ref="HibernateUserRepository"/>
+        <constructor-arg ref="BadWordService"/>
+    </bean>
+
+    <bean id="UserUpdater" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Update.UserModifier">
+        <constructor-arg ref="HibernateUserRepository"/>
+        <constructor-arg ref="BadWordService"/>
     </bean>
 
 </beans>
