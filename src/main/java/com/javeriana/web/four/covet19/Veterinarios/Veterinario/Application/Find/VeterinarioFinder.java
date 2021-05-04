@@ -2,6 +2,7 @@ package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find
 
 import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
 import com.javeriana.web.four.covet19.Admins.Admin.Domain.Port.AdminRepository;
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Exceptions.VeterinarioNoExiste;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
@@ -19,7 +20,7 @@ public class VeterinarioFinder {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
         if (veterinario.isEmpty())
         {
-            throw new RuntimeException("El Veterinario con Id: " + idVeterinario + " no existe");
+            throw new VeterinarioNoExiste(idVeterinario);
         }
         Veterinario finalVeterinario = veterinario.get();
         return finalVeterinario;

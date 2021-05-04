@@ -20,12 +20,12 @@ public class AdminVerAdmins {
 
     public List<Admin> execute()
     {
+        List<Admin> result = new ArrayList<>();
         Optional<List<Admin>> admins = repository.all();
-        if (admins.isEmpty())
+        if (!admins.isEmpty())
         {
-            throw new RuntimeException("No hay admins");
+            result = admins.get();
         }
-        List<Admin> result = admins.get();
         return result;
     }
 

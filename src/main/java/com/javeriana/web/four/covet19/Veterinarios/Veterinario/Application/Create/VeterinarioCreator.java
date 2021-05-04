@@ -2,7 +2,6 @@ package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Crea
 
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesionalVeterinario;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 

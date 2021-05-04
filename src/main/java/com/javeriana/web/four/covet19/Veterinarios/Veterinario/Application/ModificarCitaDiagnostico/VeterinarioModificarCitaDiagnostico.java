@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.ModificarCitaDiagnostico;
 
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Exceptions.VeterinarioNoExiste;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
@@ -17,7 +18,7 @@ public class VeterinarioModificarCitaDiagnostico {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
         if (veterinario.isEmpty())
         {
-            throw new RuntimeException("El Veterinario con Id: " + idVeterinario + " no existe");
+            throw new VeterinarioNoExiste(idVeterinario);
         }
         Veterinario finalVeterinario = veterinario.get();
         finalVeterinario.updateCitaDiagnostico(idCita, diagnostico);

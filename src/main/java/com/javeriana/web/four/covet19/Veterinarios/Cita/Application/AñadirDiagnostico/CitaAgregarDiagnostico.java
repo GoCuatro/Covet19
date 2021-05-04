@@ -2,6 +2,7 @@ package com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AñadirDiag
 
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.ModificarCitaDiagnostico.MascotaModificarCitaDiagnostico;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Cita;
+import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Exceptions.CitaNoExiste;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Ports.CitaRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.ValueObjects.DiagnosticoCita;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.ModificarCitaDiagnostico.VeterinarioModificarCitaDiagnostico;
@@ -28,7 +29,7 @@ public class CitaAgregarDiagnostico {
         Optional<Cita> cita = repository.find(idCita);
         if (cita.isEmpty())
         {
-            throw new RuntimeException("La cita con Id: " + idCita + " no existe");
+            throw new CitaNoExiste(idCita);
         }
         Cita finalCita = cita.get();
         finalCita.agregarDiagnostico(new DiagnosticoCita(diagnostico));

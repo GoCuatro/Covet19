@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerAgenda;
 
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Exceptions.VeterinarioNoExiste;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
@@ -20,7 +21,7 @@ public class VeterinarioVerAgenda {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
         if (veterinario.isEmpty())
         {
-            throw new RuntimeException("El Veterinario con Id: " + idVeterinario + " no existe");
+            throw new VeterinarioNoExiste(idVeterinario);
         }
         List<CitaDetails> result = new ArrayList<>();
         Veterinario finalVeterinario = veterinario.get();

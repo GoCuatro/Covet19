@@ -3,6 +3,7 @@ package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Upda
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Exceptions.MascotaNotExist;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Mascota;
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Exceptions.VeterinarioNoExiste;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesionalVeterinario;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
@@ -33,7 +34,7 @@ public class VeterinarioUpdate {
 
         if (veterinario.isEmpty())
         {
-            throw new RuntimeException("El veterinario con Id: " + idVeterinario + " no existe");
+            throw new VeterinarioNoExiste(idVeterinario);
         }
 
         Veterinario veterinarioTemp = veterinario.get();

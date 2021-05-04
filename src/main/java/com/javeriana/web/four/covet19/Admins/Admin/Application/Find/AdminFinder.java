@@ -1,6 +1,7 @@
 package com.javeriana.web.four.covet19.Admins.Admin.Application.Find;
 
 import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
+import com.javeriana.web.four.covet19.Admins.Admin.Domain.Exceptions.AdminNoExiste;
 import com.javeriana.web.four.covet19.Admins.Admin.Domain.Port.AdminRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
@@ -20,7 +21,7 @@ public class AdminFinder {
         Optional<Admin> admin = repository.find(idAdmin);
         if (admin.isEmpty())
         {
-            throw new RuntimeException("El Admin con Id: " + idAdmin + " no existe");
+            throw new AdminNoExiste(idAdmin);
         }
         Admin finalAdmin = admin.get();
         return finalAdmin;
