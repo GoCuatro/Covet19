@@ -1,4 +1,7 @@
-package com.javeriana.web.four.covet19.Usuarios.User.Domain;
+package com.javeriana.web.four.covet19.Usuarios.User.Application.UserValidateWords;
+
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.BadWordsError;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.ValidateWordService;
 
 public class UserValidateWords {
 

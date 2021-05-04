@@ -8,7 +8,7 @@
     <bean id="HibernateProductoRepository" class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
     <bean id="HibernateCitaRepository" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository"/>
     <bean id="HibernateMascotaRepository" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HibernateMascotaRepository"/>
-    <bean id="BadWordService" class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.BadWordsService"/>
+    <bean id="BadWordService" class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers.BadWordsService"/>
     <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>

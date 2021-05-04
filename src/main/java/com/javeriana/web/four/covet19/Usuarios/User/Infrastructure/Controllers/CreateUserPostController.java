@@ -1,9 +1,8 @@
-package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure;
+package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.*;
 import com.javeriana.web.four.covet19.Shared.Domain.UUIDNotValid;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.Create.UserCreator;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

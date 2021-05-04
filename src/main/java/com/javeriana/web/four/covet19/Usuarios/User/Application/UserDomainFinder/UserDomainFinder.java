@@ -1,4 +1,8 @@
-package com.javeriana.web.four.covet19.Usuarios.User.Domain;
+package com.javeriana.web.four.covet19.Usuarios.User.Application.UserDomainFinder;
+
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserNotExist;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
 
 import java.util.Optional;
 

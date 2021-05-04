@@ -1,7 +1,9 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Application.Find;
 
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
+import com.javeriana.web.four.covet19.Usuarios.User.Application.UserDomainFinder.UserDomainFinder;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.*;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
 
 import java.util.Optional;
 

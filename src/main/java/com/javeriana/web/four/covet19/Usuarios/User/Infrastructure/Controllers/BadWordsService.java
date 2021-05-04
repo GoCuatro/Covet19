@@ -1,8 +1,8 @@
-package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure;
+package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValidateWordService;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.ValidateWordService;
 
 import java.net.URI;
 import java.net.http.HttpClient;

@@ -2,7 +2,7 @@ package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Hibernate;
 
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.UserRepository;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;

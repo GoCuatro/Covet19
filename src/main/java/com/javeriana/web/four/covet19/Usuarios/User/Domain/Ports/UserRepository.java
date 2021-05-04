@@ -1,4 +1,6 @@
-package com.javeriana.web.four.covet19.Usuarios.User.Domain;
+package com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports;
+
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
 
 import java.util.Optional;
 
