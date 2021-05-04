@@ -23,6 +23,7 @@ public class Veterinario {
     private TarjetaProfesionalVeterinario tarjetaProfesionalVeterinario;
     private Optional<List<CitaDetails>> agendaVeterinario;
 
+
     public Veterinario(
             IdPersona idVeterinario,
             CedulaPersona cedulaVeterinario,

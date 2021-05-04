@@ -19,8 +19,10 @@
           class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
     <bean id="HibernatePedidoRepository" 
           class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Hibernate.HibernatePedidoRepository"/>
-    <!--Mascotas-->
+    <bean id="HibernateUserRepository"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Hibernate.HibernateUserRepository"/>
     
+    <!--Mascotas-->
 
     <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
         <constructor-arg ref="HibernateMascotaRepository"/>
@@ -87,7 +89,7 @@
         <constructor-arg ref="HibernateVeterinarioRepository"/>
     </bean>
 
-    <!--Productos-->
+    <!--Productos-->    
 
     <bean id="ProductoCreator"
           class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
@@ -151,6 +153,24 @@
 
     <bean id="PedidoFinderEnviar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Enviar.PedidoFinderEnviar">
         <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
+
+    <!--Users-->
+
+    <bean id="BadWordService" class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers.BadWordsService"/>
+
+    <bean id="UserFinder" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinder">
+        <constructor-arg ref="HibernateUserRepository"/>
+    </bean>
+
+    <bean id="UserCreator" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Create.UserCreator">
+        <constructor-arg ref="HibernateUserRepository"/>
+        <constructor-arg ref="BadWordService"/>
+    </bean>
+
+    <bean id="UserUpdater" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Update.UserModifier">
+        <constructor-arg ref="HibernateUserRepository"/>
+        <constructor-arg ref="BadWordService"/>
     </bean>
 
     <!--Shared-->

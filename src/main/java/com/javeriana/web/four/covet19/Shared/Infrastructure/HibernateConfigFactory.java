@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Shared.Infrastructure;
 
+
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,9 @@ public class HibernateConfigFactory {
         FileSystemResource resource6 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Shared/Domain/Index/Infrastructure/Hibernate/Index.hbm.xml");
         FileSystemResource resource7 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/Pedidos/Pedido/Infrastructure/Hibernate/Pedido.hbm.xml");
         FileSystemResource resource8 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admins/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
+        FileSystemResource resource9 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/User/Infrastructure/Hibernate/User.hbm.xml");
 
-        sessionFactory.setMappingLocations(resource1, resource2, resource3, resource4, resource5, resource6, resource7, resource8);
+        sessionFactory.setMappingLocations(resource1, resource2, resource3, resource4, resource5, resource6, resource7, resource8, resource9);
         return sessionFactory;
     }
 
