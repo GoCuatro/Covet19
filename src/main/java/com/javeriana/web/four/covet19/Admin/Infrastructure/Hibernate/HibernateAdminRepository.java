@@ -1,10 +1,12 @@
-package com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate;
+package com.javeriana.web.four.covet19.Admin.Infrastructure.Hibernate;
 
+import com.javeriana.web.four.covet19.Admin.Domain.Admin;
+import com.javeriana.web.four.covet19.Admin.Domain.Ports.AdminRepository;
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Ports.ProductoRepository;
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
+import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
 import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoId;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,42 +18,42 @@ import java.util.List;
 import java.util.Optional;
 
 @Transactional("transactional-manager")
-public class HibernateProductoRepository implements ProductoRepository {
+public class HibernateAdminRepository implements AdminRepository {
 
     protected final SessionFactory sessionFactory;
-    protected final Class<Producto>  aggregateClass;
+    protected final Class<Admin> aggregateClass;
 
-    public HibernateProductoRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
+    public HibernateAdminRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-        this.aggregateClass = Producto.class;
+        this.aggregateClass = Admin.class;
     }
 
     @Override
-    public void update(Producto producto) {
-        this.sessionFactory.getCurrentSession().update(producto);
+    public void update(Admin admin) {
+        this.sessionFactory.getCurrentSession().update(admin);
         this.sessionFactory.getCurrentSession().flush();
         this.sessionFactory.getCurrentSession().clear();
     }
 
     @Override
-    public Optional<Producto> find(String productoId) {
-        return sessionFactory.getCurrentSession().byId(aggregateClass).loadOptional(new ProductoId(productoId));
+    public Optional<Admin> find(String adminId) {
+        return sessionFactory.getCurrentSession().byId(aggregateClass).loadOptional(new IdPersona(adminId));
     }
 
     @Override
-    public void save(Producto producto) {
-        sessionFactory.getCurrentSession().save(producto);
+    public void save(Admin admin) {
+        sessionFactory.getCurrentSession().save(admin);
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().clear();
     }
 
     @Override
-    public Optional<List<Producto>> all() {
+    public Optional<List<Admin>> all() {
         CriteriaBuilder cb = sessionFactory.getCurrentSession().getCriteriaBuilder();
-        CriteriaQuery<Producto> cq = cb.createQuery(Producto.class);
-        Root<Producto> root = cq.from(Producto.class);
-        CriteriaQuery<Producto> all = cq.select(root);
-        TypedQuery<Producto> allQuery = sessionFactory.getCurrentSession().createQuery(all);
+        CriteriaQuery<Admin> cq = cb.createQuery(Admin.class);
+        Root<Admin> root = cq.from(Admin.class);
+        CriteriaQuery<Admin> all = cq.select(root);
+        TypedQuery<Admin> allQuery = sessionFactory.getCurrentSession().createQuery(all);
         return Optional.ofNullable(allQuery.getResultList());
     }
 }

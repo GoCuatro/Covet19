@@ -9,6 +9,9 @@ import java.util.regex.Pattern;
 
 public class PasswordPersona extends StringValueObject {
 
+    public PasswordPersona() {
+    }
+
     public PasswordPersona(String value) {
         this.validate(value);
         this.value = value;

@@ -1,4 +1,4 @@
-package com.javeriana.web.four.covet19.Shared.Domain.Security.Token;
+package com.javeriana.web.four.covet19.Shared.Domain.Security.Auth;
 
 import java.util.HashMap;
 

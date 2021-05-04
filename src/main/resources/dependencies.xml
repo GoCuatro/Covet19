@@ -3,8 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="HibernateProductoRepository" class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
-    <bean id="ProductoCreator" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
+    <bean id="HibernateProductoRepository"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
+    <bean id="HibernateIndexRepository"
+          class="com.javeriana.web.four.covet19.Shared.Domain.Index.Infrastructure.Hibernate.HibernateIndexRepository"/>
+    <bean id="HibernateAdminRepository"
+          class="com.javeriana.web.four.covet19.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
+
+    <bean id="ProductoCreator"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
@@ -12,7 +19,8 @@
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
-    <bean id="AllAvaliableProductos" class="com.javeriana.web.four.covet19.Productos.Producto.Application.AllAvaliable.AllAvaliableProductos">
+    <bean id="AllAvaliableProductos"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Application.AllAvaliable.AllAvaliableProductos">
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
@@ -20,27 +28,52 @@
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
-    <bean id="UpdateProducto" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Update.UpdateProducto">
+    <bean id="UpdateProducto"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Application.Update.UpdateProducto">
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
-    <bean id="DeleteProducto" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Delete.DeleteProducto">
+    <bean id="DeleteProducto"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Application.Delete.DeleteProducto">
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
-    <bean id="RabbitMqPublisher" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqPublisher"/>
+    <bean id="CreateAdmin" class="com.javeriana.web.four.covet19.Admin.Application.Create.CreateAdmin">
+        <constructor-arg ref="HibernateAdminRepository"/>
+        <constructor-arg ref="HibernateIndexRepository"/>
+    </bean>
 
-    <bean id="RabbitMqEventBus" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqEventBus">
+    <bean id="AllAdmins" class="com.javeriana.web.four.covet19.Admin.Application.All.AllAdmins">
+        <constructor-arg ref="HibernateAdminRepository"/>
+    </bean>
+
+    <bean id="FindAdmin" class="com.javeriana.web.four.covet19.Admin.Application.Find.FindAdmin">
+        <constructor-arg ref="HibernateAdminRepository"/>
+    </bean>
+
+    <bean id="Login" class="com.javeriana.web.four.covet19.Shared.Application.Login">
+        <constructor-arg ref="HibernateIndexRepository"/>
+        <constructor-arg ref="FindAdmin"/>
+    </bean>
+
+    <bean id="RabbitMqPublisher"
+          class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqPublisher"/>
+
+    <bean id="RabbitMqEventBus"
+          class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqEventBus">
         <constructor-arg ref="RabbitMqPublisher"/>
     </bean>
 
-    <bean id="DomainEventsInformation" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.DomainEventsInformation"/>
+    <bean id="DomainEventsInformation"
+          class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.DomainEventsInformation"/>
 
-    <bean id="DomainEventJsonDeserializer" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.Serializable.DomainEventJsonDeserializer">
+    <bean id="DomainEventJsonDeserializer"
+          class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.Serializable.DomainEventJsonDeserializer">
         <constructor-arg ref="DomainEventsInformation"/>
     </bean>
 
-    <bean id="RabbitMqDomainEventsConsumer" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqDomainEventsConsumer">
+    <bean id="RabbitMqDomainEventsConsumer"
+          class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqDomainEventsConsumer">
         <constructor-arg ref="DomainEventJsonDeserializer"/>
         <constructor-arg ref="DomainEventsInformation"/>
     </bean>

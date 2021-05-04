@@ -1,7 +1,7 @@
-package com.javeriana.web.four.covet19.Shared.Domain.Security.Index.Application.Create;
+package com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Security.Index.Domain.Index;
-import com.javeriana.web.four.covet19.Shared.Domain.Security.Index.Domain.Ports.IndexRepository;
+import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Ports.IndexRepository;
+import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Index;
 
 public class CreateIndex {
     private final IndexRepository indexRepository;
@@ -10,7 +10,7 @@ public class CreateIndex {
         this.indexRepository = indexRepository;
     }
 
-    public void execute(String referenceId, String rol){
-        indexRepository.save(Index.create(referenceId, rol));
+    public void execute(String email, String referenceId, String rol){
+        indexRepository.save(Index.create(email, referenceId, rol));
     }
 }

@@ -1,16 +1,17 @@
-package com.javeriana.web.four.covet19.Productos.Producto.Domain.Ports;
+package com.javeriana.web.four.covet19.Admin.Domain.Ports;
 
+import com.javeriana.web.four.covet19.Admin.Domain.Admin;
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductoRepository {
-    void update(Producto producto);
+public interface AdminRepository {
+    void update(Admin admin);
 
-    Optional<Producto> find(String productoId);
+    Optional<Admin> find(String adminId);
 
-    void save(Producto producto);
+    void save(Admin admin);
 
-    Optional<List<Producto>> all();
+    Optional<List<Admin>> all();
 }

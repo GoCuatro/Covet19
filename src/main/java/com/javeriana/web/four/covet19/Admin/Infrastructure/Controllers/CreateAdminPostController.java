@@ -1,33 +1,109 @@
 package com.javeriana.web.four.covet19.Admin.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Admin.Application.All.AllAdmins;
+import com.javeriana.web.four.covet19.Admin.Application.Create.CreateAdmin;
 import com.javeriana.web.four.covet19.Admin.Domain.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/admins")
-public class AllAdminsGetController {
+@RequestMapping(value = "/admin")
+public class CreateAdminPostController {
 
     @Autowired
-    private AllAdmins allAdmins;
+    private CreateAdmin createAdmin;
 
-    @GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<HashMap<String, Object>>> execute() {
+    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity execute(@RequestBody Request request) {
         try {
-            List<HashMap<String, Object>> productos = allAdmins.execute().stream().map(Admin::data).collect(Collectors.toList());
-            return ResponseEntity.ok(productos);
+            createAdmin.execute(request.id, request.cedula, request.nombre, request.telefono, request.correo, request.direccion, request.pass, request.fechaNacimiento);
+            return ResponseEntity.status(HttpStatus.CREATED).body(null);
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println(e);
             return ResponseEntity.status(400).body(null);
+        }
+    }
+
+    static class Request{
+        private String id;
+        private long cedula;
+        private String nombre;
+        private long telefono;
+        private String correo;
+        private String direccion;
+        private String pass;
+        private String fechaNacimiento;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+        public long getCedula() {
+            return cedula;
+        }
+
+        public void setCedula(long cedula) {
+            this.cedula = cedula;
+        }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public long getTelefono() {
+            return telefono;
+        }
+
+        public void setTelefono(long telefono) {
+            this.telefono = telefono;
+        }
+
+        public String getCorreo() {
+            return correo;
+        }
+
+        public void setCorreo(String correo) {
+            this.correo = correo;
+        }
+
+        public String getDireccion() {
+            return direccion;
+        }
+
+        public void setDireccion(String direccion) {
+            this.direccion = direccion;
+        }
+
+        public String getPass() {
+            return pass;
+        }
+
+        public void setPass(String pass) {
+            this.pass = pass;
+        }
+
+        public String getFechaNacimiento() {
+            return fechaNacimiento;
+        }
+
+        public void setFechaNacimiento(String fechaNacimiento) {
+            this.fechaNacimiento = fechaNacimiento;
         }
     }
 }

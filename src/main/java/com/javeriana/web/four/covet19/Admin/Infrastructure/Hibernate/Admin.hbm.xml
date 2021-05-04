@@ -4,46 +4,52 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto" table="productos">
-        <composite-id name="productoId" class="com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoId"
+    <class name="com.javeriana.web.four.covet19.Admin.Domain.Admin" table="Admins">
+        <composite-id name="idAdmin" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona"
                       access="field">
             <key-property name="value" column="id" access="field" length="36"/>
         </composite-id>
 
-        <component name="nombreProducto"
-                   class="com.javeriana.web.four.covet19.Productos.Producto.Domain.ValueObjects.NombreProducto"
+        <component name="cedulaAdmin"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.CedulaPersona"
+                   access="field">
+            <property name="value" column="cedula" access="field" type="long"/>
+        </component>
+
+        <component name="nombreAdmin"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.NombrePersona"
                    access="field">
             <property name="value" column="nombre" access="field" type="string"/>
         </component>
 
-        <component name="descripcionProducto"
-                   class="com.javeriana.web.four.covet19.Productos.Producto.Domain.ValueObjects.DescripcionProducto"
+        <component name="telefonoAdmin"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.TelefonoPersona"
                    access="field">
-            <property name="value" column="descripcion" access="field" type="string"/>
+            <property name="value" column="telefono" access="field" type="long"/>
         </component>
 
-        <component name="precioProducto"
-                   class="com.javeriana.web.four.covet19.Productos.Producto.Domain.ValueObjects.PrecioProducto"
+        <component name="correoAdmin"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.CorreoPersona"
                    access="field">
-            <property name="value" column="precio" access="field" type="double"/>
+            <property name="value" column="correo" access="field" type="string"/>
         </component>
 
-        <component name="marcaProducto"
-                   class="com.javeriana.web.four.covet19.Productos.Producto.Domain.ValueObjects.MarcaProducto"
+        <component name="direccionAdmin"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.DireccionPersona"
                    access="field">
-            <property name="value" column="marca" access="field" type="string"/>
+            <property name="value" column="direccion" access="field" type="string"/>
         </component>
 
-        <component name="inventarioProducto"
-                   class="com.javeriana.web.four.covet19.Productos.Producto.Domain.ValueObjects.InventarioProducto"
+        <component name="passwordAdmin"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.PasswordPersona"
                    access="field">
-            <property name="value" column="inventario" access="field" type="integer"/>
+            <property name="value" column="password" access="field" type="string"/>
         </component>
 
-        <component name="habilitadoProducto"
-                   class="com.javeriana.web.four.covet19.Productos.Producto.Domain.ValueObjects.HabilitadoProducto"
+        <component name="fechaNacimientoAdmin"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.FechaNacimientoPersona"
                    access="field">
-            <property name="value" column="habilitado" access="field" type="boolean"/>
+            <property name="value" column="fechaNacimiento" access="field" type="date"/>
         </component>
     </class>
 </hibernate-mapping>

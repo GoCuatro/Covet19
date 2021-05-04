@@ -13,6 +13,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
+import java.io.File;
 import java.util.Properties;
 
 @Configuration
@@ -31,10 +32,12 @@ public class HibernateConfigFactory {
 //        FileSystemResource resource1 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Cita/Infrastructure/Hibernate/Cita.hbm.xml");
 //        FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/web/four/covet19/Veterinarios/Veterinario/Infrastructure/Hibernate/Veterinario.hbm.xml");
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
-        FileSystemResource resource3 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Productos/Producto/Infrastructure/Hibernate/Producto.hbm.xml");
+        FileSystemResource productoConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Productos/Producto/Infrastructure/Hibernate/Producto.hbm.xml");
+        FileSystemResource indexConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Shared/Domain/Index/Infrastructure/Hibernate/Index.hbm.xml");
+        FileSystemResource adminConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
 
 //        sessionFactory.setMappingLocations(resource1, resource2, resource3);
-        sessionFactory.setMappingLocations(resource3);
+        sessionFactory.setMappingLocations(productoConfig, indexConfig, adminConfig);
         return sessionFactory;
     }
 
