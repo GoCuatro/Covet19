@@ -61,6 +61,26 @@ public class Veterinario {
         return new Veterinario(idPersona, cedulaPersona, correoPersona, direccionPersona, fechaNacimientoPersona, nombrePersona, passwordPersona, telefonoPersona, tarjetaProfesionalVeterinario, null);
     }
 
+    public void update(
+            CedulaPersona cedulaPersona,
+            CorreoPersona correoPersona,
+            DireccionPersona direccionPersona,
+            FechaNacimientoPersona fechaNacimientoPersona,
+            NombrePersona nombrePersona,
+            PasswordPersona passwordPersona,
+            TelefonoPersona telefonoPersona,
+            TarjetaProfesionalVeterinario tarjetaProfesionalVeterinario
+    ) {
+        this.cedulaVeterinario = cedulaPersona;
+        this.correoVeterinario = correoPersona;
+        this.direccionVeterinario = direccionPersona;
+        this.fechaNacimientoVeterinario = fechaNacimientoPersona;
+        this.nombreVeterinario = nombrePersona;
+        this.passwordVeterinario = passwordPersona;
+        this.telefonoVeterinario = telefonoPersona;
+        this.tarjetaProfesionalVeterinario = tarjetaProfesionalVeterinario;
+    }
+
     public Optional<List<HashMap<String, Object>>> getAgendaVeterinario() {
         Optional<List<HashMap<String, Object>>> response = Optional.empty();
         if(this.agendaVeterinario.isPresent()) {
@@ -103,7 +123,7 @@ public class Veterinario {
             put("cedula", cedulaVeterinario.value());
             put("correo", correoVeterinario.value());
             put("direccion", direccionVeterinario.value());
-            put("fecha", fechaNacimientoVeterinario.value().toString());
+            put("fechaNacimiento", fechaNacimientoVeterinario.value().toString());
             put("nombre", nombreVeterinario.value());
             put("password", passwordVeterinario.value());
             put("telefono", telefonoVeterinario.value());

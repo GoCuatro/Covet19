@@ -24,6 +24,14 @@
         <constructor-arg ref="HibernateVeterinarioRepository" />
     </bean>
 
+    <bean id="VeterinarioCreator" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Create.VeterinarioCreator">
+        <constructor-arg ref="HibernateVeterinarioRepository" />
+    </bean>
+
+    <bean id="VeterinarioUpdate" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Update.VeterinarioUpdate">
+        <constructor-arg ref="HibernateVeterinarioRepository" />
+    </bean>
+
     <bean id="VeterinarioVerVeterinarios" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerVeterinarios.VeterinarioVerVeterinarios">
         <constructor-arg ref="HibernateVeterinarioRepository" />
     </bean>
@@ -32,7 +40,15 @@
         <constructor-arg ref="HibernateAdminRepository" />
     </bean>
 
+    <bean id="AdminFinder" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Find.AdminFinder">
+        <constructor-arg ref="HibernateAdminRepository" />
+    </bean>
+
     <bean id="VeterinarioModificarCitaDiagnostico" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.ModificarCitaDiagnostico.VeterinarioModificarCitaDiagnostico">
+        <constructor-arg ref="HibernateVeterinarioRepository" />
+    </bean>
+
+    <bean id="VeterinarioFinder" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find.VeterinarioFinder">
         <constructor-arg ref="HibernateVeterinarioRepository" />
     </bean>
 
