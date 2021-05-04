@@ -3,53 +3,29 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="HibernateVeterinarioRepository" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Hibernate.HibernateVeterinarioRepository"/>
-    <bean id="HibernateCitaRepository" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository"/>
-    <bean id="HibernateMascotaRepository" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HibernateMascotaRepository"/>
-    <bean id="HibernateAdminRepository" class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
-    <bean id="HibernateProductoRepository" class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
-    
+    <!--Repositorios-->
+
+    <bean id="HibernateVeterinarioRepository"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Hibernate.HibernateVeterinarioRepository"/>
+    <bean id="HibernateCitaRepository"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository"/>
+    <bean id="HibernateMascotaRepository"
+          class="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HibernateMascotaRepository"/>
+    <bean id="HibernateProductoRepository"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
+    <bean id="HibernateIndexRepository"
+          class="com.javeriana.web.four.covet19.Shared.Domain.Index.Infrastructure.Hibernate.HibernateIndexRepository"/>
+    <bean id="HibernateAdminRepository"
+          class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
+
+    <!--Mascotas-->
+
     <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
-    <bean id="MascotaModificarDiagnostico" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.ModificarCitaDiagnostico.MascotaModificarCitaDiagnostico">
+    <bean id="MascotaModificarDiagnostico"
+          class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.ModificarCitaDiagnostico.MascotaModificarCitaDiagnostico">
         <constructor-arg ref="HibernateMascotaRepository"/>
-    </bean>
-
-    <bean id="CitaVerCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.VerCita.CitaVerCita">
-        <constructor-arg ref="HibernateCitaRepository" />
-    </bean>
-
-    <bean id="VeterinarioVerAgenda" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerAgenda.VeterinarioVerAgenda">
-        <constructor-arg ref="HibernateVeterinarioRepository" />
-    </bean>
-
-    <bean id="VeterinarioCreator" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Create.VeterinarioCreator">
-        <constructor-arg ref="HibernateVeterinarioRepository" />
-    </bean>
-
-    <bean id="VeterinarioUpdate" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Update.VeterinarioUpdate">
-        <constructor-arg ref="HibernateVeterinarioRepository" />
-    </bean>
-
-    <bean id="VeterinarioVerVeterinarios" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerVeterinarios.VeterinarioVerVeterinarios">
-        <constructor-arg ref="HibernateVeterinarioRepository" />
-    </bean>
-
-    <bean id="AdminVerAdmins" class="com.javeriana.web.four.covet19.Admins.Admin.Application.VerAdmins.AdminVerAdmins">
-        <constructor-arg ref="HibernateAdminRepository" />
-    </bean>
-
-    <bean id="AdminFinder" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Find.AdminFinder">
-        <constructor-arg ref="HibernateAdminRepository" />
-    </bean>
-
-    <bean id="VeterinarioModificarCitaDiagnostico" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.ModificarCitaDiagnostico.VeterinarioModificarCitaDiagnostico">
-        <constructor-arg ref="HibernateVeterinarioRepository" />
-    </bean>
-
-    <bean id="VeterinarioFinder" class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find.VeterinarioFinder">
-        <constructor-arg ref="HibernateVeterinarioRepository" />
     </bean>
 
     <bean id="MascotaFinder" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder">
@@ -64,19 +40,52 @@
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
-    <bean id="CitaAgregarDiagnostico" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AñadirDiagnostico.CitaAgregarDiagnostico">
-        <constructor-arg ref="HibernateCitaRepository" />
-        <constructor-arg ref="VeterinarioModificarCitaDiagnostico" />
-        <constructor-arg ref="MascotaModificarDiagnostico" />
+    <!--Citas-->
+
+    <bean id="CitaVerCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.VerCita.CitaVerCita">
+        <constructor-arg ref="HibernateCitaRepository"/>
     </bean>
 
-    <bean id="ProductoCreator" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
-    <bean id="HibernateProductoRepository"
-          class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
-    <bean id="HibernateIndexRepository"
-          class="com.javeriana.web.four.covet19.Shared.Domain.Index.Infrastructure.Hibernate.HibernateIndexRepository"/>
-    <bean id="HibernateAdminRepository"
-          class="com.javeriana.web.four.covet19.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
+    <bean id="CitaAgregarDiagnostico"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AñadirDiagnostico.CitaAgregarDiagnostico">
+        <constructor-arg ref="HibernateCitaRepository"/>
+        <constructor-arg ref="VeterinarioModificarCitaDiagnostico"/>
+        <constructor-arg ref="MascotaModificarDiagnostico"/>
+    </bean>
+
+    <!--Veterinarios-->
+
+    <bean id="VeterinarioVerAgenda"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerAgenda.VeterinarioVerAgenda">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
+    <bean id="VeterinarioCreator"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Create.VeterinarioCreator">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
+    <bean id="VeterinarioUpdate"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Update.VeterinarioUpdate">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
+    <bean id="VeterinarioVerVeterinarios"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerVeterinarios.VeterinarioVerVeterinarios">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
+    <bean id="VeterinarioModificarCitaDiagnostico"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.ModificarCitaDiagnostico.VeterinarioModificarCitaDiagnostico">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
+    <bean id="VeterinarioFinder"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find.VeterinarioFinder">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
+    <!--Productos-->
 
     <bean id="ProductoCreator"
           class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
@@ -106,22 +115,26 @@
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
-    <bean id="CreateAdmin" class="com.javeriana.web.four.covet19.Admin.Application.Create.CreateAdmin">
+    <!--Admins-->
+
+    <bean id="CreateAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Create.CreateAdmin">
         <constructor-arg ref="HibernateAdminRepository"/>
         <constructor-arg ref="HibernateIndexRepository"/>
     </bean>
 
-    <bean id="AllAdmins" class="com.javeriana.web.four.covet19.Admin.Application.All.AllAdmins">
+    <bean id="AllAdmins" class="com.javeriana.web.four.covet19.Admins.Admin.Application.All.AllAdmins">
         <constructor-arg ref="HibernateAdminRepository"/>
     </bean>
 
-    <bean id="FindAdmin" class="com.javeriana.web.four.covet19.Admin.Application.Find.FindAdmin">
+    <bean id="FindAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Find.FindAdmin">
         <constructor-arg ref="HibernateAdminRepository"/>
     </bean>
 
-    <bean id="UpdateAdmin" class="com.javeriana.web.four.covet19.Admin.Application.Update.UpdateAdmin">
+    <bean id="UpdateAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Update.UpdateAdmin">
         <constructor-arg ref="HibernateAdminRepository"/>
     </bean>
+
+    <!--Shared-->
 
     <bean id="Login" class="com.javeriana.web.four.covet19.Shared.Application.Login">
         <constructor-arg ref="HibernateIndexRepository"/>

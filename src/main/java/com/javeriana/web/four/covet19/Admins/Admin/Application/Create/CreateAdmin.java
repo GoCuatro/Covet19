@@ -1,11 +1,9 @@
-package com.javeriana.web.four.covet19.Admin.Application.Create;
+package com.javeriana.web.four.covet19.Admins.Admin.Application.Create;
 
-import com.javeriana.web.four.covet19.Admin.Domain.Admin;
-import com.javeriana.web.four.covet19.Admin.Infrastructure.Hibernate.HibernateAdminRepository;
+import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
+import com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository;
 import com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create.CreateIndex;
 import com.javeriana.web.four.covet19.Shared.Domain.Index.Infrastructure.Hibernate.HibernateIndexRepository;
-
-import java.util.Date;
 
 public class CreateAdmin {
 

@@ -1,4 +1,4 @@
-package com.javeriana.web.four.covet19.Admin.Infrastructure.Controllers;
+package com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Controllers;
 
 import java.util.Optional;
 

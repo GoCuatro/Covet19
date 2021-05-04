@@ -1,9 +1,9 @@
-package com.javeriana.web.four.covet19.Admin.Application.Update;
+package com.javeriana.web.four.covet19.Admins.Admin.Application.Update;
 
-import com.javeriana.web.four.covet19.Admin.Application.Find.FindAdmin;
-import com.javeriana.web.four.covet19.Admin.Domain.Admin;
-import com.javeriana.web.four.covet19.Admin.Infrastructure.Hibernate.HibernateAdminRepository;
-import com.javeriana.web.four.covet19.Admin.Infrastructure.Controllers.UpdateAdminRequest;
+import com.javeriana.web.four.covet19.Admins.Admin.Application.Find.FindAdmin;
+import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
+import com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository;
+import com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Controllers.UpdateAdminRequest;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.Exceptions.NotFound;
 
 import java.util.Optional;

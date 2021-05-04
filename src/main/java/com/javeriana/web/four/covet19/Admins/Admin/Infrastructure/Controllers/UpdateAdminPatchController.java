@@ -1,6 +1,6 @@
-package com.javeriana.web.four.covet19.Admin.Infrastructure.Controllers;
+package com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Admin.Application.Update.UpdateAdmin;
+import com.javeriana.web.four.covet19.Admins.Admin.Application.Update.UpdateAdmin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

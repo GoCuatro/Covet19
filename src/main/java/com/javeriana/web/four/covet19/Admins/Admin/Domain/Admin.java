@@ -1,65 +1,94 @@
 package com.javeriana.web.four.covet19.Admins.Admin.Domain;
 
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthEntity;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.Exceptions.IncorrectCredentials;
 
 import java.util.HashMap;
 
-public class Admin {
+public class Admin implements AuthEntity {
     private IdPersona idAdmin;
     private CedulaPersona cedulaAdmin;
+    private NombrePersona nombreAdmin;
+    private TelefonoPersona telefonoAdmin;
     private CorreoPersona correoAdmin;
     private DireccionPersona direccionAdmin;
-    private FechaNacimientoPersona fechaNacimientoAdmin;
-    private NombrePersona nombreAdmin;
     private PasswordPersona passwordAdmin;
-    private TelefonoPersona telefonoAdmin;
+    private FechaNacimientoPersona fechaNacimientoAdmin;
 
-    public Admin(
-            IdPersona idAdmin,
-            CedulaPersona cedulaAdmin,
-            CorreoPersona correoAdmin,
-            DireccionPersona direccionAdmin,
-            FechaNacimientoPersona fechaNacimientoAdmin,
-            NombrePersona nombreAdmin,
-            PasswordPersona passwordAdmin,
-            TelefonoPersona telefonoAdmin
-    ) {
+    public Admin(IdPersona idAdmin, CedulaPersona cedulaAdmin, NombrePersona nombreAdmin, TelefonoPersona telefonoAdmin, CorreoPersona correoAdmin, DireccionPersona direccionAdmin, PasswordPersona passwordAdmin, FechaNacimientoPersona fechaNacimientoAdmin) {
         this.idAdmin = idAdmin;
         this.cedulaAdmin = cedulaAdmin;
+        this.nombreAdmin = nombreAdmin;
+        this.telefonoAdmin = telefonoAdmin;
         this.correoAdmin = correoAdmin;
         this.direccionAdmin = direccionAdmin;
-        this.fechaNacimientoAdmin = fechaNacimientoAdmin;
-        this.nombreAdmin = nombreAdmin;
         this.passwordAdmin = passwordAdmin;
-        this.telefonoAdmin = telefonoAdmin;
+        this.fechaNacimientoAdmin = fechaNacimientoAdmin;
     }
 
-    public static Admin create(
-            IdPersona idPersona,
-            CedulaPersona cedulaPersona,
-            CorreoPersona correoPersona,
-            DireccionPersona direccionPersona,
-            FechaNacimientoPersona fechaNacimientoPersona,
-            NombrePersona nombrePersona,
-            PasswordPersona passwordPersona,
-            TelefonoPersona telefonoPersona
-    ) {
-        return new Admin(idPersona, cedulaPersona, correoPersona, direccionPersona, fechaNacimientoPersona, nombrePersona, passwordPersona, telefonoPersona);
+    public Admin() {
     }
 
-    public HashMap<String, String> data() {
-        return new HashMap<String, String>() {{
+    public HashMap<String, Object> data() {
+        return new HashMap<>() {{
             put("id", idAdmin.value());
-            put("cedula", cedulaAdmin.value().toString());
+            put("cedula", cedulaAdmin.value());
+            put("nombre", nombreAdmin.value());
+            put("telefono", telefonoAdmin.value());
             put("correo", correoAdmin.value());
             put("direccion", direccionAdmin.value());
-            put("fecha", fechaNacimientoAdmin.value().toString());
-            put("nombre", nombreAdmin.value());
-            put("password", passwordAdmin.value());
-            put("telefono", telefonoAdmin.value().toString());
+            put("fechaNacimiento", fechaNacimientoAdmin.value());
         }};
     }
 
-    private Admin() {}
+    public static Admin create(String idAdmin, long cedulaAdmin, String nombreAdmin, long telefonoAdmin, String correoAdmin, String direccionAdmin, String passwordAdmin, String fechaNacimientoAdmin) {
+        return new Admin(new IdPersona(idAdmin),
+                new CedulaPersona(cedulaAdmin),
+                new NombrePersona(nombreAdmin),
+                new TelefonoPersona(telefonoAdmin),
+                new CorreoPersona(correoAdmin),
+                new DireccionPersona(direccionAdmin),
+                new PasswordPersona(passwordAdmin),
+                new FechaNacimientoPersona(fechaNacimientoAdmin));
+    }
 
+    @Override
+    public AuthCredentials getCredentials(String supposedPass) throws IncorrectCredentials {
+        if (passwordAdmin.equals(new PasswordPersona(supposedPass))) {
+            String authorities = "ROLE_ADMIN";
+            return new AuthCredentials(idAdmin.value(), authorities, new HashMap<String, Object>());
+        } else {
+            throw new IncorrectCredentials("Credenciales incorrectas");
+        }
+    }
+
+    public void updateCedula(long cedula){
+        this.cedulaAdmin = new CedulaPersona(cedula);
+    }
+
+    public void updateNombre(String nombre){
+        this.nombreAdmin = new NombrePersona(nombre);
+    }
+
+    public void updateCorreo(String correo){
+        this.correoAdmin = new CorreoPersona(correo);
+    }
+
+    public void updateDireccion(String direccion){
+        this.direccionAdmin = new DireccionPersona(direccion);
+    }
+
+    public void updatePassword(String password){
+        this.passwordAdmin = new PasswordPersona(password);
+    }
+
+    public void updateFechaNacimiento(String fechaNacimiento){
+        this.fechaNacimientoAdmin = new FechaNacimientoPersona(fechaNacimiento);
+    }
+
+    public void updateTelefonoAdmin(long telefono){
+        this.telefonoAdmin = new TelefonoPersona(telefono);
+    }
 }

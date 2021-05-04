@@ -1,11 +1,11 @@
 package com.javeriana.web.four.covet19.Shared.Application;
 
-import com.javeriana.web.four.covet19.Admin.Application.Find.FindAdmin;
+import com.javeriana.web.four.covet19.Admins.Admin.Application.Find.FindAdmin;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.Exceptions.NotFound;
 import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Index;
 import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Ports.IndexRepository;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
-import com.javeriana.web.four.covet19.Admin.Domain.Admin;
+import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
 import java.util.Optional;
 
 public class Login {

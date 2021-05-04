@@ -1,7 +1,7 @@
-package com.javeriana.web.four.covet19.Admin.Application.All;
+package com.javeriana.web.four.covet19.Admins.Admin.Application.All;
 
-import com.javeriana.web.four.covet19.Admin.Domain.Admin;
-import com.javeriana.web.four.covet19.Admin.Infrastructure.Hibernate.HibernateAdminRepository;
+import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
+import com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository;
 
 import java.util.ArrayList;
 import java.util.List;

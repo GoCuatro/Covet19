@@ -1,7 +1,7 @@
-package com.javeriana.web.four.covet19.Admin.Infrastructure.Controllers;
+package com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Admin.Application.All.AllAdmins;
-import com.javeriana.web.four.covet19.Admin.Domain.Admin;
+import com.javeriana.web.four.covet19.Admins.Admin.Application.All.AllAdmins;
+import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

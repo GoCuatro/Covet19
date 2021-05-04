@@ -35,7 +35,7 @@ public class HibernateConfigFactory {
         FileSystemResource resource5 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/Mascota/Infrastructure/Hibernate/Mascota.hbm.xml");
         FileSystemResource productoConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Productos/Producto/Infrastructure/Hibernate/Producto.hbm.xml");
         FileSystemResource indexConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Shared/Domain/Index/Infrastructure/Hibernate/Index.hbm.xml");
-        FileSystemResource adminConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
+        FileSystemResource adminConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admins/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
 
         sessionFactory.setMappingLocations(resource1, resource2, resource4, resource5, productoConfig, indexConfig, adminConfig);
         return sessionFactory;

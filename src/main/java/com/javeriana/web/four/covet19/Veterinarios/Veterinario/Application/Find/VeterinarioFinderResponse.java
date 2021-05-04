@@ -1,6 +1,5 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find;
 
-import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
 import java.util.HashMap;

@@ -1,7 +1,5 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Admins.Admin.Application.Find.AdminFinder;
-import com.javeriana.web.four.covet19.Admins.Admin.Application.Find.AdminFinderResponse;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find.VeterinarioFinder;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find.VeterinarioFinderResponse;
 import org.springframework.beans.factory.annotation.Autowired;
