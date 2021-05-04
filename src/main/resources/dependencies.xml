@@ -8,7 +8,8 @@
     <bean id="HibernateMascotaRepository" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HibernateMascotaRepository"/>
     <bean id="HibernateAdminRepository" class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
     <bean id="HibernateProductoRepository" class="com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository"/>
-    
+    <bean id="HibernatePedidoRepository" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Hibernate.HibernatePedidoRepository"/>
+
     <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
@@ -92,6 +93,14 @@
 
     <bean id="DeleteProducto" class="com.javeriana.web.four.covet19.Productos.Producto.Application.Delete.DeleteProducto">
         <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
+    <bean id="PedidoAll" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.All.PedidoAll">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
+
+    <bean id="PedidoFinderFinalizar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar">
+        <constructor-arg ref="HibernatePedidoRepository"/>
     </bean>
 
 </beans>

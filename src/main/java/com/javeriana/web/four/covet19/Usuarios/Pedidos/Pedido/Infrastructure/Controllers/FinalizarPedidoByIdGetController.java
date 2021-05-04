@@ -1,8 +1,9 @@
-package com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Controllers;
-
+package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinderResponse;
+import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar;
+import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 
+
 @RestController
-@RequestMapping(value = "/mascotas")
-public class FindMascotaByIdGetController {
+@RequestMapping(value = "/pedidos")
+public class FinalizarPedidoByIdGetController {
     @Autowired
-    private MascotaFinder finder;
+    private PedidoFinderFinalizar finder;
 
     @GetMapping(value="/{id}")
     public ResponseEntity<HashMap> execute(@PathVariable("id") String id)
     {
-        MascotaFinderResponse response = finder.execute(id);
-        return ResponseEntity.status(HttpStatus.OK).body(response.response());
+        finder.execute(id);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 }
