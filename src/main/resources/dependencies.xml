@@ -102,5 +102,8 @@
     <bean id="PedidoFinderFinalizar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar">
         <constructor-arg ref="HibernatePedidoRepository"/>
     </bean>
+    <bean id="PedidoFindUsuarioAll" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.FindPedidosUsuario.PedidoFindUsuarioAll">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
 
 </beans>

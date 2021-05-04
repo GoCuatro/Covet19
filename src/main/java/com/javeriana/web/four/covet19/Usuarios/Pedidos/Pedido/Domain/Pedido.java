@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain;
 
+import com.javeriana.web.four.covet19.Shared.Domain.BooleanValueObject;
 import com.javeriana.web.four.covet19.Shared.Domain.Pedido.IdPedido;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.CompraPedido.Domain.CompraPedido;
@@ -67,4 +68,8 @@ public class Pedido {
         return this.finalizadoPedido.value();
     }
     private Pedido(){}
+
+    public String getIdUsiario() {
+        return this.idUsuario.value();
+    }
 }
