@@ -17,8 +17,10 @@
           class="com.javeriana.web.four.covet19.Shared.Domain.Index.Infrastructure.Hibernate.HibernateIndexRepository"/>
     <bean id="HibernateAdminRepository"
           class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
-
+    <bean id="HibernatePedidoRepository" 
+          class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Hibernate.HibernatePedidoRepository"/>
     <!--Mascotas-->
+    
 
     <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
         <constructor-arg ref="HibernateMascotaRepository"/>
@@ -133,6 +135,23 @@
     <bean id="UpdateAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Update.UpdateAdmin">
         <constructor-arg ref="HibernateAdminRepository"/>
     </bean>
+    
+    <!--Pedidos-->
+    
+    <bean id="PedidoAll" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.All.PedidoAll">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
+
+    <bean id="PedidoFinderFinalizar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
+    <bean id="PedidoFindUsuarioAll" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.FindPedidosUsuario.PedidoFindUsuarioAll">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
+
+    <bean id="PedidoFinderEnviar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Enviar.PedidoFinderEnviar">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+    </bean>
 
     <!--Shared-->
 
@@ -162,5 +181,4 @@
         <constructor-arg ref="DomainEventJsonDeserializer"/>
         <constructor-arg ref="DomainEventsInformation"/>
     </bean>
-
 </beans>

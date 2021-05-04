@@ -33,11 +33,12 @@ public class HibernateConfigFactory {
         FileSystemResource resource2 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Veterinarios/Veterinario/Infrastructure/Hibernate/Veterinario.hbm.xml");
         FileSystemResource resource4 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/HistorialClinico/Infrastructure/Hibernate/Historial.hbm.xml");
         FileSystemResource resource5 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/Mascota/Infrastructure/Hibernate/Mascota.hbm.xml");
-        FileSystemResource productoConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Productos/Producto/Infrastructure/Hibernate/Producto.hbm.xml");
-        FileSystemResource indexConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Shared/Domain/Index/Infrastructure/Hibernate/Index.hbm.xml");
-        FileSystemResource adminConfig = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admins/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
+        FileSystemResource resource6 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Productos/Producto/Infrastructure/Hibernate/Producto.hbm.xml");
+        FileSystemResource resource7 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Shared/Domain/Index/Infrastructure/Hibernate/Index.hbm.xml");
+        FileSystemResource resource8 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Usuarios/Pedidos/Pedido/Infrastructure/Hibernate/Pedido.hbm.xml");
+        FileSystemResource resource9 = new FileSystemResource("./src/main/java/com/javeriana/web/four/covet19/Admins/Admin/Infrastructure/Hibernate/Admin.hbm.xml");
 
-        sessionFactory.setMappingLocations(resource1, resource2, resource4, resource5, productoConfig, indexConfig, adminConfig);
+        sessionFactory.setMappingLocations(resource1, resource2, resource3, resource4, resource5, resource6, resource7, resource8, resource9);
         return sessionFactory;
     }
 

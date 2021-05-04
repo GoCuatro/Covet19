@@ -27,7 +27,7 @@ public class MascotaUpdate {
         Optional<Mascota> mascota = repository.find(id);
         if (mascota.isEmpty())
         {
-            throw new MascotaNotExist("The product " + id + " not exists");
+            throw new MascotaNotExist("The mascota " + id + " not exists");
         }
         Mascota mascotaTemp = mascota.get();
         mascotaTemp.update(new Mascota(
