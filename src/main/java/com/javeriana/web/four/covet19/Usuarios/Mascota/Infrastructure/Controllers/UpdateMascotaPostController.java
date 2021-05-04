@@ -18,7 +18,7 @@ public class UpdateMascotaPostController {
 
     @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody UpdateMascotaPostController.Request request) {
-        mascotaUpdate.execute(request.getId(),request.getTipo(),request.getRaza(), request.getNombre(),request.getPeso(), request.getEdad(), null);
+        mascotaUpdate.execute(request.getId(),request.getTipo(),request.getRaza(), request.getNombre(),request.getPeso(), request.getEdad());
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
     static class Request {
@@ -28,15 +28,6 @@ public class UpdateMascotaPostController {
         private int edad;
         private String tipo;
         private String raza;
-        private String historial;
-
-        public String getHistorial() {
-            return historial;
-        }
-
-        public void setHistorial(String historial) {
-            this.historial = historial;
-        }
 
         public String getId() {
             return id;

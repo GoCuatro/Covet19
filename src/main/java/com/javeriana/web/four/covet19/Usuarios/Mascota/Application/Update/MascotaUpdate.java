@@ -22,8 +22,8 @@ public class MascotaUpdate {
             String raza,
             String nombre,
             double peso,
-            int edad,
-            String historial) {
+            int edad
+    ) {
         Optional<Mascota> mascota = repository.find(id);
         if (mascota.isEmpty())
         {

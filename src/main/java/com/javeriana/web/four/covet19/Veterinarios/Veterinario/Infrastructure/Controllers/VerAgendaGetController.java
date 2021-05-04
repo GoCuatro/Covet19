@@ -21,7 +21,7 @@ public class VerAgendaGetController {
     @Autowired
     private VeterinarioVerAgenda verAgenda;
 
-    @GetMapping(value = "/agenda/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}/agenda", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<HashMap>> execute(@PathVariable("id") String idVeterinario)
     {
         VeterinarioVerAgendaResponse response = new VeterinarioVerAgendaResponse(verAgenda.execute(idVeterinario));

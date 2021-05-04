@@ -87,7 +87,6 @@ public class Mascota {
         this.pesoMascota = mascota.pesoMascota;
         this.tipoMascota = mascota.tipoMascota;
         this.razaMascota = mascota.razaMascota;
-        this.historialClinicoMascota = null;
     }
 
     private Mascota(){
