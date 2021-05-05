@@ -123,7 +123,7 @@
 
     <bean id="CreateAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Create.CreateAdmin">
         <constructor-arg ref="HibernateAdminRepository"/>
-        <constructor-arg ref="HibernateIndexRepository"/>
+        <constructor-arg ref="SpringApplicationEventBus"/>
     </bean>
 
     <bean id="AllAdmins" class="com.javeriana.web.four.covet19.Admins.Admin.Application.All.AllAdmins">
@@ -199,6 +199,18 @@
         <constructor-arg ref="FindAdmin"/>
     </bean>
 
+    <!--Index-->
+
+    <bean id="CreateIndex" class="com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create.CreateIndex">
+        <constructor-arg ref="HibernateIndexRepository"/>
+    </bean>
+
+    <bean id="CreateIndexOnAdminCreated" class="com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create.CreateIndexOnAdminCreated">
+        <constructor-arg ref="CreateIndex"/>
+    </bean>
+
+    <!--Index-->
+
     <bean id="RabbitMqPublisher"
           class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.RabbitMQ.RabbitMqPublisher"/>
 
@@ -222,5 +234,7 @@
     </bean>
 
     <bean id="MailSender" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Mail.SendGrid.MailSenderSendGridImpl" />
+
+    <bean id="SpringApplicationEventBus" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.Spring.SpringApplicationEventBus" />
 
 </beans>

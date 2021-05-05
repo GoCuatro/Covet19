@@ -1,5 +1,7 @@
 package com.javeriana.web.four.covet19.Admins.Admin.Domain;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Admin.AdminCreatedDomainEvent;
+import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthEntity;
@@ -7,7 +9,7 @@ import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.Exceptions.Inc
 
 import java.util.HashMap;
 
-public class Admin implements AuthEntity {
+public class Admin extends AggregateRoot implements AuthEntity{
     private IdPersona idAdmin;
     private CedulaPersona cedulaAdmin;
     private NombrePersona nombreAdmin;
@@ -44,7 +46,7 @@ public class Admin implements AuthEntity {
     }
 
     public static Admin create(String idAdmin, long cedulaAdmin, String nombreAdmin, long telefonoAdmin, String correoAdmin, String direccionAdmin, String passwordAdmin, String fechaNacimientoAdmin) {
-        return new Admin(new IdPersona(idAdmin),
+        Admin newAdmin = new Admin(new IdPersona(idAdmin),
                 new CedulaPersona(cedulaAdmin),
                 new NombrePersona(nombreAdmin),
                 new TelefonoPersona(telefonoAdmin),
@@ -52,6 +54,8 @@ public class Admin implements AuthEntity {
                 new DireccionPersona(direccionAdmin),
                 new PasswordPersona(passwordAdmin),
                 new FechaNacimientoPersona(fechaNacimientoAdmin));
+        newAdmin.record(new AdminCreatedDomainEvent(newAdmin.idAdmin.value(), newAdmin.correoAdmin.value(), Admin.class.getName()));
+        return newAdmin;
     }
 
     @Override
