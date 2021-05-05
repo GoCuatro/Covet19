@@ -1,5 +1,7 @@
 <directives>
   <directive endpoint="/producto" authority="ROLE_ADMIN" method="PATCH"/>
   <directive endpoint="/producto" authority="ROLE_ADMIN" method="DELETE"/>
-  <directive endpoint="/admin" authority="ROLE_ADMIN" method="PATCH"/>
+  <directive endpoint="/admin" authority="ROLE_ADMIN"/>
+  <directive endpoint="/admin/*" authority="ROLE_ADMIN"/>
+  <directive endpoint="/admins" authority="ROLE_ADMIN"/>
 </directives>

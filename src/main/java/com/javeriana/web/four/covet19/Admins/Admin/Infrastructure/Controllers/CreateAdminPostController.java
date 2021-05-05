@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/admins")
+@RequestMapping(value = "/admin")
 public class CreateAdminPostController {
 
     @Autowired

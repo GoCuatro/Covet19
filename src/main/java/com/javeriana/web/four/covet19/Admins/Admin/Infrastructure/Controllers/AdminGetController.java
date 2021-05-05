@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/admins")
+@RequestMapping(value = "/admin")
 public class AdminGetController {
 
     @Autowired
