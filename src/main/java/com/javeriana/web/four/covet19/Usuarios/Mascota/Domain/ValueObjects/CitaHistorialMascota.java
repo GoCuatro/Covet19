@@ -1,8 +1,6 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects;
 
 
-
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 

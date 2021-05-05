@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MascotaAllResponse {
-    private List<Mascota> mascotas;
+    private final List<Mascota> mascotas;
 
     public MascotaAllResponse(List<Mascota> mascotas) {
         this.mascotas = mascotas;

@@ -26,14 +26,14 @@ import java.util.stream.Collectors;
 public class LoginPostController {
 
     @Autowired
-    private Login login;
+    private final Login login;
 
     @Autowired
     private Environment env;
 
     private final String PASS = "pandillaDeCuatro";
 
-    private long VALIDITY = 24 * 60 * 60 * 1000;
+    private final long VALIDITY = 24 * 60 * 60 * 1000;
 
     public LoginPostController(Login login) {
         this.login = login;

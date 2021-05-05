@@ -2,8 +2,6 @@ package com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects;
 
 import com.javeriana.web.four.covet19.Shared.Domain.LongValueObject;
 
-import java.util.Objects;
-
 public class TelefonoPersona extends LongValueObject {
 
     private TelefonoPersona() {}

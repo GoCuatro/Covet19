@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.DomainEvent;
 
-
 import java.io.Serializable;
 import java.util.HashMap;
 

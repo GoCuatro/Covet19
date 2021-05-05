@@ -3,10 +3,6 @@ package com.javeriana.web.four.covet19.Usuarios.User.Application.VerCarrito;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.ElementoCarritoUsuario;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Exceptions.VeterinarioNoExiste;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +11,7 @@ import java.util.Optional;
 
 public class UserVerCarrito {
 
-    private UserRepository repository;
+    private final UserRepository repository;
 
     public UserVerCarrito(UserRepository repository) {
         this.repository = repository;

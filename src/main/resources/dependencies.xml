@@ -119,6 +119,16 @@
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
+    <bean id="CanConsumeProducto"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Application.CanConsume.CanConsumeProducto">
+        <constructor-arg ref="FindProducto"/>
+    </bean>
+
+    <bean id="ConsumeProductoOnPedido"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Application.Update.ConsumeProductoOnPedido">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
     <!--Admins-->
 
     <bean id="CreateAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Create.CreateAdmin">
@@ -192,6 +202,12 @@
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
+    <bean id="CreatePedido" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Create.CreatePedido">
+        <constructor-arg ref="HibernatePedidoRepository"/>
+        <constructor-arg ref="CanConsumeProducto"/>
+        <constructor-arg ref="SpringApplicationEventBus"/>
+    </bean>
+
     <!--Shared-->
 
     <bean id="Login" class="com.javeriana.web.four.covet19.Shared.Application.Login">
@@ -236,5 +252,10 @@
     <bean id="MailSender" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Mail.SendGrid.MailSenderSendGridImpl" />
 
     <bean id="SpringApplicationEventBus" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.Spring.SpringApplicationEventBus" />
+
+    <bean id="MailIssuedOnEvent"
+          class="com.javeriana.web.four.covet19.Shared.Application.MailIssuedOnEvent">
+        <constructor-arg ref="MailSender"/>
+    </bean>
 
 </beans>

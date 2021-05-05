@@ -1,7 +1,5 @@
 package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar;
 
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Exceptions.MascotaNotExist;
-
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoEnviado;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoFinalizado;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.Exceptions.PedidoNotExist;
@@ -12,7 +10,7 @@ import java.util.Optional;
 
 public class PedidoFinderFinalizar {
 
-    private PedidoRepository repository;
+    private final PedidoRepository repository;
 
     public PedidoFinderFinalizar(PedidoRepository repository) {
         this.repository = repository;

@@ -1,14 +1,13 @@
 package com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Productos.Producto.Application.All.AllProductos;
-import com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator;
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
-import com.sun.tools.jconsole.JConsoleContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;

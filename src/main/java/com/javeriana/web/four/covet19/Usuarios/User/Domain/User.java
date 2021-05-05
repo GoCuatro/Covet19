@@ -1,16 +1,20 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Domain;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
+import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoConsumedDomainEvent;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthEntity;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.Exceptions.IncorrectCredentials;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.ElementoCarritoNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserCarritoEmpty;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.ElementoCarritoUsuario;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.MascotaDetails;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class User {
+public class User extends AggregateRoot implements AuthEntity {
 
     private IdPersona userId;
     private NombrePersona userFirstName;
@@ -61,23 +65,25 @@ public class User {
 
     public Optional<List<HashMap<String, Object>>> getUserMascotas() {
         Optional<List<HashMap<String, Object>>> response = Optional.empty();
-        if(this.userMascotas.isPresent()) {
+        if (this.userMascotas.isPresent()) {
             response = Optional.of(this.userMascotas.get().stream().map(mascota -> mascota.data()).collect(Collectors.toList()));
         }
         return response;
     }
+
     public Optional<List<MascotaDetails>> getUserMascotasDetails() {
         return this.userMascotas;
     }
+
     public Optional<List<HashMap<String, Object>>> getUserCarrito() {
         Optional<List<HashMap<String, Object>>> response = Optional.empty();
-        if(this.userCarrito.isPresent()) {
+        if (this.userCarrito.isPresent()) {
             response = Optional.of(this.userCarrito.get().stream().map(elemento -> elemento.data()).collect(Collectors.toList()));
         }
         return response;
     }
 
-    public void addElementoCarrito( ElementoCarritoUsuario elementoCarritoDetails) {
+    public void addElementoCarrito(ElementoCarritoUsuario elementoCarritoDetails) {
         List<ElementoCarritoUsuario> elementoCarritoDetailsList =
                 this.userCarrito.isEmpty() ? new ArrayList<>() : this.userCarrito.get();
         if (elementoCarritoDetailsList.contains(elementoCarritoDetails)) {
@@ -88,14 +94,14 @@ public class User {
         }
     }
 
-    public void vaciarCarrito( ) {
+    public void vaciarCarrito() {
         List<ElementoCarritoUsuario> elementoCarritoDetailsList = new ArrayList<>();
         this.userCarrito = Optional.ofNullable(elementoCarritoDetailsList);
     }
 
-    public void deleteElementoCarrito( ElementoCarritoUsuario elementoCarritoDetails ) {
+    public void deleteElementoCarrito(ElementoCarritoUsuario elementoCarritoDetails) {
 
-        if(!this.userCarrito.isEmpty()) {
+        if (!this.userCarrito.isEmpty()) {
             List<ElementoCarritoUsuario> elementoCarritoDetailsList = this.userCarrito.get();
             if (elementoCarritoDetailsList.contains(elementoCarritoDetails)) {
                 elementoCarritoDetailsList.remove(elementoCarritoDetails);
@@ -107,12 +113,12 @@ public class User {
 
     public boolean updateElementoCarrito(ElementoCarritoUsuario elementoCarritoDetails, boolean esSuma) {
         boolean delete = false;
-        if(!this.userCarrito.isEmpty()) {
+        if (!this.userCarrito.isEmpty()) {
             List<ElementoCarritoUsuario> elementoCarritoDetailsList = this.userCarrito.get();
             boolean flag = false;
-            for (ElementoCarritoUsuario elemento: elementoCarritoDetailsList) {
-                if(elemento.equals(elementoCarritoDetails)) {
-                    if(esSuma)
+            for (ElementoCarritoUsuario elemento : elementoCarritoDetailsList) {
+                if (elemento.equals(elementoCarritoDetails)) {
+                    if (esSuma)
                         elemento.sumarCantidad(elementoCarritoDetails);
                     else
                         delete = elemento.restarCantidad(elementoCarritoDetails);
@@ -120,7 +126,7 @@ public class User {
                 }
             }
 
-            if(flag) {
+            if (flag) {
                 this.userCarrito = Optional.ofNullable(elementoCarritoDetailsList);
             } else {
                 throw new ElementoCarritoNotExist(elementoCarritoDetails.getIdProducto());
@@ -132,24 +138,22 @@ public class User {
         return delete;
     }
 
-    public void addMascotasDetails( MascotaDetails mascotaDetails) {
+    public void addMascotasDetails(MascotaDetails mascotaDetails) {
         List<MascotaDetails> mascotaDetailsList =
                 this.userMascotas.isEmpty() ? new ArrayList<>() : this.userMascotas.get();
         mascotaDetailsList.add(mascotaDetails);
         this.userMascotas = Optional.ofNullable(mascotaDetailsList);
     }
-    public void updateUser(NombrePersona userFirstName)
-    {
+
+    public void updateUser(NombrePersona userFirstName) {
         this.userFirstName = userFirstName;
     }
 
-    public boolean equalsById(String otherId)
-    {
+    public boolean equalsById(String otherId) {
         return this.userId.equals(new IdPersona(otherId));
     }
 
-    public HashMap<String, Object> data()
-    {
+    public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", userId.value());
             put("nombre", userFirstName.value());
@@ -181,7 +185,8 @@ public class User {
                 Objects.equals(userPhone, user.userPhone);
 
     }
-    public void update(User user){
+
+    public void update(User user) {
         this.userId = user.userId;
         this.userFirstName = user.userFirstName;
         this.userPassword = user.userPassword;
@@ -191,5 +196,24 @@ public class User {
         this.userAdresss = user.userAdresss;
         this.userBirth = user.userBirth;
     }
-    private User(){};
+
+    private User() {
+    }
+
+    @Override
+    public AuthCredentials getCredentials(String supposedPass) throws IncorrectCredentials {
+        return null;
+    }
+
+    public void consumeProducto(String idProducto, int quantity) {
+        this.record(new ProductoConsumedDomainEvent(idProducto, quantity));
+    }
+
+    public IdPersona getUserId() {
+        return userId;
+    }
+
+    public CorreoPersona getUserMail() {
+        return userMail;
+    }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class PedidoAll {
-    private PedidoRepository repository;
+    private final PedidoRepository repository;
 
     public PedidoAll(PedidoRepository repository) {
         this.repository = repository;

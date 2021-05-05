@@ -2,7 +2,6 @@ package com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Ports;
 
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Cita;
 
-
 import java.util.List;
 import java.util.Optional;
 

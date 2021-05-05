@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class VeterinarioFinderResponse {
 
-    private Veterinario veterinario;
+    private final Veterinario veterinario;
 
     public VeterinarioFinderResponse(Veterinario veterinario) {
         this.veterinario = veterinario;

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CitaAllResponse {
-    private List<Cita> citas;
+    private final List<Cita> citas;
 
     public  CitaAllResponse(List<Cita> citas){this.citas = citas; }
 

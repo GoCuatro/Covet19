@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class VeterinarioFinder {
 
-    private VeterinarioRepository repository;
+    private final VeterinarioRepository repository;
 
     public VeterinarioFinder(VeterinarioRepository repository) {
         this.repository = repository;

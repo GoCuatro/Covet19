@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class CitaUpdate {
 
-    private CitaRepository repository;
+    private final CitaRepository repository;
 
     public CitaUpdate(CitaRepository repository){ this.repository = repository; }
 

@@ -10,7 +10,7 @@ import org.springframework.core.env.Environment;
 public class RabbitMqEventBusConfiguration {
 
     @Autowired
-    private Environment env;
+    private final Environment env;
 
     public RabbitMqEventBusConfiguration(Environment env) {
         this.env = env;

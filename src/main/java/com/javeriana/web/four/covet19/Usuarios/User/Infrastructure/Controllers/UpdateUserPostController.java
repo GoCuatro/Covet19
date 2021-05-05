@@ -3,7 +3,10 @@ package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Shared.Domain.UUIDNotValid;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.UpdateUser.UpdateUser;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.*;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.BadWordsError;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.LengthNotValid;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.NotSymbolsFound;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UpperLowerError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

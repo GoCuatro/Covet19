@@ -33,5 +33,9 @@
             </type>
         </property>
 
+        <component name="totalPedido" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Domain.ValueObjects.TotalPedido" access="field">
+            <property name="value" column="total" access="field" type="double"/>
+        </component>
+
     </class>
 </hibernate-mapping>

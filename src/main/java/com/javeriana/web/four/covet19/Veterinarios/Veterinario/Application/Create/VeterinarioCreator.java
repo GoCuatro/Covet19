@@ -6,7 +6,6 @@ import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjec
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
 import java.util.Date;
-import java.util.List;
 
 public class VeterinarioCreator {
 

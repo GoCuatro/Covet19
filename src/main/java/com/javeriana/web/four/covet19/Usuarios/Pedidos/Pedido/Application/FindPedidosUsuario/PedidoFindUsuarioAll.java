@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class PedidoFindUsuarioAll {
-    private PedidoRepository repository;
+    private final PedidoRepository repository;
 
     public PedidoFindUsuarioAll(PedidoRepository repository) {
         this.repository = repository;

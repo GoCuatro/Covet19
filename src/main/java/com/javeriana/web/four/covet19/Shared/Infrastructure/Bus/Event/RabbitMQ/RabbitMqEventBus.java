@@ -15,7 +15,7 @@ public class RabbitMqEventBus implements EventBus {
     private final RabbitMqPublisher publisher;
     private final String exchangeName;
     @Autowired
-    private Environment env;
+    private final Environment env;
 
     public RabbitMqEventBus(RabbitMqPublisher publisher, Environment env) {
         this.publisher = publisher;
@@ -33,7 +33,7 @@ public class RabbitMqEventBus implements EventBus {
             this.publisher.publish(domainEvent, this.exchangeName);
         }
         catch (AmqpException error) {
-            System.err.println("Error Publicando: " + error.toString());
+            System.err.println("Error Publicando: " + error);
             //TODO: Implementar un Failover de Rabbit
         }
     }

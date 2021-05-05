@@ -1,6 +1,5 @@
 package com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Productos.Producto.Application.All.AllProductos;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.AllAvaliable.AllAvaliableProductos;
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
 import org.springframework.beans.factory.annotation.Autowired;

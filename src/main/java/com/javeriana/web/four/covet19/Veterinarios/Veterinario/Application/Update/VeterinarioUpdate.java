@@ -1,8 +1,6 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Update;
 
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Exceptions.MascotaNotExist;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Mascota;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Exceptions.VeterinarioNoExiste;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesionalVeterinario;

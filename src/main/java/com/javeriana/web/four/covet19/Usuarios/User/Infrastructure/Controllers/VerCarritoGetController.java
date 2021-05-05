@@ -1,7 +1,6 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Usuarios.User.Application.VerCarrito.UserVerCarrito;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerAgenda.VeterinarioVerAgendaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

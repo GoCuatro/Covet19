@@ -1,9 +1,5 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinderResponse;
-import com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinder;
-import com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinderResponse;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.FindMascotaByUsuario.UserFinderMascotas;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.FindMascotaByUsuario.UserFinderMascotasResponse;
 import org.springframework.beans.factory.annotation.Autowired;

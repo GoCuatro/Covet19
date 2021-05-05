@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public class FindAdmin {
 
-    private HibernateAdminRepository repository;
+    private final HibernateAdminRepository repository;
 
     public FindAdmin(HibernateAdminRepository repository) {
         this.repository = repository;

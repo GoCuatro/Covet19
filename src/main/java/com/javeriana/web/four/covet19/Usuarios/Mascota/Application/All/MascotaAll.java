@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class MascotaAll {
-    private MascotaRepository repository;
+    private final MascotaRepository repository;
 
     public MascotaAll(MascotaRepository repository) {
         this.repository = repository;

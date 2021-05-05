@@ -77,11 +77,19 @@ public class Producto {
         this.marcaProducto = new MarcaProducto(marca);
     }
 
-    public void deshabilitarProducto(){
+    public void deshabilitarProducto() {
         this.habilitadoProducto = new HabilitadoProducto(false);
     }
 
-    public boolean isHabilitado(){
+    public boolean isHabilitado() {
         return this.habilitadoProducto.value();
+    }
+
+    public boolean isThereStock(int quantity) {
+        return inventarioProducto.value() > quantity;
+    }
+
+    public void consume(int quantity){
+        this.inventarioProducto = new InventarioProducto(this.inventarioProducto.value() - quantity);
     }
 }

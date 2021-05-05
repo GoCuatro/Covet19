@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PedidoAllResponse {
-    private List<Pedido> pedidos;
+    private final List<Pedido> pedidos;
 
     public PedidoAllResponse(List<Pedido> pedidos) {
         this.pedidos = pedidos;

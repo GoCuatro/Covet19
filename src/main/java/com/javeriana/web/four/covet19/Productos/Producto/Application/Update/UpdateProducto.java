@@ -3,13 +3,13 @@ package com.javeriana.web.four.covet19.Productos.Producto.Application.Update;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.Exceptions.NotFound;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.Find.FindProducto;
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
-import com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository;
 import com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Controllers.UpdateProductoRequest;
+import com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernate.HibernateProductoRepository;
 
 import java.util.Optional;
 
 public class UpdateProducto {
-    private HibernateProductoRepository repository;
+    private final HibernateProductoRepository repository;
 
     public UpdateProducto(HibernateProductoRepository repository) {
         this.repository = repository;

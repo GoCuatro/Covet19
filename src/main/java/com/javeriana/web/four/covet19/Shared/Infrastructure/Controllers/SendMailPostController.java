@@ -1,6 +1,5 @@
 package com.javeriana.web.four.covet19.Shared.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Admins.Admin.Application.Create.CreateAdmin;
 import com.javeriana.web.four.covet19.Shared.Domain.Ports.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +20,7 @@ public class SendMailPostController {
     @PostMapping(value = "/send", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request) {
         try {
-            sender.send(request.email, request.mensaje);
+            sender.send(request.email, "Esto es una prueba", request.mensaje);
             return ResponseEntity.status(HttpStatus.CREATED).body(null);
         } catch (Exception e) {
             e.printStackTrace();

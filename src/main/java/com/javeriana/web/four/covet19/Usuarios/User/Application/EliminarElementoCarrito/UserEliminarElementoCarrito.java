@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class UserEliminarElementoCarrito {
 
-    private UserRepository repository;
+    private final UserRepository repository;
 
     public UserEliminarElementoCarrito(UserRepository repository) {
         this.repository = repository;

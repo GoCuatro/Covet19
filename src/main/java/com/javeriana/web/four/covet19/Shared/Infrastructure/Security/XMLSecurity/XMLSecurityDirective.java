@@ -3,8 +3,8 @@ package com.javeriana.web.four.covet19.Shared.Infrastructure.Security.XMLSecurit
 import org.springframework.http.HttpMethod;
 
 public class XMLSecurityDirective {
-    private String endpoint;
-    private String authority;
+    private final String endpoint;
+    private final String authority;
     private HttpMethod method;
 
     public XMLSecurityDirective(String endpoint, String authority, HttpMethod method) {

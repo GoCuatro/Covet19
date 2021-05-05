@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class PedidoFinderEnviar {
 
-    private PedidoRepository repository;
+    private final PedidoRepository repository;
 
     public PedidoFinderEnviar(PedidoRepository repository) {
         this.repository = repository;

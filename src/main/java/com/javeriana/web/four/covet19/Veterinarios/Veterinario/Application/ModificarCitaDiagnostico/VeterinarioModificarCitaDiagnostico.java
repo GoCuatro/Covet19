@@ -7,7 +7,7 @@ import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinari
 import java.util.Optional;
 
 public class VeterinarioModificarCitaDiagnostico {
-    private VeterinarioRepository repository;
+    private final VeterinarioRepository repository;
 
     public VeterinarioModificarCitaDiagnostico(VeterinarioRepository repository) {
         this.repository = repository;

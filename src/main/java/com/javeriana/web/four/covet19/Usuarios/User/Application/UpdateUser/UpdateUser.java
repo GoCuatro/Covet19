@@ -1,12 +1,6 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Application.UpdateUser;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Exceptions.MascotaNotExist;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Mascota;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Ports.MascotaRepository;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects.*;
-import com.javeriana.web.four.covet19.Usuarios.User.Application.UserDomainFinder.UserDomainFinder;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.UserValidateWords.UserValidateWords;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
@@ -16,9 +10,9 @@ import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
 import java.util.Optional;
 
 public class UpdateUser {
-    private UserRepository repository;
-    private ValidateWordService service;
-    private UserValidateWords validator;
+    private final UserRepository repository;
+    private final ValidateWordService service;
+    private final UserValidateWords validator;
 
     public UpdateUser(UserRepository repository, ValidateWordService service) {
         this.repository = repository;

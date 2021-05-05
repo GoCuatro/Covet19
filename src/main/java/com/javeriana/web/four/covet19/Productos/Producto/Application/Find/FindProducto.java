@@ -6,7 +6,7 @@ import com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernat
 import java.util.Optional;
 
 public class FindProducto {
-    private HibernateProductoRepository repository;
+    private final HibernateProductoRepository repository;
 
     public FindProducto(HibernateProductoRepository repository) {
         this.repository = repository;

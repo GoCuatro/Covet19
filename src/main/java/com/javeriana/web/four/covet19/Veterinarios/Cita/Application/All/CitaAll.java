@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class CitaAll {
-    private CitaRepository repository;
+    private final CitaRepository repository;
 
     public CitaAll(CitaRepository repository) {
         this.repository = repository;

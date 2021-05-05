@@ -1,18 +1,18 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Create.VeterinarioCreator;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VerAgenda.VeterinarioVerAgendaResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/veterinarios")

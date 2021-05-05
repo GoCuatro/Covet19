@@ -1,8 +1,5 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Objects;
 

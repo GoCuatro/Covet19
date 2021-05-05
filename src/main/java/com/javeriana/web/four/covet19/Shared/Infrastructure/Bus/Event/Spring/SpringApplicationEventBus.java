@@ -4,8 +4,6 @@ import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.DomainEvent;
 import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.EventBus;
 import org.springframework.context.ApplicationEventPublisher;
 
-
-
 import java.util.List;
 
 public class SpringApplicationEventBus implements EventBus {

@@ -8,7 +8,7 @@ import com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernat
 import java.util.Optional;
 
 public class DeleteProducto {
-    private HibernateProductoRepository repository;
+    private final HibernateProductoRepository repository;
 
     public DeleteProducto(HibernateProductoRepository repository) {
         this.repository = repository;

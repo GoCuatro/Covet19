@@ -1,6 +1,5 @@
 package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.FindPedidosUsuario.PedidoFindUsuarioAll;
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.FindPedidosUsuario.PedidoFindUsuarioResponse;
 import org.springframework.beans.factory.annotation.Autowired;

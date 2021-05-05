@@ -6,7 +6,6 @@ import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.MascotaDetails;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

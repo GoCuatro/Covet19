@@ -6,7 +6,7 @@ import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Ports.MascotaRepos
 import java.util.Optional;
 
 public class MascotaFinder {
-    private MascotaRepository repository;
+    private final MascotaRepository repository;
 
     public MascotaFinder(MascotaRepository repository) {
         this.repository = repository;

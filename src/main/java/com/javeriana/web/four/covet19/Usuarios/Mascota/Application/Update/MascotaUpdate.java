@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class MascotaUpdate {
 
-    private MascotaRepository repository;
+    private final MascotaRepository repository;
 
     public MascotaUpdate(MascotaRepository repository) {
         this.repository = repository;

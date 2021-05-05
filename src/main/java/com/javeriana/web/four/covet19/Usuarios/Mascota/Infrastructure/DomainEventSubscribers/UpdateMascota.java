@@ -1,8 +1,5 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.DomainEventSubscribers;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.DomainEventSubscriber;
-import org.springframework.context.event.EventListener;
-
 //@DomainEventSubscriber({ProductColorUpdatedDomainEvent.class})
 public class UpdateMascota {
     /**

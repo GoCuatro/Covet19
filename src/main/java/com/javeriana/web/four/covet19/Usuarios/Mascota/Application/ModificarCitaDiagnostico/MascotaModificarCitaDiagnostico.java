@@ -2,14 +2,12 @@ package com.javeriana.web.four.covet19.Usuarios.Mascota.Application.ModificarCit
 
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Mascota;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Ports.MascotaRepository;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
 import java.util.Optional;
 
 public class MascotaModificarCitaDiagnostico {
 
-    private MascotaRepository repository;
+    private final MascotaRepository repository;
 
     public MascotaModificarCitaDiagnostico(MascotaRepository repository) {
         this.repository = repository;

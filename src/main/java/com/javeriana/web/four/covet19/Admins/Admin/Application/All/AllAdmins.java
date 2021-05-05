@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AllAdmins {
 
-    private HibernateAdminRepository repository;
+    private final HibernateAdminRepository repository;
 
     public AllAdmins(HibernateAdminRepository repository) {
         this.repository = repository;

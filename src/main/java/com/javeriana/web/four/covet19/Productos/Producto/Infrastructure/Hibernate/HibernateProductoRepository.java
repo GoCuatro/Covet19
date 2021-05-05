@@ -4,7 +4,6 @@ import com.javeriana.web.four.covet19.Productos.Producto.Domain.Ports.ProductoRe
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
 import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoId;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 

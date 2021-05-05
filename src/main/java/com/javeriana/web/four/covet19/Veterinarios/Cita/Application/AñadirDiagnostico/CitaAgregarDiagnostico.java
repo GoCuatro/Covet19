@@ -11,9 +11,9 @@ import java.util.Optional;
 
 public class CitaAgregarDiagnostico {
 
-    private CitaRepository repository;
-    private VeterinarioModificarCitaDiagnostico modificarCitaVeterinario;
-    private MascotaModificarCitaDiagnostico modificarCitaMascota;
+    private final CitaRepository repository;
+    private final VeterinarioModificarCitaDiagnostico modificarCitaVeterinario;
+    private final MascotaModificarCitaDiagnostico modificarCitaMascota;
 
     public CitaAgregarDiagnostico(CitaRepository repository,
                                   VeterinarioModificarCitaDiagnostico modificarCitaVeterinario,

@@ -1,7 +1,7 @@
 package com.javeriana.web.four.covet19.Shared.Domain.Index.Infrastructure.Hibernate;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Ports.IndexRepository;
 import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Index;
+import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Ports.IndexRepository;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.CorreoPersona;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;

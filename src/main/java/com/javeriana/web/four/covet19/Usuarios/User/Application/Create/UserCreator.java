@@ -3,18 +3,18 @@ package com.javeriana.web.four.covet19.Usuarios.User.Application.Create;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.UserDomainFinder.UserDomainFinder;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.UserValidateWords.UserValidateWords;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.*;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.ValidateWordService;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
 
 import java.util.Date;
 
 public class UserCreator {
-    private UserRepository repository;
-    private ValidateWordService service;
-    private UserValidateWords validator;
-    private UserDomainFinder finder;
+    private final UserRepository repository;
+    private final ValidateWordService service;
+    private final UserValidateWords validator;
+    private final UserDomainFinder finder;
 
     public UserCreator(UserRepository repository, ValidateWordService service) {
         this.repository = repository;

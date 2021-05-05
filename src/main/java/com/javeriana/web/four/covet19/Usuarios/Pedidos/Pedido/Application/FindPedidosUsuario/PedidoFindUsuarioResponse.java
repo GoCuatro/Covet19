@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class PedidoFindUsuarioResponse {
     private List<Pedido> pedidos;
-    private String idUsuario;
+    private final String idUsuario;
     public PedidoFindUsuarioResponse(List<Pedido> pedidos, String idUsuario) {
 
         this.pedidos = pedidos;

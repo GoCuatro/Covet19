@@ -3,16 +3,12 @@ package com.javeriana.web.four.covet19.Veterinarios.Cita.Application.VerCita;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Cita;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Exceptions.CitaNoExiste;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Ports.CitaRepository;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class CitaVerCita {
 
-    private CitaRepository repository;
+    private final CitaRepository repository;
 
     public CitaVerCita(CitaRepository repository) {
         this.repository = repository;

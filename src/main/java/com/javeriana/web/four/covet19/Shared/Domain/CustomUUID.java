@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class CustomUUID implements Serializable {
 
-    private String value;
+    private final String value;
     
 
     public CustomUUID(String value) {

@@ -2,7 +2,9 @@ package com.javeriana.web.four.covet19.Shared.Domain.Pedido;
 
 import com.javeriana.web.four.covet19.Shared.Domain.CustomUUID;
 
-public class IdPedido extends CustomUUID {
+import java.io.Serializable;
+
+public class IdPedido extends CustomUUID implements Serializable {
 
     private IdPedido() {
         super("");

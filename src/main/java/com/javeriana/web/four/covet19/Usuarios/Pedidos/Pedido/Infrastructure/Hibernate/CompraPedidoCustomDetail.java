@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class CompraPedidoCustomDetail implements UserType {
     @Override
     public int[] sqlTypes() {
-        return new int[] {Types.LONGNVARCHAR};
+        return new int[]{Types.LONGNVARCHAR};
     }
 
     @Override
@@ -43,17 +43,17 @@ public class CompraPedidoCustomDetail implements UserType {
         List<CompraPedidoDetail> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
-            if(value.isPresent()) {
+            if (value.isPresent()) {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(producto ->
                         new CompraPedidoDetail((String) producto.get("id"),
                                 (String) producto.get("nombre"),
                                 (String) producto.get("descripcion"),
-                                (String) producto.get("precio"),
-                                (String) producto.get("marca"))).collect(Collectors.toList());
+                                (double) producto.get("precio"),
+                                (String) producto.get("marca"),
+                                (int) producto.get("cantidad"))).collect(Collectors.toList());
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new HibernateException("Error at reading map", e);
         }
         return Optional.ofNullable(response);
@@ -63,17 +63,15 @@ public class CompraPedidoCustomDetail implements UserType {
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
         Optional<List<CompraPedidoDetail>> pedidos = (value == null) ? Optional.empty() : (Optional<List<CompraPedidoDetail>>) value;
         try {
-            if(pedidos.isEmpty()) {
+            if (pedidos.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
-            }
-            else {
+            } else {
                 ObjectMapper mapper = new ObjectMapper();
                 List<HashMap<String, Object>> objects = pedidos.get().stream().map(pedido -> pedido.data()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new HibernateException("Exception serializing value " + value, e);
         }
     }

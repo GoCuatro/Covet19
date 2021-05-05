@@ -1,9 +1,9 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Shared.Domain.UUIDNotValid;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinder;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinderResponse;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserNotExist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

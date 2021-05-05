@@ -5,7 +5,7 @@ import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.ValidateWordSer
 
 public class UserValidateWords {
 
-    private ValidateWordService service;
+    private final ValidateWordService service;
 
     public UserValidateWords(ValidateWordService service) {
         this.service = service;

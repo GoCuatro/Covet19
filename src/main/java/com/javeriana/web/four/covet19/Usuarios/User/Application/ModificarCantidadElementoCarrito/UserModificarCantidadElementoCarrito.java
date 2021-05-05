@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class UserModificarCantidadElementoCarrito {
 
-    private UserRepository repository;
+    private final UserRepository repository;
 
     public UserModificarCantidadElementoCarrito(UserRepository repository) {
         this.repository = repository;

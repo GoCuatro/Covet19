@@ -47,7 +47,7 @@ public class ElementoCarritoUsuario {
         ElementoCarritoUsuario that = (ElementoCarritoUsuario) o;
         return Objects.equals(idProducto, that.idProducto);
     }
-    private ElementoCarritoUsuario(){};
+    private ElementoCarritoUsuario(){}
 
     public String getIdProducto() {
         return this.idProducto;

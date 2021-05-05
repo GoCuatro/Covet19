@@ -8,8 +8,8 @@ import java.util.Objects;
 
 public class AdminCreatedDomainEvent extends DomainEvent {
 
-    private String email;
-    private String rol;
+    private final String email;
+    private final String rol;
 
     public AdminCreatedDomainEvent() {
         super(null);

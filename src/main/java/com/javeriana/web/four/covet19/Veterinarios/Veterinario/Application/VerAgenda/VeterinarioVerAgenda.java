@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class VeterinarioVerAgenda {
-    private VeterinarioRepository repository;
+    private final VeterinarioRepository repository;
 
     public VeterinarioVerAgenda(VeterinarioRepository repository) {
         this.repository = repository;

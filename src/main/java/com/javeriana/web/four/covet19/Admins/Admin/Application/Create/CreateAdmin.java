@@ -6,8 +6,8 @@ import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.EventBus;
 
 public class CreateAdmin {
 
-    private HibernateAdminRepository repository;
-    private EventBus eventBus;
+    private final HibernateAdminRepository repository;
+    private final EventBus eventBus;
 
     public CreateAdmin(HibernateAdminRepository repository, EventBus eventBus) {
         this.repository = repository;
