@@ -163,6 +163,18 @@
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
+    <bean id="UserVerCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.VerCarrito.UserVerCarrito">
+        <constructor-arg ref="HibernateUserRepository"/>
+    </bean>
+
+    <bean id="UserEliminarElementoCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.EliminarElementoCarrito.UserEliminarElementoCarrito">
+        <constructor-arg ref="HibernateUserRepository"/>
+    </bean>
+
+    <bean id="UserModificarCantidadElementoCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.ModificarCantidadElementoCarrito.UserModificarCantidadElementoCarrito">
+        <constructor-arg ref="HibernateUserRepository"/>
+    </bean>
+
     <bean id="UserCreator" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Create.UserCreator">
         <constructor-arg ref="HibernateUserRepository"/>
         <constructor-arg ref="BadWordService"/>

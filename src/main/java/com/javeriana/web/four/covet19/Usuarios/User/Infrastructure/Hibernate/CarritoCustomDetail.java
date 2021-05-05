@@ -1,7 +1,7 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Hibernate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.CarritoUsuario;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.ElementoCarritoUsuario;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
@@ -33,14 +33,19 @@ public class CarritoCustomDetail implements UserType {
 
     @Override
     public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-        List<CarritoUsuario> response = null;
+        List<ElementoCarritoUsuario> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
             if(value.isPresent()) {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(carrito ->
-                        new CarritoUsuario(Long.valueOf((int) carrito.get("cantidad")),
-                                (String) carrito.get("idProducto"))).collect(Collectors.toList());
+                        new ElementoCarritoUsuario(
+                                Long.valueOf((int) carrito.get("cantidad")),
+                                (String) carrito.get("idProducto"),
+                                (String) carrito.get("nombreProducto"),
+                                (String) carrito.get("descripcionProducto"),
+                                (String) carrito.get("marcaProducto"),
+                                (Double) carrito.get("precioProducto"))).collect(Collectors.toList());
             }
         }
         catch (Exception e){
@@ -52,7 +57,7 @@ public class CarritoCustomDetail implements UserType {
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-        Optional<List<CarritoUsuario>> carritos = (value == null) ? Optional.empty() : (Optional<List<CarritoUsuario>>) value;
+        Optional<List<ElementoCarritoUsuario>> carritos = (value == null) ? Optional.empty() : (Optional<List<ElementoCarritoUsuario>>) value;
         try {
             if(carritos.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);

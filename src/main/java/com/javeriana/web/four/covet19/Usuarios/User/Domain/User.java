@@ -1,7 +1,9 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Domain;
 
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
-import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.CarritoUsuario;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.ElementoCarritoNotExist;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserCarritoEmpty;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.ElementoCarritoUsuario;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.MascotaDetails;
 
 import java.util.*;
@@ -17,7 +19,7 @@ public class User {
     private CedulaPersona userCedule;
     private DireccionPersona userAdresss;
     private FechaNacimientoPersona userBirth;
-    private Optional<List<CarritoUsuario>> userCarrito;
+    private Optional<List<ElementoCarritoUsuario>> userCarrito;
     private Optional<List<MascotaDetails>> userMascotas;
 
     public User(IdPersona userId,
@@ -28,7 +30,7 @@ public class User {
                 CedulaPersona userCedule,
                 DireccionPersona userAdresss,
                 FechaNacimientoPersona userBirth,
-                List<CarritoUsuario> userCarrito,
+                List<ElementoCarritoUsuario> userCarrito,
                 List<MascotaDetails> userMascotas) {
         this.userId = userId;
         this.userFirstName = userFirstName;
@@ -52,15 +54,8 @@ public class User {
             DireccionPersona direccionPersona,
             FechaNacimientoPersona fechaNacimientoPersona
     ) {
-        CarritoUsuario carrito = new CarritoUsuario(1,"123456");
-        MascotaDetails mascota = new MascotaDetails();
-        List<CarritoUsuario> userCarrito = new ArrayList<CarritoUsuario>();
-        userCarrito.add(carrito);
-        List<MascotaDetails> userMascotas= new ArrayList<MascotaDetails>();
-        userMascotas.add(mascota);
-
         return new User(idPersona, nombrePersona, passwordPersona, correoPersona, telefonoPersona,
-                cedulaPersona, direccionPersona, fechaNacimientoPersona, userCarrito, userMascotas);
+                cedulaPersona, direccionPersona, fechaNacimientoPersona, null, null);
     }
 
     public Optional<List<HashMap<String, Object>>> getUserMascotas() {
@@ -76,6 +71,61 @@ public class User {
             response = Optional.of(this.userCarrito.get().stream().map(elemento -> elemento.data()).collect(Collectors.toList()));
         }
         return response;
+    }
+
+    public void addElementoCarrito( ElementoCarritoUsuario elementoCarritoDetails) {
+        List<ElementoCarritoUsuario> elementoCarritoDetailsList =
+                this.userCarrito.isEmpty() ? new ArrayList<>() : this.userCarrito.get();
+        if (elementoCarritoDetailsList.contains(elementoCarritoDetails)) {
+            updateElementoCarrito(elementoCarritoDetails, true);
+        } else {
+            elementoCarritoDetailsList.add(elementoCarritoDetails);
+            this.userCarrito = Optional.ofNullable(elementoCarritoDetailsList);
+        }
+    }
+
+    public void vaciarCarrito( ) {
+        List<ElementoCarritoUsuario> elementoCarritoDetailsList = new ArrayList<>();
+        this.userCarrito = Optional.ofNullable(elementoCarritoDetailsList);
+    }
+
+    public void deleteElementoCarrito( ElementoCarritoUsuario elementoCarritoDetails ) {
+
+        if(!this.userCarrito.isEmpty()) {
+            List<ElementoCarritoUsuario> elementoCarritoDetailsList = this.userCarrito.get();
+            if (elementoCarritoDetailsList.contains(elementoCarritoDetails)) {
+                elementoCarritoDetailsList.remove(elementoCarritoDetails);
+            } else {
+                throw new ElementoCarritoNotExist(elementoCarritoDetails.getIdProducto());
+            }
+        }
+    }
+
+    public boolean updateElementoCarrito(ElementoCarritoUsuario elementoCarritoDetails, boolean esSuma) {
+        boolean delete = false;
+        if(!this.userCarrito.isEmpty()) {
+            List<ElementoCarritoUsuario> elementoCarritoDetailsList = this.userCarrito.get();
+            boolean flag = false;
+            for (ElementoCarritoUsuario elemento: elementoCarritoDetailsList) {
+                if(elemento.equals(elementoCarritoDetails)) {
+                    if(esSuma)
+                        elemento.sumarCantidad(elementoCarritoDetails);
+                    else
+                        delete = elemento.restarCantidad(elementoCarritoDetails);
+                    flag = true;
+                }
+            }
+
+            if(flag) {
+                this.userCarrito = Optional.ofNullable(elementoCarritoDetailsList);
+            } else {
+                throw new ElementoCarritoNotExist(elementoCarritoDetails.getIdProducto());
+            }
+
+        } else {
+            throw new UserCarritoEmpty();
+        }
+        return delete;
     }
 
     public void addMascotasDetails( MascotaDetails mascotaDetails) {
