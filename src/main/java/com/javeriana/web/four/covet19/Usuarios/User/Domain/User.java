@@ -3,6 +3,7 @@ package com.javeriana.web.four.covet19.Usuarios.User.Domain;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.CarritoUsuario;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.MascotaDetails;
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -69,6 +70,9 @@ public class User {
             response = Optional.of(this.userMascotas.get().stream().map(mascota -> mascota.data()).collect(Collectors.toList()));
         }
         return response;
+    }
+    public Optional<List<MascotaDetails>> getUserMascotasDetails() {
+        return this.userMascotas;
     }
     public Optional<List<HashMap<String, Object>>> getUserCarrito() {
         Optional<List<HashMap<String, Object>>> response = Optional.empty();
