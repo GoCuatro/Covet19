@@ -184,6 +184,9 @@
         <constructor-arg ref="HibernateUserRepository"/>
         <constructor-arg ref="BadWordService"/>
     </bean>
+    <bean id="UpdateUser" class="com.javeriana.web.four.covet19.Usuarios.User.Application.UpdateUser.UpdateUser">
+        <constructor-arg ref="HibernateUserRepository"/>
+    </bean>
 
     <bean id="UserFinderMascotas" class="com.javeriana.web.four.covet19.Usuarios.User.Application.FindMascotaByUsuario.UserFinderMascotas">
         <constructor-arg ref="HibernateUserRepository"/>

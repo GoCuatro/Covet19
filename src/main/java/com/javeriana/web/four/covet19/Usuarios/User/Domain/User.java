@@ -181,5 +181,15 @@ public class User {
                 Objects.equals(userPhone, user.userPhone);
 
     }
+    public void update(User user){
+        this.userId = user.userId;
+        this.userFirstName = user.userFirstName;
+        this.userPassword = user.userPassword;
+        this.userMail = user.userMail;
+        this.userPhone = user.userPhone;
+        this.userCedule = user.userCedule;
+        this.userAdresss = user.userAdresss;
+        this.userBirth = user.userBirth;
+    }
     private User(){};
 }

@@ -1,16 +1,13 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Application.FindMascotaByUsuario;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
-import com.javeriana.web.four.covet19.Usuarios.User.Application.UserDomainFinder.UserDomainFinder;
+
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Ports.UserRepository;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.MascotaDetails;
-import com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers.BadWordsService;
-import com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Hibernate.HibernateUserRepository;
+
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
