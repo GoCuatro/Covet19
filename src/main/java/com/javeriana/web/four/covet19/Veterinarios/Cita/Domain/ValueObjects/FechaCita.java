@@ -16,7 +16,9 @@ public class FechaCita extends DateValueObject {
 
     private void validate(Date fecha) {
         Calendar currentCalendar = Calendar.getInstance();
-        if (fecha.compareTo(currentCalendar.getTime()) > 0)
+        Date ahora = currentCalendar.getTime();
+        int comparacion = fecha.compareTo(ahora);
+        if (fecha.compareTo(ahora) < 0)
         {
             throw new RuntimeException("La fecha de la cita: " +  fecha + " es invalida");
         }
