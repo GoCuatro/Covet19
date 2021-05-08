@@ -31,6 +31,10 @@
           class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.ModificarCitaDiagnostico.MascotaModificarCitaDiagnostico">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
+    <bean id="MascotaModificarFechaCita"
+          class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.ModificarFechaCita.MascotaModificarFechaCita">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
 
     <bean id="MascotaFinder" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder">
         <constructor-arg ref="HibernateMascotaRepository"/>
@@ -41,6 +45,10 @@
     </bean>
 
     <bean id="MascotaUpdate" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Update.MascotaUpdate">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+
+    <bean id="AgregarCitaMascota" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.AgregarCitaMascota.AgregarCitaMascota">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
@@ -55,6 +63,22 @@
         <constructor-arg ref="HibernateCitaRepository"/>
         <constructor-arg ref="VeterinarioModificarCitaDiagnostico"/>
         <constructor-arg ref="MascotaModificarDiagnostico"/>
+    </bean>
+
+    <bean id="CitaUpdate"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.Update.CitaUpdate">
+        <constructor-arg ref="HibernateCitaRepository"/>
+        <constructor-arg ref="MascotaModificarDiagnostico"/>
+        <constructor-arg ref="VeterinarioModificarCitaDiagnostico"/>
+        <constructor-arg ref="MascotaModificarFechaCita"/>
+        <constructor-arg ref="VeterinarioModificarFechaCita"/>
+    </bean>
+
+    <bean id="AgendarCita"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.Create.AgendarCita">
+        <constructor-arg ref="HibernateCitaRepository"/>
+        <constructor-arg ref="AgregarCitaMascota"/>
+        <constructor-arg ref="AgregarCitaVeterinario"/>
     </bean>
 
     <!--Veterinarios-->
@@ -84,8 +108,17 @@
         <constructor-arg ref="HibernateVeterinarioRepository"/>
     </bean>
 
+    <bean id="VeterinarioModificarFechaCita"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VeterinarioModificarFechaCita.VeterinarioModificarFechaCita">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
     <bean id="VeterinarioFinder"
           class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find.VeterinarioFinder">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+    <bean id="AgregarCitaVeterinario"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.AgregarCitaVeterinario.AgregarCitaVeterinario">
         <constructor-arg ref="HibernateVeterinarioRepository"/>
     </bean>
 

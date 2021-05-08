@@ -99,4 +99,17 @@ public class Mascota {
         historialActual.updateDiagnostico(diagnostico);
         this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
     }
+    public void updateCitaFecha(String idCita, String fecha) {
+        List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
+        CitaHistorialMascota historialActual = citasDetailsList.stream().
+                filter(cita -> cita.equalsIdCita(idCita)).findFirst().get();
+        historialActual.updateFecha(fecha);
+        this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
+    }
+    public void agregarCita(String idCita, String diagnostico, String fecha, String idVeterinario) {
+        List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
+        CitaHistorialMascota citaNueva = new CitaHistorialMascota(idCita, diagnostico, fecha, idVeterinario);
+        citasDetailsList.add(citaNueva);
+        this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
+    }
 }
