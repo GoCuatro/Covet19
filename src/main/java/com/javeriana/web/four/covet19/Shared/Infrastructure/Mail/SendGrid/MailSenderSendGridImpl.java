@@ -14,7 +14,7 @@ public class MailSenderSendGridImpl implements MailSender {
         Content contentBuilded = new Content("text/plain", content);
         Mail mail = new Mail(from, subject, to, contentBuilded);
 
-        SendGrid sg = new SendGrid("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");
+        SendGrid sg = new SendGrid(System.getenv("SENDGRID_API"));
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
