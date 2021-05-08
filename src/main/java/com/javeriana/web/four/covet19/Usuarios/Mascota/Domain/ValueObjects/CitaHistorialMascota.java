@@ -56,4 +56,7 @@ public class CitaHistorialMascota {
     public void updateDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
+    public void updateFecha(String fecha) {
+        this.fecha = fecha;
+    }
 }

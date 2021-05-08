@@ -113,6 +113,19 @@ public class Veterinario {
         citaDetailsActual.updateDiagnostico(diagnostico);
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
     }
+    public void updateCitaFecha(String idCita, String fecha) {
+        List<CitaDetails> citasDetailsList = this.agendaVeterinario.get();
+        CitaDetails citaDetailsActual = citasDetailsList.stream().
+                filter(cita -> cita.equalsIdCita(idCita)).findFirst().get();
+        citaDetailsActual.updateFecha(fecha);
+        this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
+    }
+    public void agregarCita(String idCita, String diagnostico, String fecha, String idMascota) {
+        List<CitaDetails> citasDetailsList = this.agendaVeterinario.get();
+        CitaDetails citaNueva = new CitaDetails(idCita, diagnostico, fecha, idMascota);
+        citasDetailsList.add(citaNueva);
+        this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
+    }
 
     public Optional<List<CitaDetails>> getAgenda() {
         return agendaVeterinario;

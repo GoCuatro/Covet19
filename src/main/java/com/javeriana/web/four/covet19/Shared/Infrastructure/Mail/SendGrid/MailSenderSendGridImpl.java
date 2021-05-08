@@ -9,7 +9,7 @@ import java.io.IOException;
 public class MailSenderSendGridImpl implements MailSender {
     @Override
     public void send(String email, String subject, String content) throws IOException {
-        Email from = new Email("jairo.vanegas@javeriana.edu.co");
+        Email from = new Email(System.getenv("MAIL_SENDER_EMAIL"));
         Email to = new Email(email);
         Content contentBuilded = new Content("text/plain", content);
         Mail mail = new Mail(from, subject, to, contentBuilded);
