@@ -126,6 +126,12 @@ public class Veterinario {
         citasDetailsList.add(citaNueva);
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
     }
+    public void eliminarCita(CitaDetails eliminarCita){
+        List<CitaDetails> citasDetailsList = this.agendaVeterinario.get();
+        CitaDetails eliminar = citasDetailsList.stream().filter(cita -> cita.equalsIdCita(eliminarCita)).findFirst().get();
+        citasDetailsList.remove(eliminar);
+        this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
+    }
 
     public Optional<List<CitaDetails>> getAgenda() {
         return agendaVeterinario;

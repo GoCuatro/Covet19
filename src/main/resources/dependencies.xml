@@ -52,6 +52,10 @@
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
+    <bean id="EliminarCitaMascota" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.EliminarCitaMascota.EliminarCitaMascota">
+        <constructor-arg ref="HibernateMascotaRepository"/>
+    </bean>
+
     <!--Citas-->
 
     <bean id="CitaVerCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.VerCita.CitaVerCita">
@@ -79,6 +83,13 @@
         <constructor-arg ref="HibernateCitaRepository"/>
         <constructor-arg ref="AgregarCitaMascota"/>
         <constructor-arg ref="AgregarCitaVeterinario"/>
+    </bean>
+
+    <bean id="DeleteCita"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.Delete.DeleteCita">
+        <constructor-arg ref="HibernateCitaRepository"/>
+        <constructor-arg ref="EliminarCitaVeterinario"/>
+        <constructor-arg ref="EliminarCitaMascota"/>
     </bean>
 
     <!--Veterinarios-->
@@ -117,8 +128,14 @@
           class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Find.VeterinarioFinder">
         <constructor-arg ref="HibernateVeterinarioRepository"/>
     </bean>
+
     <bean id="AgregarCitaVeterinario"
           class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.AgregarCitaVeterinario.AgregarCitaVeterinario">
+        <constructor-arg ref="HibernateVeterinarioRepository"/>
+    </bean>
+
+    <bean id="EliminarCitaVeterinario"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.EliminarCitaVeterinario.EliminarCitaVeterinario">
         <constructor-arg ref="HibernateVeterinarioRepository"/>
     </bean>
 
