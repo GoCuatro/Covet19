@@ -92,4 +92,11 @@ public class Producto {
     public void consume(int quantity){
         this.inventarioProducto = new InventarioProducto(this.inventarioProducto.value() - quantity);
     }
+    public boolean disponibilidad(int cantidad){
+        boolean disponible = false;
+        if(this.inventarioProducto.value()>cantidad){
+            disponible = true;
+        }
+        return disponible;
+    }
 }

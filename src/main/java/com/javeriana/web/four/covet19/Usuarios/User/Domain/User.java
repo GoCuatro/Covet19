@@ -84,6 +84,7 @@ public class User extends AggregateRoot implements AuthEntity {
     }
 
     public void addElementoCarrito(ElementoCarritoUsuario elementoCarritoDetails) {
+
         List<ElementoCarritoUsuario> elementoCarritoDetailsList =
                 this.userCarrito.isEmpty() ? new ArrayList<>() : this.userCarrito.get();
         if (elementoCarritoDetailsList.contains(elementoCarritoDetails)) {
