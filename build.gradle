@@ -26,6 +26,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     compile 'com.sendgrid:sendgrid-java:4.0.1'
+    compile 'org.springframework.boot:spring-boot-starter-webflux:2.4.5'
     // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
     implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.16'
 }
