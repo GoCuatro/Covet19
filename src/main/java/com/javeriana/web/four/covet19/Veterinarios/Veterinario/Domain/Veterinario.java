@@ -121,7 +121,7 @@ public class Veterinario {
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
     }
     public void agregarCita(String idCita, String diagnostico, String fecha, String idMascota) {
-        List<CitaDetails> citasDetailsList = this.agendaVeterinario.get();
+        List<CitaDetails> citasDetailsList = this.agendaVeterinario.isEmpty() ? new ArrayList<CitaDetails>(): this.agendaVeterinario.get();
         CitaDetails citaNueva = new CitaDetails(idCita, diagnostico, fecha, idMascota);
         citasDetailsList.add(citaNueva);
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);

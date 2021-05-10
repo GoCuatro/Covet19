@@ -91,6 +91,10 @@
         <constructor-arg ref="EliminarCitaVeterinario"/>
         <constructor-arg ref="EliminarCitaMascota"/>
     </bean>
+    <bean id="CitaAll"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.All.CitaAll">
+        <constructor-arg ref="HibernateCitaRepository"/>
+    </bean>
 
     <!--Veterinarios-->
 
@@ -261,6 +265,10 @@
     <bean id="AgregarElementoCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.AgregarElementoCarrito.AgregarElementoCarrito">
         <constructor-arg ref="HibernateUserRepository"/>
         <constructor-arg ref="FindProducto"/>
+    </bean>
+    <bean id="VerCitasAgendadas" class="com.javeriana.web.four.covet19.Usuarios.User.Application.VerCitasAgendadas.VerCitasAgendadas">
+        <constructor-arg ref="HibernateUserRepository"/>
+        <constructor-arg ref="CitaAll"/>
     </bean>
 
     <!--Shared-->

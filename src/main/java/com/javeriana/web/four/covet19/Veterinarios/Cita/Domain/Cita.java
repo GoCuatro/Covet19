@@ -67,4 +67,7 @@ public class Cita {
     public String getIdMascota() {
         return idMascota.value();
     }
+    public String getIdUsuario() {
+        return idUsuario.value();
+    }
 }
