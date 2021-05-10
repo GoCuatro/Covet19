@@ -84,6 +84,7 @@
         <constructor-arg ref="HibernateCitaRepository"/>
         <constructor-arg ref="AgregarCitaMascota"/>
         <constructor-arg ref="AgregarCitaVeterinario"/>
+        <constructor-arg ref="SpringApplicationEventBus"/>
     </bean>
 
     <bean id="DeleteCita"
@@ -101,6 +102,7 @@
           class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.Create.NotifyOnCitaCreated">
         <constructor-arg ref="VeterinarioFinder"/>
         <constructor-arg ref="MascotaFinder"/>
+        <constructor-arg ref="UserFinder"/>
         <constructor-arg ref="MailSender"/>
     </bean>
 
