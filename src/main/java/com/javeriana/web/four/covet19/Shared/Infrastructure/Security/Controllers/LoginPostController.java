@@ -52,7 +52,7 @@ public class LoginPostController {
                     .setIssuedAt(new Date())
                     .setExpiration(new Date(System.currentTimeMillis() + VALIDITY))
                     .signWith(SignatureAlgorithm.HS512, PASS.getBytes()).compact();
-            return ResponseEntity.status(HttpStatus.OK).body("Bearer " + token);
+            return ResponseEntity.status(HttpStatus.OK).body(token);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);

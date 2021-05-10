@@ -17,10 +17,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JWTAuthFilter(), UsernamePasswordAuthenticationFilter.class);
         SecurityDirectives.directives.forEach(xmlSecurityDirective -> {
             try {
-                if(xmlSecurityDirective.getMethod() == null){
-                    obj.authorizeRequests().antMatchers(xmlSecurityDirective.getEndpoint()).hasAuthority(xmlSecurityDirective.getAuthority());
-                }else{
-                    obj.authorizeRequests().antMatchers(xmlSecurityDirective.getMethod(), xmlSecurityDirective.getEndpoint()).hasAuthority(xmlSecurityDirective.getAuthority());
+                if (xmlSecurityDirective.getAuthority() == null) {
+                    if (xmlSecurityDirective.getMethod() == null) {
+                        obj.authorizeRequests().antMatchers(xmlSecurityDirective.getEndpoint()).authenticated();
+                    } else {
+                        obj.authorizeRequests().antMatchers(xmlSecurityDirective.getMethod(), xmlSecurityDirective.getEndpoint()).authenticated();
+                    }
+                } else {
+                    if (xmlSecurityDirective.getMethod() == null) {
+                        obj.authorizeRequests().antMatchers(xmlSecurityDirective.getEndpoint()).hasAuthority(xmlSecurityDirective.getAuthority());
+                    } else {
+                        obj.authorizeRequests().antMatchers(xmlSecurityDirective.getMethod(), xmlSecurityDirective.getEndpoint()).hasAuthority(xmlSecurityDirective.getAuthority());
+                    }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
