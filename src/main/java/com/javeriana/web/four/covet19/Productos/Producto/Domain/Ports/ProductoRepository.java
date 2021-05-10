@@ -13,4 +13,6 @@ public interface ProductoRepository {
     void save(Producto producto);
 
     Optional<List<Producto>> all();
+
+    Optional<List<Producto>> allLike(String nombre);
 }

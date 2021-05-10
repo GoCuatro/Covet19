@@ -193,6 +193,11 @@
         <constructor-arg ref="HibernateProductoRepository"/>
     </bean>
 
+    <bean id="BuscarProducto"
+          class="com.javeriana.web.four.covet19.Productos.Producto.Application.BucarProducto.BuscarProducto">
+        <constructor-arg ref="HibernateProductoRepository"/>
+    </bean>
+
     <!--Admins-->
 
     <bean id="CreateAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Create.CreateAdmin">
