@@ -27,7 +27,7 @@ public class AgendarCita {
         this.agregarCitaVeterinario = agregarCitaVeterinario;
     }
     public void execute(String idCita, String diagnostico, String fechaCita,
-                        String idVeterinario, String idMascota){
+                        String idVeterinario, String idMascota, String idUsuario){
         if(!repository.find(idCita).isEmpty()){
             throw new RuntimeException("el identificador "+ idCita+ " no es valido");
         }
@@ -37,7 +37,7 @@ public class AgendarCita {
             agregarCitaVeterinario.execute(idVeterinario, idCita, diagnostico,fechaCita, idMascota);
             agregarCitaMascota.execute(idMascota, idCita, diagnostico, fechaCita,idVeterinario);
             repository.save(Cita.create(new IdCita(idCita), new DiagnosticoCita(diagnostico), new FechaCita(fecha),
-                    new IdPersona(idVeterinario), new IdMascota(idMascota)));
+                    new IdPersona(idVeterinario), new IdMascota(idMascota), new IdPersona(idUsuario)));
         } catch (ParseException e) {
             e.printStackTrace();
         }
