@@ -1,6 +1,7 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Domain;
 
 import com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota;
+import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects.*;
 
 import java.util.HashMap;
@@ -18,6 +19,7 @@ public class Mascota {
     private TipoMascota tipoMascota;
     private RazaMascota razaMascota;
     private Optional<List<CitaHistorialMascota>> historialClinicoMascota;
+    private IdPersona idUsuario;
 
     public Mascota(
             IdMascota idMascota,
@@ -26,7 +28,8 @@ public class Mascota {
             PesoMascota pesoMascota,
             TipoMascota tipoMascota,
             RazaMascota razaMascota,
-            List<CitaHistorialMascota> citaHistorialMascota) {
+            List<CitaHistorialMascota> citaHistorialMascota,
+            IdPersona idUsuario) {
         this.idMascota = idMascota;
         this.edadMascota = edadMascota;
         this.nombreMascota = nombreMascota;
@@ -34,15 +37,18 @@ public class Mascota {
         this.tipoMascota = tipoMascota;
         this.razaMascota = razaMascota;
         this.historialClinicoMascota = Optional.ofNullable(citaHistorialMascota);
+        this.idUsuario = idUsuario;
     }
+
     public static Mascota create(
             IdMascota idMascota,
             EdadMascota edadMascota,
             NombreMascota nombreMascota,
             PesoMascota pesoMascota,
             TipoMascota tipoMascota,
-            RazaMascota razaMascota) {
-        return new Mascota(idMascota,edadMascota, nombreMascota, pesoMascota,tipoMascota, razaMascota, null);
+            RazaMascota razaMascota,
+            IdPersona idUsuario) {
+        return new Mascota(idMascota,edadMascota, nombreMascota, pesoMascota,tipoMascota, razaMascota, null, idUsuario);
     }
     @Override
     public boolean equals(Object o) {
@@ -54,6 +60,7 @@ public class Mascota {
                 Objects.equals(edadMascota, mascota.edadMascota) &&
                 Objects.equals(tipoMascota, mascota.tipoMascota) &&
                 Objects.equals(razaMascota, mascota.razaMascota) &&
+                Objects.equals(idUsuario, mascota.idUsuario) &&
                 Objects.equals(historialClinicoMascota, mascota.historialClinicoMascota);
     }
 
@@ -66,8 +73,8 @@ public class Mascota {
             put("raza", razaMascota.value());
             put("edad", edadMascota.value());
             put("tipo", tipoMascota.value());
+            put("idUsuario", idUsuario.value());
             put("historialClinico", getHistorialClinico());
-
         }};
         return data;
     }
@@ -91,7 +98,10 @@ public class Mascota {
 
     private Mascota(){
     }
-
+    public void updateIdUsuario(String idUsuario) {
+        IdPersona info = this.idUsuario;
+        this.idUsuario = info;
+    }
     public void updateCitaDiagnostico(String idCita, String diagnostico) {
         List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
         CitaHistorialMascota historialActual = citasDetailsList.stream().
@@ -116,6 +126,10 @@ public class Mascota {
     public NombreMascota getNombreMascota() {
         return nombreMascota;
     }
+    public IdMascota getIdMascota() {
+        return idMascota;
+    }
+
 
 
 
@@ -125,5 +139,9 @@ public class Mascota {
         CitaHistorialMascota eliminar = citasDetailsList.stream().filter(cita -> cita.equalsIdCita(eliminarCita)).findFirst().get();
         citasDetailsList.remove(eliminar);
         this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
+    }
+
+    public IdPersona getIdUsuario() {
+        return this.idUsuario;
     }
 }

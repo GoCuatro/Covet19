@@ -15,6 +15,7 @@ public class MascotaAll {
 
     public List<Mascota> execute()
     {
+        System.out.println();
         Optional<List<Mascota>> mascotas = repository.all();
         if (mascotas.isEmpty())
         {

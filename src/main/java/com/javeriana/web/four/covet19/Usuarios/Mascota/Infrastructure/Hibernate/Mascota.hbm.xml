@@ -33,5 +33,8 @@
             <type name="com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HistorialCustomDetail">
             </type>
         </property>
+        <component name="idUsuario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona" access="field">
+            <property name="value" column="idUsuario" access="field" type="string"/>
+        </component>
     </class>
 </hibernate-mapping>

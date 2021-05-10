@@ -49,7 +49,7 @@ public class UpdateMascotaPostController {
             return tipo;
         }
 
-        public void getTipo(String tipo) {
+        public void setTipo(String tipo) {
             this.tipo = tipo;
         }
 

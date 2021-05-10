@@ -7,6 +7,7 @@ import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoConsumedDo
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthEntity;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.Exceptions.IncorrectCredentials;
+import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Exceptions.MascotaNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.ElementoCarritoNotExist;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.Exceptions.UserCarritoEmpty;
 import com.javeriana.web.four.covet19.Usuarios.User.Domain.ValueObjects.ElementoCarritoUsuario;
@@ -142,6 +143,29 @@ public class User extends AggregateRoot implements AuthEntity {
         return delete;
     }
 
+    public boolean updateMascota(MascotaDetails mascota) {
+        boolean flag = false;
+        if (!this.getUserMascotas().isEmpty()) {
+            List<MascotaDetails> mascotas = this.userMascotas.get();
+            List<MascotaDetails> mascotasTempo = new ArrayList<>();
+            for (MascotaDetails mascotaTemporal : mascotas) {
+                if (mascotaTemporal.getIdMascota().equals(mascota.getIdMascota())) {
+                    mascotasTempo.add(mascota);
+                    flag = true;;
+                }else{
+                    mascotasTempo.add(mascotaTemporal);
+                }
+
+            }
+            if (flag) {
+                this.userMascotas = Optional.ofNullable(mascotasTempo);
+            } else {
+                throw new MascotaNotExist(mascota.getIdMascota());
+            }
+
+        }
+        return flag;
+    }
     public void addMascotasDetails(MascotaDetails mascotaDetails) {
         List<MascotaDetails> mascotaDetailsList =
                 this.userMascotas.isEmpty() ? new ArrayList<>() : this.userMascotas.get();
