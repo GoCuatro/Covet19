@@ -1,6 +1,7 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator;
+import com.javeriana.web.four.covet19.Usuarios.User.Application.AgregarElementoCarrito.AgregarElementoCarrito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,7 +19,14 @@ public class CreateMascotaPostController {
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request) {
-        creator.execute(request.getId(),request.getNombre(),request.getEdad(),request.getPeso(),request.getTipo(),request.getRaza());
+        creator.execute(
+                request.getId(),
+                request.getNombre(),
+                request.getEdad(),
+                request.getPeso(),
+                request.getTipo(),
+                request.getRaza(),
+                request.getIdUsuario());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
     static class Request {
@@ -28,6 +36,11 @@ public class CreateMascotaPostController {
         private int edad;
         private String tipo;
         private String raza;
+        private String idUsuario;
+
+        public String getIdUsuario() {
+            return idUsuario;
+        }
 
         public String getId() {
             return id;
@@ -49,30 +62,17 @@ public class CreateMascotaPostController {
             return tipo;
         }
 
-        public void getTipo(String tipo) {
-            this.tipo = tipo;
-        }
 
         public String getRaza() {
             return raza;
-        }
-
-        public void getRaza(String raza) {
-            this.raza = raza;
         }
         public Integer getEdad() {
             return edad;
         }
 
-        public void setEdad(Integer edad) {
-            this.edad = edad;
-        }
         public Double getPeso() {
             return peso;
         }
 
-        public void getDouble(Double peso) {
-            this.peso = peso;
-        }
     }
 }
