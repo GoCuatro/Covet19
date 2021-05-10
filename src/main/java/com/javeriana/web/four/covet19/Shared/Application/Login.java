@@ -1,37 +1,44 @@
 package com.javeriana.web.four.covet19.Shared.Application;
 
-import com.javeriana.web.four.covet19.Admins.Admin.Application.Find.FindAdmin;
+import com.javeriana.web.four.covet19.Admins.Admin.Application.Login.LoginAdmin;
 import com.javeriana.web.four.covet19.Admins.Admin.Domain.Admin;
 import com.javeriana.web.four.covet19.Productos.Producto.Application.Exceptions.NotFound;
 import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Index;
 import com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Ports.IndexRepository;
+import com.javeriana.web.four.covet19.Shared.Domain.Login.LoginExecutor;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthEntity;
+import com.javeriana.web.four.covet19.Usuarios.User.Application.Login.LoginUser;
+import com.javeriana.web.four.covet19.Usuarios.User.Domain.User;
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Login.LoginVeterinario;
+import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
+import java.util.HashMap;
 import java.util.Optional;
 
 public class Login {
 
     IndexRepository repository;
-    FindAdmin findAdmin;
+    HashMap<String, LoginExecutor> executor;
 
-    public Login(IndexRepository repository, FindAdmin findAdmin) {
+    public Login(IndexRepository repository, LoginAdmin admin, LoginUser user, LoginVeterinario veterinario) {
         this.repository = repository;
-        this.findAdmin = findAdmin;
+        this.executor = new HashMap<>() {{
+            put(Admin.class.getName(), admin);
+            put(User.class.getName(), user);
+            put(Veterinario.class.getName(), veterinario);
+        }};
     }
 
-    public AuthCredentials execute(String email, String pass){
-        Optional<Index> index = repository.find(email);
-        if(index.isEmpty()){
+    public AuthCredentials execute(String email, String pass) throws NotFound {
+        Optional<Index> indexOptional = repository.find(email);
+        if (indexOptional.isPresent()) {
+            Index index = indexOptional.get();
+            AuthEntity authEntity = executor.get(index.getRolValueObject()).execute(index.getRefererenceValueObject());
+            return authEntity.getCredentials(pass);
+        } else {
             throw new NotFound("Email no registrado");
         }
-        if (Admin.class.getName().equals(index.get().getRolValueObject())) {
-            Optional<Admin> admin = findAdmin.execute(index.get().getRefererenceValueObject());
-            if(admin.isEmpty()){
-                throw new NotFound("Administrador no encontrado");
-            }
-            return admin.get().getCredentials(pass);
-        }
-        return null;
     }
 
 }

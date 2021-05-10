@@ -7,7 +7,6 @@ import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Exceptions.CitaNo
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Ports.CitaRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.ValueObjects.DiagnosticoCita;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.ValueObjects.FechaCita;
-import com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Hibernate.HibernateCitaRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.ModificarCitaDiagnostico.VeterinarioModificarCitaDiagnostico;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.VeterinarioModificarFechaCita.VeterinarioModificarFechaCita;
 

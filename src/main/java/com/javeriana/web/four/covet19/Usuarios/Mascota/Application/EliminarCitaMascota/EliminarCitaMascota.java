@@ -3,8 +3,6 @@ package com.javeriana.web.four.covet19.Usuarios.Mascota.Application.EliminarCita
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Mascota;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Ports.MascotaRepository;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects.CitaHistorialMascota;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Hibernate.HistorialCustomDetail;
-import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 
 import java.util.Optional;
 

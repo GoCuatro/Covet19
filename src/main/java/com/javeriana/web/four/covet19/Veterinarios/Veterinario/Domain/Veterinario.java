@@ -1,6 +1,11 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Admin.PersonCreatedDomainEvent;
+import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthEntity;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.Exceptions.IncorrectCredentials;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.CitaDetails;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesionalVeterinario;
 
@@ -10,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class Veterinario {
+public class Veterinario extends AggregateRoot implements AuthEntity {
 
     private IdPersona idVeterinario;
     private CedulaPersona cedulaVeterinario;
@@ -59,7 +64,18 @@ public class Veterinario {
             TelefonoPersona telefonoPersona,
             TarjetaProfesionalVeterinario tarjetaProfesionalVeterinario
     ) {
-        return new Veterinario(idPersona, cedulaPersona, correoPersona, direccionPersona, fechaNacimientoPersona, nombrePersona, passwordPersona, telefonoPersona, tarjetaProfesionalVeterinario, null);
+        Veterinario newVet = new Veterinario(idPersona,
+                cedulaPersona,
+                correoPersona,
+                direccionPersona,
+                fechaNacimientoPersona,
+                nombrePersona,
+                passwordPersona,
+                telefonoPersona,
+                tarjetaProfesionalVeterinario,
+                null);
+        newVet.record(new PersonCreatedDomainEvent(idPersona.value(), correoPersona.value(), Veterinario.class.getName()));
+        return newVet;
     }
 
     public void update(
@@ -84,7 +100,7 @@ public class Veterinario {
 
     public Optional<List<HashMap<String, Object>>> getAgendaVeterinario() {
         Optional<List<HashMap<String, Object>>> response = Optional.empty();
-        if(this.agendaVeterinario.isPresent()) {
+        if (this.agendaVeterinario.isPresent()) {
             response = Optional.of(this.agendaVeterinario.get().stream().map(cita -> cita.data()).collect(Collectors.toList()));
         }
         return response;
@@ -113,6 +129,7 @@ public class Veterinario {
         citaDetailsActual.updateDiagnostico(diagnostico);
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
     }
+
     public void updateCitaFecha(String idCita, String fecha) {
         List<CitaDetails> citasDetailsList = this.agendaVeterinario.get();
         CitaDetails citaDetailsActual = citasDetailsList.stream().
@@ -120,13 +137,15 @@ public class Veterinario {
         citaDetailsActual.updateFecha(fecha);
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
     }
+
     public void agregarCita(String idCita, String diagnostico, String fecha, String idMascota) {
-        List<CitaDetails> citasDetailsList = this.agendaVeterinario.isEmpty() ? new ArrayList<CitaDetails>(): this.agendaVeterinario.get();
+        List<CitaDetails> citasDetailsList = this.agendaVeterinario.isEmpty() ? new ArrayList<CitaDetails>() : this.agendaVeterinario.get();
         CitaDetails citaNueva = new CitaDetails(idCita, diagnostico, fecha, idMascota);
         citasDetailsList.add(citaNueva);
         this.agendaVeterinario = Optional.ofNullable(citasDetailsList);
     }
-    public void eliminarCita(CitaDetails eliminarCita){
+
+    public void eliminarCita(CitaDetails eliminarCita) {
         List<CitaDetails> citasDetailsList = this.agendaVeterinario.get();
         CitaDetails eliminar = citasDetailsList.stream().filter(cita -> cita.equalsIdCita(eliminarCita)).findFirst().get();
         citasDetailsList.remove(eliminar);
@@ -152,7 +171,8 @@ public class Veterinario {
         }};
     }
 
-    private Veterinario() {}
+    private Veterinario() {
+    }
 
     public String getCorreoVeterinario() {
         return correoVeterinario.value();
@@ -160,5 +180,15 @@ public class Veterinario {
 
     public String getNombreVeterinario() {
         return nombreVeterinario.value();
+    }
+
+    @Override
+    public AuthCredentials getCredentials(String supposedPass) throws IncorrectCredentials {
+        if (passwordVeterinario.equals(new PasswordPersona(supposedPass))) {
+            String authorities = "ROLE_VETERINARIO";
+            return new AuthCredentials(idVeterinario.value(), authorities, new HashMap<String, Object>());
+        } else {
+            throw new IncorrectCredentials("Credenciales incorrectas");
+        }
     }
 }
