@@ -112,4 +112,11 @@ public class Mascota {
         citasDetailsList.add(citaNueva);
         this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
     }
+
+    public NombreMascota getNombreMascota() {
+        return nombreMascota;
+    }
+
+
+
 }

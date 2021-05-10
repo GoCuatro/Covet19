@@ -148,4 +148,7 @@ public class Veterinario {
 
     private Veterinario() {}
 
+    public String getCorreoVeterinario() {
+        return correoVeterinario.value();
+    }
 }

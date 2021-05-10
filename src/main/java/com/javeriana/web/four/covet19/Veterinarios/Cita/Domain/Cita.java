@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Veterinarios.Cita.Domain;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
 import com.javeriana.web.four.covet19.Shared.Domain.Citas.IdCita;
 import com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
@@ -12,7 +13,7 @@ import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinari
 import java.util.HashMap;
 import java.util.Optional;
 
-public class Cita {
+public class Cita extends AggregateRoot {
     private IdCita idCita;
     private DiagnosticoCita diagnosticoCita;
     private FechaCita fechaCita;

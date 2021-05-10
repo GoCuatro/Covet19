@@ -17,11 +17,11 @@
           class="com.javeriana.web.four.covet19.Shared.Domain.Index.Infrastructure.Hibernate.HibernateIndexRepository"/>
     <bean id="HibernateAdminRepository"
           class="com.javeriana.web.four.covet19.Admins.Admin.Infrastructure.Hibernate.HibernateAdminRepository"/>
-    <bean id="HibernatePedidoRepository" 
+    <bean id="HibernatePedidoRepository"
           class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Hibernate.HibernatePedidoRepository"/>
     <bean id="HibernateUserRepository"
           class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Hibernate.HibernateUserRepository"/>
-    
+
     <!--Mascotas-->
 
     <bean id="MascotaCreator" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.MascotaCreator">
@@ -48,7 +48,8 @@
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
-    <bean id="AgregarCitaMascota" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.AgregarCitaMascota.AgregarCitaMascota">
+    <bean id="AgregarCitaMascota"
+          class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.AgregarCitaMascota.AgregarCitaMascota">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
@@ -79,6 +80,13 @@
         <constructor-arg ref="HibernateCitaRepository"/>
         <constructor-arg ref="AgregarCitaMascota"/>
         <constructor-arg ref="AgregarCitaVeterinario"/>
+    </bean>
+
+    <bean id="NotifyOnCitaCreated"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.Create.NotifyOnCitaCreated">
+        <constructor-arg ref="VeterinarioFinder"/>
+        <constructor-arg ref="MascotaFinder"/>
+        <constructor-arg ref="MailSender"/>
     </bean>
 
     <!--Veterinarios-->
@@ -122,7 +130,7 @@
         <constructor-arg ref="HibernateVeterinarioRepository"/>
     </bean>
 
-    <!--Productos-->    
+    <!--Productos-->
 
     <bean id="ProductoCreator"
           class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
@@ -180,41 +188,48 @@
     <bean id="UpdateAdmin" class="com.javeriana.web.four.covet19.Admins.Admin.Application.Update.UpdateAdmin">
         <constructor-arg ref="HibernateAdminRepository"/>
     </bean>
-    
+
     <!--Pedidos-->
-    
+
     <bean id="PedidoAll" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.All.PedidoAll">
         <constructor-arg ref="HibernatePedidoRepository"/>
     </bean>
 
-    <bean id="PedidoFinderFinalizar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar">
+    <bean id="PedidoFinderFinalizar"
+          class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Finalizar.PedidoFinderFinalizar">
         <constructor-arg ref="HibernatePedidoRepository"/>
     </bean>
-    <bean id="PedidoFindUsuarioAll" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.FindPedidosUsuario.PedidoFindUsuarioAll">
+    <bean id="PedidoFindUsuarioAll"
+          class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.FindPedidosUsuario.PedidoFindUsuarioAll">
         <constructor-arg ref="HibernatePedidoRepository"/>
     </bean>
 
-    <bean id="PedidoFinderEnviar" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Enviar.PedidoFinderEnviar">
+    <bean id="PedidoFinderEnviar"
+          class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Enviar.PedidoFinderEnviar">
         <constructor-arg ref="HibernatePedidoRepository"/>
     </bean>
 
     <!--Users-->
 
-    <bean id="BadWordService" class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers.BadWordsService"/>
+    <bean id="BadWordService"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers.BadWordsService"/>
 
     <bean id="UserFinder" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinder">
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
-    <bean id="UserVerCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.VerCarrito.UserVerCarrito">
+    <bean id="UserVerCarrito"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.VerCarrito.UserVerCarrito">
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
-    <bean id="UserEliminarElementoCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.EliminarElementoCarrito.UserEliminarElementoCarrito">
+    <bean id="UserEliminarElementoCarrito"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.EliminarElementoCarrito.UserEliminarElementoCarrito">
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
-    <bean id="UserModificarCantidadElementoCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.ModificarCantidadElementoCarrito.UserModificarCantidadElementoCarrito">
+    <bean id="UserModificarCantidadElementoCarrito"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.ModificarCantidadElementoCarrito.UserModificarCantidadElementoCarrito">
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
@@ -231,17 +246,20 @@
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
-    <bean id="UserFinderMascotas" class="com.javeriana.web.four.covet19.Usuarios.User.Application.FindMascotaByUsuario.UserFinderMascotas">
+    <bean id="UserFinderMascotas"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.FindMascotaByUsuario.UserFinderMascotas">
         <constructor-arg ref="HibernateUserRepository"/>
     </bean>
 
-    <bean id="CreatePedido" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Create.CreatePedido">
+    <bean id="CreatePedido"
+          class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Create.CreatePedido">
         <constructor-arg ref="HibernatePedidoRepository"/>
         <constructor-arg ref="CanConsumeProducto"/>
         <constructor-arg ref="SpringApplicationEventBus"/>
     </bean>
 
-    <bean id="AgregarElementoCarrito" class="com.javeriana.web.four.covet19.Usuarios.User.Application.AgregarElementoCarrito.AgregarElementoCarrito">
+    <bean id="AgregarElementoCarrito"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.AgregarElementoCarrito.AgregarElementoCarrito">
         <constructor-arg ref="HibernateUserRepository"/>
         <constructor-arg ref="FindProducto"/>
     </bean>
@@ -259,7 +277,8 @@
         <constructor-arg ref="HibernateIndexRepository"/>
     </bean>
 
-    <bean id="CreateIndexOnAdminCreated" class="com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create.CreateIndexOnAdminCreated">
+    <bean id="CreateIndexOnAdminCreated"
+          class="com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create.CreateIndexOnAdminCreated">
         <constructor-arg ref="CreateIndex"/>
     </bean>
 
@@ -287,9 +306,11 @@
         <constructor-arg ref="DomainEventsInformation"/>
     </bean>
 
-    <bean id="MailSender" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Mail.ElasticEmail.MailSenderElasticEmail" />
+    <bean id="MailSender"
+          class="com.javeriana.web.four.covet19.Shared.Infrastructure.Mail.ElasticEmail.MailSenderElasticEmail"/>
 
-    <bean id="SpringApplicationEventBus" class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.Spring.SpringApplicationEventBus" />
+    <bean id="SpringApplicationEventBus"
+          class="com.javeriana.web.four.covet19.Shared.Infrastructure.Bus.Event.Spring.SpringApplicationEventBus"/>
 
     <bean id="MailIssuedOnEvent"
           class="com.javeriana.web.four.covet19.Shared.Application.MailIssuedOnEvent">
