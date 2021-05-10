@@ -26,7 +26,7 @@ public class CreateVeterinarioPostController {
     {
         HttpStatus codigo = HttpStatus.CREATED;
         try {
-            Date fecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(request.getFechaNacimiento());
+            Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(request.getFechaNacimiento());
             creator.execute(
                     request.getId(),
                     request.getCedula(),

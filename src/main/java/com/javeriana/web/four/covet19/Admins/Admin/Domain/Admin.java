@@ -1,6 +1,6 @@
 package com.javeriana.web.four.covet19.Admins.Admin.Domain;
 
-import com.javeriana.web.four.covet19.Shared.Domain.Admin.AdminCreatedDomainEvent;
+import com.javeriana.web.four.covet19.Shared.Domain.Admin.PersonCreatedDomainEvent;
 import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
@@ -54,7 +54,7 @@ public class Admin extends AggregateRoot implements AuthEntity{
                 new DireccionPersona(direccionAdmin),
                 new PasswordPersona(passwordAdmin),
                 new FechaNacimientoPersona(fechaNacimientoAdmin));
-        newAdmin.record(new AdminCreatedDomainEvent(newAdmin.idAdmin.value(), newAdmin.correoAdmin.value(), Admin.class.getName()));
+        newAdmin.record(new PersonCreatedDomainEvent(newAdmin.idAdmin.value(), newAdmin.correoAdmin.value(), Admin.class.getName()));
         return newAdmin;
     }
 

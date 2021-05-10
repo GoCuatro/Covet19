@@ -1,6 +1,5 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.AgregarCitaVeterinario;
 
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Mascota;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinario;
 

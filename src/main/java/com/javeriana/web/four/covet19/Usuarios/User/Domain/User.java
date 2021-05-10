@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Usuarios.User.Domain;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Admin.PersonCreatedDomainEvent;
 import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoConsumedDomainEvent;
@@ -59,8 +60,10 @@ public class User extends AggregateRoot implements AuthEntity {
             DireccionPersona direccionPersona,
             FechaNacimientoPersona fechaNacimientoPersona
     ) {
-        return new User(idPersona, nombrePersona, passwordPersona, correoPersona, telefonoPersona,
+        User newUser = new User(idPersona, nombrePersona, passwordPersona, correoPersona, telefonoPersona,
                 cedulaPersona, direccionPersona, fechaNacimientoPersona, null, null);
+        newUser.record(new PersonCreatedDomainEvent(idPersona.value(), correoPersona.value(), User.class.getName()));
+        return newUser;
     }
 
     public Optional<List<HashMap<String, Object>>> getUserMascotas() {
@@ -203,7 +206,12 @@ public class User extends AggregateRoot implements AuthEntity {
 
     @Override
     public AuthCredentials getCredentials(String supposedPass) throws IncorrectCredentials {
-        return null;
+        if (userPassword.equals(new PasswordPersona(supposedPass))) {
+            String authorities = "ROLE_USER";
+            return new AuthCredentials(userId.value(), authorities, new HashMap<String, Object>());
+        } else {
+            throw new IncorrectCredentials("Credenciales incorrectas");
+        }
     }
 
     public void consumeProducto(String idProducto, int quantity) {

@@ -116,6 +116,7 @@
     <bean id="VeterinarioCreator"
           class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Create.VeterinarioCreator">
         <constructor-arg ref="HibernateVeterinarioRepository"/>
+        <constructor-arg ref="SpringApplicationEventBus"/>
     </bean>
 
     <bean id="VeterinarioUpdate"
@@ -152,6 +153,12 @@
           class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.EliminarCitaVeterinario.EliminarCitaVeterinario">
         <constructor-arg ref="HibernateVeterinarioRepository"/>
     </bean>
+
+    <bean id="LoginVeterinario"
+          class="com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Login.LoginVeterinario">
+        <constructor-arg ref="VeterinarioFinder"/>
+    </bean>
+
 
     <!--Productos-->    
 
@@ -212,6 +219,11 @@
         <constructor-arg ref="HibernateAdminRepository"/>
     </bean>
 
+    <bean id="LoginAdmin"
+          class="com.javeriana.web.four.covet19.Admins.Admin.Application.Login.LoginAdmin">
+        <constructor-arg ref="FindAdmin"/>
+    </bean>
+
     <!--Pedidos-->
 
     <bean id="PedidoAll" class="com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.All.PedidoAll">
@@ -259,6 +271,7 @@
     <bean id="UserCreator" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Create.UserCreator">
         <constructor-arg ref="HibernateUserRepository"/>
         <constructor-arg ref="BadWordService"/>
+        <constructor-arg ref="SpringApplicationEventBus"/>
     </bean>
 
     <bean id="UserUpdater" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Update.UserModifier">
@@ -291,11 +304,18 @@
         <constructor-arg ref="CitaAll"/>
     </bean>
 
+    <bean id="LoginUser"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.Login.LoginUser">
+        <constructor-arg ref="UserFinder"/>
+    </bean>
+
     <!--Shared-->
 
     <bean id="Login" class="com.javeriana.web.four.covet19.Shared.Application.Login">
         <constructor-arg ref="HibernateIndexRepository"/>
-        <constructor-arg ref="FindAdmin"/>
+        <constructor-arg ref="LoginAdmin"/>
+        <constructor-arg ref="LoginUser"/>
+        <constructor-arg ref="LoginVeterinario"/>
     </bean>
 
     <!--Index-->
@@ -304,8 +324,8 @@
         <constructor-arg ref="HibernateIndexRepository"/>
     </bean>
 
-    <bean id="CreateIndexOnAdminCreated"
-          class="com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create.CreateIndexOnAdminCreated">
+    <bean id="CreateIndexOnPersonCreated"
+          class="com.javeriana.web.four.covet19.Shared.Domain.Index.Application.Create.CreateIndexOnPersonCreated">
         <constructor-arg ref="CreateIndex"/>
     </bean>
 

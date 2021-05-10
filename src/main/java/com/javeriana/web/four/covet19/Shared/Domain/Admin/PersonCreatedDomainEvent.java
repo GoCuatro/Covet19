@@ -6,24 +6,24 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class AdminCreatedDomainEvent extends DomainEvent {
+public class PersonCreatedDomainEvent extends DomainEvent {
 
     private final String email;
     private final String rol;
 
-    public AdminCreatedDomainEvent() {
+    public PersonCreatedDomainEvent() {
         super(null);
         this.email = "";
         this.rol = "";
     }
 
-    public AdminCreatedDomainEvent(String aggregateId, String email, String rol) {
+    public PersonCreatedDomainEvent(String aggregateId, String email, String rol) {
         super(aggregateId);
         this.email = email;
         this.rol = rol;
     }
 
-    public AdminCreatedDomainEvent(String aggregateId, String eventId, String occurredOn, String email, String rol) {
+    public PersonCreatedDomainEvent(String aggregateId, String eventId, String occurredOn, String email, String rol) {
         super(aggregateId, eventId, occurredOn);
         this.email = email;
         this.rol = rol;
@@ -39,7 +39,7 @@ public class AdminCreatedDomainEvent extends DomainEvent {
 
     @Override
     public String eventName() {
-        return "admin.created";
+        return "person.created";
     }
 
     @Override
@@ -52,14 +52,14 @@ public class AdminCreatedDomainEvent extends DomainEvent {
 
     @Override
     public DomainEvent fromPrimitive(String aggregateId, HashMap<String, Serializable> body, String eventId, String occurredOn) {
-        return new AdminCreatedDomainEvent(aggregateId, eventId, occurredOn, (String) body.get("email"), (String) body.get("rol"));
+        return new PersonCreatedDomainEvent(aggregateId, eventId, occurredOn, (String) body.get("email"), (String) body.get("rol"));
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AdminCreatedDomainEvent that = (AdminCreatedDomainEvent) o;
+        PersonCreatedDomainEvent that = (PersonCreatedDomainEvent) o;
         return Objects.equals(email, that.email) && Objects.equals(rol, that.rol);
     }
 
