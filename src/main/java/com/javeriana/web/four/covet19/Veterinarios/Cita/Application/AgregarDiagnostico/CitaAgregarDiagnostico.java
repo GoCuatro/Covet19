@@ -1,5 +1,6 @@
-package com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AñadirDiagnostico;
+package com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AgregarDiagnostico;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.EventBus;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.ModificarCitaDiagnostico.MascotaModificarCitaDiagnostico;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Cita;
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Exceptions.CitaNoExiste;
@@ -12,16 +13,13 @@ import java.util.Optional;
 public class CitaAgregarDiagnostico {
 
     private final CitaRepository repository;
-    private final VeterinarioModificarCitaDiagnostico modificarCitaVeterinario;
-    private final MascotaModificarCitaDiagnostico modificarCitaMascota;
+    private final EventBus eventBus;
 
     public CitaAgregarDiagnostico(CitaRepository repository,
-                                  VeterinarioModificarCitaDiagnostico modificarCitaVeterinario,
-                                  MascotaModificarCitaDiagnostico modificarCitaMascota
+                                  EventBus eventBus
     ) {
         this.repository = repository;
-        this.modificarCitaVeterinario = modificarCitaVeterinario;
-        this.modificarCitaMascota = modificarCitaMascota;
+        this.eventBus = eventBus;
     }
 
     public void execute(String idCita, String diagnostico)
@@ -34,13 +32,11 @@ public class CitaAgregarDiagnostico {
         Cita finalCita = cita.get();
         finalCita.agregarDiagnostico(new DiagnosticoCita(diagnostico));
 
-        //Evento para actualizar Citas del Veterinario
-        modificarCitaVeterinario.execute(finalCita.getIdVeterinario(), idCita, diagnostico);
-
-        //Evento para actualizar Citas de la mascota
-        modificarCitaMascota.execute(finalCita.getIdMascota(), idCita, diagnostico);
-
         repository.update(finalCita);
+
+        finalCita.notifyAgregarDiagnostico();
+
+        eventBus.publish(finalCita.pullDomainEvents());
     }
 
 }

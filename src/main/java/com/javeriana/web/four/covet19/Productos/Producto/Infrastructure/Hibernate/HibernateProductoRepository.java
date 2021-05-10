@@ -4,7 +4,6 @@ import com.javeriana.web.four.covet19.Productos.Producto.Domain.Ports.ProductoRe
 import com.javeriana.web.four.covet19.Productos.Producto.Domain.Producto;
 import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoId;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,11 +52,5 @@ public class HibernateProductoRepository implements ProductoRepository {
         CriteriaQuery<Producto> all = cq.select(root);
         TypedQuery<Producto> allQuery = sessionFactory.getCurrentSession().createQuery(all);
         return Optional.ofNullable(allQuery.getResultList());
-    }
-
-    @Override
-    public Optional<List<Producto>> allLike(String nombreBuscar) {
-        Query query = sessionFactory.getCurrentSession().createQuery("FROM Producto as prod WHERE prod.nombreProducto like '%"+nombreBuscar+"%'");
-        return Optional.ofNullable(query.list());
     }
 }

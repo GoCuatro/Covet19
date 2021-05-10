@@ -1,4 +1,4 @@
-package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
+package com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Usuarios.Pedidos.Pedido.Application.Create.CreatePedido;
 import com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinder;
