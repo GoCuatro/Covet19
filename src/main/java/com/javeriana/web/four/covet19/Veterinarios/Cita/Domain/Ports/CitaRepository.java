@@ -10,4 +10,5 @@ public interface CitaRepository {
     Optional<Cita> find (String idCita);
     void save(Cita cita);
     Optional<List<Cita>> all();
+    void delete(Cita cita);
 }

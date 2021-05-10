@@ -1,6 +1,5 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects;
 
-
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -18,6 +17,9 @@ public class CitaHistorialMascota {
     }
     public CitaHistorialMascota(){}
 
+    public static CitaHistorialMascota createCitaId(String idCita) {
+        return new CitaHistorialMascota(idCita, null, null, null);
+    }
     public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idHistorial);
@@ -51,6 +53,9 @@ public class CitaHistorialMascota {
 
     public boolean equalsIdCita(String idCita) {
         return this.idHistorial.equals(idCita);
+    }
+    public boolean equalsIdCita( CitaHistorialMascota citaDetails) {
+        return this.idHistorial.equals(citaDetails.getIdHistorial());
     }
 
     public void updateDiagnostico(String diagnostico) {

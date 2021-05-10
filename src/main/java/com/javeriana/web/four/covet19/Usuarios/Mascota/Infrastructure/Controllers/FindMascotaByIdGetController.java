@@ -2,7 +2,7 @@ package com.javeriana.web.four.covet19.Usuarios.Mascota.Infrastructure.Controlle
 
 
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinder;
-import com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Find.MascotaFinderResponse;
+import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.Mascota;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class FindMascotaByIdGetController {
     @GetMapping(value="/{id}")
     public ResponseEntity<HashMap> execute(@PathVariable("id") String id)
     {
-        MascotaFinderResponse response = finder.execute(id);
-        return ResponseEntity.status(HttpStatus.OK).body(response.response());
+        Mascota mascota = finder.execute(id);
+        return ResponseEntity.status(HttpStatus.OK).body(mascota.data());
     }
 }

@@ -11,7 +11,7 @@ public class MascotaFinder {
     public MascotaFinder(MascotaRepository repository) {
         this.repository = repository;
     }
-    public MascotaFinderResponse execute(String id)
+    public Mascota execute(String id)
     {
         Optional<Mascota> result = repository.find(id);
         if (result.isEmpty())
@@ -19,7 +19,7 @@ public class MascotaFinder {
             throw new RuntimeException("Error");
         }
         Mascota mascota = result.get();
-        return new MascotaFinderResponse(mascota);
+        return mascota;
     }
 
 }
