@@ -1,6 +1,7 @@
 package com.javeriana.web.four.covet19.Veterinarios.Cita.Domain;
 
 import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
+import com.javeriana.web.four.covet19.Shared.Domain.Citas.CitaAgregarDiagnosticoDomainEvent;
 import com.javeriana.web.four.covet19.Shared.Domain.Citas.CitaCreatedDomainEvent;
 import com.javeriana.web.four.covet19.Shared.Domain.Citas.IdCita;
 import com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota;
@@ -71,5 +72,9 @@ public class Cita extends AggregateRoot {
     }
     public String getIdUsuario() {
         return idUsuario.value();
+    }
+
+    public void notifyAgregarDiagnostico() {
+        this.record(new CitaAgregarDiagnosticoDomainEvent(idCita.value(), idMascota.value(), idVeterinario.value(), diagnosticoCita.value()));
     }
 }

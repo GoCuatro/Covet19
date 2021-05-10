@@ -1,4 +1,4 @@
-package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
+package com.javeriana.web.four.covet19.Usuarios.User.Application.BadWordsService;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
