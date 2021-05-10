@@ -69,8 +69,13 @@
     </bean>
 
     <bean id="CitaAgregarDiagnostico"
-          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AñadirDiagnostico.CitaAgregarDiagnostico">
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AgregarDiagnostico.CitaAgregarDiagnostico">
         <constructor-arg ref="HibernateCitaRepository"/>
+        <constructor-arg ref="SpringApplicationEventBus"/>
+    </bean>
+
+    <bean id="NotifyOnCitaAgregarDiagnostico"
+          class="com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AgregarDiagnostico.NotifyOnCitaAgregarDiagnostico">
         <constructor-arg ref="VeterinarioModificarCitaDiagnostico"/>
         <constructor-arg ref="MascotaModificarDiagnostico"/>
     </bean>
@@ -257,7 +262,7 @@
     <!--Users-->
 
     <bean id="BadWordService"
-          class="com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers.BadWordsService"/>
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.BadWordsService.BadWordsService"/>
 
     <bean id="UserFinder" class="com.javeriana.web.four.covet19.Usuarios.User.Application.Find.UserFinder">
         <constructor-arg ref="HibernateUserRepository"/>
