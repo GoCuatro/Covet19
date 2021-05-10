@@ -119,4 +119,11 @@ public class Mascota {
 
 
 
+
+    public  void eliminarCita(CitaHistorialMascota eliminarCita){
+        List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
+        CitaHistorialMascota eliminar = citasDetailsList.stream().filter(cita -> cita.equalsIdCita(eliminarCita)).findFirst().get();
+        citasDetailsList.remove(eliminar);
+        this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
+    }
 }

@@ -28,18 +28,17 @@ public class AgendarCita {
     }
 
     public void execute(String idCita, String diagnostico, String fechaCita,
-                        String idVeterinario, String idMascota) {
-        if (!repository.find(idCita).isEmpty()) {
-            throw new RuntimeException("el identificador " + idCita + " no es valido");
+                        String idVeterinario, String idMascota, String idUsuario){
+        if(!repository.find(idCita).isEmpty()){
+            throw new RuntimeException("el identificador "+ idCita+ " no es valido");
         }
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date fecha = formato.parse(fechaCita);
-            agregarCitaVeterinario.execute(idVeterinario, idCita, diagnostico, fechaCita, idMascota);
-            agregarCitaMascota.execute(idMascota, idCita, diagnostico, fechaCita, idVeterinario);
-            Cita nuevaCita = Cita.create(new IdCita(idCita), new DiagnosticoCita(diagnostico), new FechaCita(fecha),
-                    new IdPersona(idVeterinario), new IdMascota(idMascota));
-            repository.save(nuevaCita);
+            agregarCitaVeterinario.execute(idVeterinario, idCita, diagnostico,fechaCita, idMascota);
+            agregarCitaMascota.execute(idMascota, idCita, diagnostico, fechaCita,idVeterinario);
+            repository.save(Cita.create(new IdCita(idCita), new DiagnosticoCita(diagnostico), new FechaCita(fecha),
+                    new IdPersona(idVeterinario), new IdMascota(idMascota), new IdPersona(idUsuario)));
         } catch (ParseException e) {
             e.printStackTrace();
         }

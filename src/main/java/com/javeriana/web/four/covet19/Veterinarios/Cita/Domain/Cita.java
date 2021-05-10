@@ -19,17 +19,19 @@ public class Cita extends AggregateRoot {
     private FechaCita fechaCita;
     private IdPersona idVeterinario;
     private IdMascota idMascota;
+    private IdPersona idUsuario;
 
-    public Cita(IdCita idCita, DiagnosticoCita diagnosticoCita, FechaCita fechaCita, IdPersona idVeterinario, IdMascota idMascota) {
+    public Cita(IdCita idCita, DiagnosticoCita diagnosticoCita, FechaCita fechaCita, IdPersona idVeterinario, IdMascota idMascota, IdPersona idUsuario) {
         this.idCita = idCita;
         this.diagnosticoCita = diagnosticoCita;
         this.fechaCita = fechaCita;
         this.idVeterinario = idVeterinario;
         this.idMascota = idMascota;
+        this.idUsuario = idUsuario;
     }
 
-    public static Cita create(IdCita idCita, DiagnosticoCita diagnosticoCita, FechaCita fechaCita, IdPersona idVeterinario, IdMascota idMascota) {
-        return new Cita(idCita, diagnosticoCita, fechaCita, idVeterinario, idMascota);
+    public static Cita create(IdCita idCita, DiagnosticoCita diagnosticoCita, FechaCita fechaCita, IdPersona idVeterinario, IdMascota idMascota, IdPersona idUsuario) {
+        return new Cita(idCita, diagnosticoCita, fechaCita, idVeterinario, idMascota, idUsuario);
     }
     public void update(
             DiagnosticoCita diagnosticoCita,
@@ -48,6 +50,7 @@ public class Cita extends AggregateRoot {
             put("fecha", fechaCita.value().toString());
             put("idVeterinario", idVeterinario.value());
             put("idMascota", idMascota.value());
+            put("idUsuario",idUsuario.value());
         }};
         return data;
     }
@@ -64,5 +67,8 @@ public class Cita extends AggregateRoot {
 
     public String getIdMascota() {
         return idMascota.value();
+    }
+    public String getIdUsuario() {
+        return idUsuario.value();
     }
 }

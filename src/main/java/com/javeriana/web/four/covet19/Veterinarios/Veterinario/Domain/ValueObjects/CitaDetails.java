@@ -15,7 +15,9 @@ public class CitaDetails {
         this.fecha = fecha;
         this.idMascota = idMascota;
     }
-
+    public static CitaDetails createCitaId(String idCita) {
+        return new CitaDetails(idCita, null, null, null);
+    }
     public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idCita);

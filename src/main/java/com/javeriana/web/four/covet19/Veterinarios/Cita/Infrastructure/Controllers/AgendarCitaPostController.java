@@ -27,7 +27,7 @@ public class AgendarCitaPostController {
         HttpStatus codigo = HttpStatus.CREATED;
 
         creator.execute(request.getId(), request.getDiagnostico(), request.getFecha(),
-                request.getIdVeterinario(), request.getIdMascota());
+                request.getIdVeterinario(), request.getIdMascota(), request.getIdUsuario());
 
         return  ResponseEntity.status(codigo).body(null);
     }
@@ -38,6 +38,15 @@ public class AgendarCitaPostController {
         private String fecha;
         private String idVeterinario;
         private String idMascota;
+        private String idUsuario;
+
+        public String getIdUsuario() {
+            return idUsuario;
+        }
+
+        public void setIdUsuario(String idUsuario) {
+            this.idUsuario = idUsuario;
+        }
 
         public String getId() {
             return id;
