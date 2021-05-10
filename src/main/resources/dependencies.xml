@@ -61,6 +61,12 @@
     <bean id="EliminarCitaMascota" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.EliminarCitaMascota.EliminarCitaMascota">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
+    <bean id="NotifyOnMascotaCreated"
+          class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.Create.NotifyOnMascotaCreated">
+        <constructor-arg ref="MascotaFinder"/>
+        <constructor-arg ref="UserFinder"/>
+        <constructor-arg ref="MailSender"/>
+    </bean>
 
     <!--Citas-->
 

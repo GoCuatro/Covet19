@@ -37,6 +37,7 @@ public class MascotaCreator {
         );
         repository.save(mascota);
         agregarMascota.execute(idUsuario,mascota);
+        mascota.notifyCreation();
     }
     public MascotaCreator(){
     }

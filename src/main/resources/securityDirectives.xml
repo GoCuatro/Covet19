@@ -5,4 +5,20 @@
   <!--directive endpoint="/admin" authority="ROLE_ADMIN"/-->
   <directive endpoint="/admin/*" authority="ROLE_ADMIN"/>
   <directive endpoint="/admins" authority="ROLE_ADMIN"/>
+  <!--directive endpoint="/pedidos" authority="ROLE_ADMIN"/-->
+  <directive endpoint="/pedidos" authority="ROLE_ADMIN"/>
+  <directive endpoint="/pedidos/enviar/{id}" authority="ROLE_ADMIN"/>
+  <!--directive endpoint="/mascotas" authority="ROLE_ADMIN"/-->
+  <directive endpoint="/mascotas" authority="ROLE_ADMIN"/>
+  <!--directive endpoint="/mascotas" authority="ROLE_USER"/-->
+  <directive endpoint="/mascotas/create" authority="ROLE_USER"/>
+  <directive endpoint="/mascotas/{id}" authority="ROLE_USER"/>
+  <directive endpoint="/mascotas/update" authority="ROLE_USER"/>
+  <!--directive endpoint="/pedidos" authority="ROLE_USER"/-->
+  <directive endpoint="/pedidos/usuarios/{id}" authority="ROLE_USER"/>
+  <directive endpoint="/pedidos/finalizar/{id}" authority="ROLE_USER"/>
+  <!--directive endpoint="/users" authority="ROLE_USER"/-->
+  <directive endpoint="/users/find/{id}" authority="ROLE_USER"/>
+  <directive endpoint="/users/update" authority="ROLE_USER"/>
+
 </directives>

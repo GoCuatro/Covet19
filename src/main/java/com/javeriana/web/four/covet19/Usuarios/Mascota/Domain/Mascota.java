@@ -1,6 +1,9 @@
 package com.javeriana.web.four.covet19.Usuarios.Mascota.Domain;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Aggregate.AggregateRoot;
+import com.javeriana.web.four.covet19.Shared.Domain.Citas.CitaCreatedDomainEvent;
 import com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota;
+import com.javeriana.web.four.covet19.Shared.Domain.Mascota.MascotaCreatedDomainEvent;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona;
 import com.javeriana.web.four.covet19.Usuarios.Mascota.Domain.ValueObjects.*;
 
@@ -11,7 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 
-public class Mascota {
+public class Mascota extends AggregateRoot {
     private IdMascota idMascota;
     private EdadMascota edadMascota;
     private NombreMascota nombreMascota;
@@ -133,6 +136,9 @@ public class Mascota {
 
 
 
+    public void notifyCreation(){
+        this.record(new MascotaCreatedDomainEvent(idMascota.value(), idUsuario.value(), idMascota.value()));
+    }
 
     public  void eliminarCita(CitaHistorialMascota eliminarCita){
         List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
