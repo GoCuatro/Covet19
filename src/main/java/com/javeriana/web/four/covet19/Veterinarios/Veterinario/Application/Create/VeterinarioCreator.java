@@ -1,5 +1,6 @@
 package com.javeriana.web.four.covet19.Veterinarios.Veterinario.Application.Create;
 
+import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.EventBus;
 import com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.*;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Ports.VeterinarioRepository;
 import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.ValueObjects.TarjetaProfesionalVeterinario;
@@ -10,9 +11,11 @@ import java.util.Date;
 public class VeterinarioCreator {
 
     VeterinarioRepository repository;
+    EventBus eventBus;
 
-    public VeterinarioCreator(VeterinarioRepository repository) {
+    public VeterinarioCreator(VeterinarioRepository repository, EventBus eventBus) {
         this.repository = repository;
+        this.eventBus = eventBus;
     }
 
     public void execute(String idVeterinario,
@@ -35,9 +38,8 @@ public class VeterinarioCreator {
                 new PasswordPersona(passwordVeterinario),
                 new TelefonoPersona(telefonoVeterinario),
                 new TarjetaProfesionalVeterinario(tarjetaProfesionalVeterinario));
-
         repository.save(veterinario);
-
+        eventBus.publish(veterinario.pullDomainEvents());
     }
 
 }

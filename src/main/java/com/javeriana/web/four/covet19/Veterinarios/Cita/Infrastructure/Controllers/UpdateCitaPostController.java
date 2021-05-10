@@ -1,15 +1,11 @@
 package com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Veterinarios.Cita.Application.Update.CitaUpdate;
-import com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.Cita;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.text.ParseException;
-import java.util.Date;
 
 @RestController
 @RequestMapping(value = "/citas")
