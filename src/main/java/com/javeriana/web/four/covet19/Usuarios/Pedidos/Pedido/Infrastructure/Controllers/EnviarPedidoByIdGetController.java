@@ -18,9 +18,8 @@ public class EnviarPedidoByIdGetController {
     @Autowired
     private PedidoFinderEnviar finder;
 
-    @GetMapping(value="/enviar/{id}")
-    public ResponseEntity<HashMap> execute(@PathVariable("id") String id)
-    {
+    @GetMapping(value = "/enviar/{id}")
+    public ResponseEntity<HashMap> execute(@PathVariable("id") String id) {
         finder.execute(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }

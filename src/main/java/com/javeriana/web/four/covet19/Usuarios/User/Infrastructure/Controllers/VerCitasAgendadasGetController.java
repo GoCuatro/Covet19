@@ -21,7 +21,7 @@ public class VerCitasAgendadasGetController {
     private VerCitasAgendadas verCitasAgendadas;
 
     @GetMapping(value = "/{idUsuario}/verCitasAgendadas", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<HashMap>> execute(@PathVariable("idUsuario") String idUsuario){
+    public ResponseEntity<List<HashMap>> execute(@PathVariable("idUsuario") String idUsuario) {
         HttpStatus codigo = HttpStatus.CREATED;
         VerCitasAgendadasResponse response = new VerCitasAgendadasResponse(verCitasAgendadas.execute(idUsuario));
         return ResponseEntity.status(codigo).body(response.response());

@@ -1,4 +1,3 @@
-
 package com.javeriana.web.four.covet19.Usuarios.User.Infrastructure.Controllers;
 
 import com.javeriana.web.four.covet19.Usuarios.User.Application.AgregarElementoCarrito.AgregarElementoCarrito;
@@ -18,13 +17,14 @@ public class AgregarElementoCarritoPostController {
     @Autowired
     private AgregarElementoCarrito agregarElementoCarrito;
 
-    @PostMapping (value = "/agregarACarrito", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity execute (@RequestBody Request request){
+    @PostMapping(value = "/agregarACarrito", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity execute(@RequestBody Request request) {
         HttpStatus codigo = HttpStatus.CREATED;
-        agregarElementoCarrito.execute(request.getIdUsuario(), request.getIdProducto(), request.getCantidad() );
+        agregarElementoCarrito.execute(request.getIdUsuario(), request.getIdProducto(), request.getCantidad());
         return ResponseEntity.status(codigo).body(null);
     }
-    static  class Request{
+
+    static class Request {
         private String idUsuario;
         private String idProducto;
         private long cantidad;

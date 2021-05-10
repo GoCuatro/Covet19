@@ -28,6 +28,10 @@ public class Producto {
         this.habilitadoProducto = habilitadoProducto;
     }
 
+    public static Producto create(ProductoId productoId, NombreProducto nombreProducto, DescripcionProducto descripcionProducto, PrecioProducto precioProducto, MarcaProducto marcaProducto) {
+        return new Producto(productoId, nombreProducto, descripcionProducto, precioProducto, marcaProducto, new InventarioProducto(0), new HabilitadoProducto(true));
+    }
+
     public HashMap<String, Object> data() {
         return new HashMap<>() {{
             put("id", productoId.value());
@@ -36,10 +40,6 @@ public class Producto {
             put("precio", precioProducto.value());
             put("marca", marcaProducto.value());
         }};
-    }
-
-    public static Producto create(ProductoId productoId, NombreProducto nombreProducto, DescripcionProducto descripcionProducto, PrecioProducto precioProducto, MarcaProducto marcaProducto) {
-        return new Producto(productoId, nombreProducto, descripcionProducto, precioProducto, marcaProducto, new InventarioProducto(0), new HabilitadoProducto(true));
     }
 
     @Override
@@ -89,17 +89,16 @@ public class Producto {
         return inventarioProducto.value() > quantity;
     }
 
-    public void consume(int quantity){
+    public void consume(int quantity) {
         this.inventarioProducto = new InventarioProducto(this.inventarioProducto.value() - quantity);
     }
-    public boolean disponibilidad(int cantidad){
-        boolean disponible = false;
-        if(this.inventarioProducto.value()>cantidad){
-            disponible = true;
-        }
+
+    public boolean disponibilidad(int cantidad) {
+        boolean disponible = this.inventarioProducto.value() > cantidad;
         return disponible;
     }
-    public boolean habilitado(){
-      return this.habilitadoProducto.value();
+
+    public boolean habilitado() {
+        return this.habilitadoProducto.value();
     }
 }

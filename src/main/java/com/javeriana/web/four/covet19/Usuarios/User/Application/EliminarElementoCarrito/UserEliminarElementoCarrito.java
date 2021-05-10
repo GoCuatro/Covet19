@@ -15,11 +15,9 @@ public class UserEliminarElementoCarrito {
         this.repository = repository;
     }
 
-    public void execute(String idUsuario, String idProducto)
-    {
+    public void execute(String idUsuario, String idProducto) {
         Optional<User> usuario = repository.find(idUsuario);
-        if (usuario.isEmpty())
-        {
+        if (usuario.isEmpty()) {
             throw new UserNotExist(idUsuario);
         }
         User finalUser = usuario.get();

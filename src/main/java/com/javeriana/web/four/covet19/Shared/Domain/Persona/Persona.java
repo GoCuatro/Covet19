@@ -35,6 +35,9 @@ public class Persona {
         this.telefonoPersona = telefonoPersona;
     }
 
+    private Persona() {
+    }
+
     public static Persona create(
             IdPersona idPersona,
             CedulaPersona cedulaPersona,
@@ -57,7 +60,5 @@ public class Persona {
                 Objects.equals(nombrePersona, persona.nombrePersona) &&
                 Objects.equals(correoPersona, persona.correoPersona);
     }
-
-    private Persona() {}
 
 }

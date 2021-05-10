@@ -19,14 +19,18 @@ import java.util.stream.Collectors;
 
 public class MascotasCustomDetail implements UserType {
     @Override
-    public int[] sqlTypes() { return new int[]{Types.LONGNVARCHAR}; }
+    public int[] sqlTypes() {
+        return new int[]{Types.LONGNVARCHAR};
+    }
 
     @Override
-    public Class returnedClass() { return List.class; }
+    public Class returnedClass() {
+        return List.class;
+    }
 
     @Override
     public boolean equals(Object x, Object y) throws HibernateException {
-        return Objects.equals(x,y);
+        return Objects.equals(x, y);
     }
 
     @Override
@@ -39,7 +43,7 @@ public class MascotasCustomDetail implements UserType {
         List<MascotaDetails> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
-            if(value.isPresent()) {
+            if (value.isPresent()) {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(mascota ->
                         new MascotaDetails((String) mascota.get("id"),
@@ -48,8 +52,7 @@ public class MascotasCustomDetail implements UserType {
                                 (String) mascota.get("tipo"),
                                 (String) mascota.get("raza"))).collect(Collectors.toList());
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new HibernateException("Error at reading map", e);
         }
         return Optional.ofNullable(response);
@@ -59,17 +62,15 @@ public class MascotasCustomDetail implements UserType {
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
         Optional<List<MascotaDetails>> mascotas = (value == null) ? Optional.empty() : (Optional<List<MascotaDetails>>) value;
         try {
-            if(mascotas.isEmpty()) {
+            if (mascotas.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
-            }
-            else {
+            } else {
                 ObjectMapper mapper = new ObjectMapper();
                 List<HashMap<String, Object>> objects = mascotas.get().stream().map(mascota -> mascota.data()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new HibernateException("Exception serializing value " + value, e);
         }
     }

@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VeterinarioRepository {
-    
+
     void update(Veterinario veterinario);
-    Optional<Veterinario> find (String idVeterinario);
+
+    Optional<Veterinario> find(String idVeterinario);
+
     void save(Veterinario veterinario);
+
     Optional<List<Veterinario>> all();
 }

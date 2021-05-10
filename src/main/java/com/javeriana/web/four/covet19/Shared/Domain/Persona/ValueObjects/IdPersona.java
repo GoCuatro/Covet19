@@ -4,8 +4,7 @@ import com.javeriana.web.four.covet19.Shared.Domain.CustomUUID;
 
 import java.io.Serializable;
 
-public class IdPersona extends CustomUUID implements Serializable
-{
+public class IdPersona extends CustomUUID implements Serializable {
     private IdPersona() {
         super("");
     }

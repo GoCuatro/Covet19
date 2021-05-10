@@ -8,17 +8,17 @@ import java.util.Optional;
 
 public class CanConsumeProducto {
 
-    private FindProducto findProducto;
+    private final FindProducto findProducto;
 
     public CanConsumeProducto(FindProducto findProducto) {
         this.findProducto = findProducto;
     }
 
-    public boolean execute(String id, int quantity){
+    public boolean execute(String id, int quantity) {
         Optional<Producto> producto = findProducto.execute(id);
-        if(producto.isPresent()){
+        if (producto.isPresent()) {
             return producto.get().isThereStock(quantity);
-        }else {
+        } else {
             throw new NotFound("Producto no encontrado");
         }
     }

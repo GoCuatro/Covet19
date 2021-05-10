@@ -36,14 +36,13 @@ public class RabbitMqDomainEventsConsumer {
         try {
             Method subscriberOnMethod = subscriber.getClass().getMethod("on", domainEvent.getClass());
             subscriberOnMethod.invoke(subscriber, domainEvent);
-        }
-        catch (Exception error) {
+        } catch (Exception error) {
             System.err.println("Error: " + error);
         }
     }
 
     private Object subscriberFor(String queueName) throws Exception {
-        if(!this.information.validateEventSubscriber(queueName)) {
+        if (!this.information.validateEventSubscriber(queueName)) {
             throw new Exception("There are not registered subscribers for " + queueName + " queue");
         }
         String eventSubscriberName = this.information.getEventSubscriber(queueName);

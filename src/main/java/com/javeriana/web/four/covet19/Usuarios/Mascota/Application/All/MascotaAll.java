@@ -13,11 +13,9 @@ public class MascotaAll {
         this.repository = repository;
     }
 
-    public List<Mascota> execute()
-    {
+    public List<Mascota> execute() {
         Optional<List<Mascota>> mascotas = repository.all();
-        if (mascotas.isEmpty())
-        {
+        if (mascotas.isEmpty()) {
             throw new RuntimeException("Error");
         }
         return mascotas.get();

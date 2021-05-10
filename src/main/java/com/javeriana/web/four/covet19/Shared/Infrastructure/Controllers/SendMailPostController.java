@@ -29,7 +29,7 @@ public class SendMailPostController {
         }
     }
 
-    static class Request{
+    static class Request {
         private String email;
         private String mensaje;
 

@@ -13,11 +13,9 @@ public class VeterinarioModificarCitaDiagnostico {
         this.repository = repository;
     }
 
-    public void execute(String idVeterinario, String idCita, String diagnostico)
-    {
+    public void execute(String idVeterinario, String idCita, String diagnostico) {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
-        if (veterinario.isEmpty())
-        {
+        if (veterinario.isEmpty()) {
             throw new VeterinarioNoExiste(idVeterinario);
         }
         Veterinario finalVeterinario = veterinario.get();

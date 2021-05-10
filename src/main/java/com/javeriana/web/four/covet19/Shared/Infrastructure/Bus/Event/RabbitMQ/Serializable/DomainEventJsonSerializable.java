@@ -13,7 +13,7 @@ public class DomainEventJsonSerializable {
         HashMap<String, Serializable> attributes = domainEvent.toPrimitive();
         attributes.put("id", domainEvent.aggregateId());
 
-        HashMap <String, Serializable> message = new HashMap<>();
+        HashMap<String, Serializable> message = new HashMap<>();
 
         message.put("data", new HashMap<String, Serializable>() {{
             put("id", domainEvent.eventId());
@@ -29,8 +29,7 @@ public class DomainEventJsonSerializable {
     public static String jsonEncode(HashMap<String, Serializable> map) {
         try {
             return new ObjectMapper().writeValueAsString(map);
-        }
-        catch (JsonProcessingException e) {
+        } catch (JsonProcessingException e) {
             return "";
         }
     }

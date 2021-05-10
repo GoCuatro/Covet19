@@ -14,11 +14,9 @@ public class CitaVerCita {
         this.repository = repository;
     }
 
-    public Cita execute(String idCita)
-    {
+    public Cita execute(String idCita) {
         Optional<Cita> cita = repository.find(idCita);
-        if (cita.isEmpty())
-        {
+        if (cita.isEmpty()) {
             throw new CitaNoExiste(idCita);
         }
         Cita finalCita = cita.get();

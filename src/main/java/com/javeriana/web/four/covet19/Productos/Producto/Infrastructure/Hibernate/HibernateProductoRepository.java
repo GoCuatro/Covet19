@@ -18,7 +18,7 @@ import java.util.Optional;
 public class HibernateProductoRepository implements ProductoRepository {
 
     protected final SessionFactory sessionFactory;
-    protected final Class<Producto>  aggregateClass;
+    protected final Class<Producto> aggregateClass;
 
     public HibernateProductoRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

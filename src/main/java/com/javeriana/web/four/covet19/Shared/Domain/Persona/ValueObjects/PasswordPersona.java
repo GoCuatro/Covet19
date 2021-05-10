@@ -26,8 +26,7 @@ public class PasswordPersona extends StringValueObject {
     private void UpperLowerRule(String value) {
         Pattern pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])");
         boolean match = pattern.matcher(value).find();
-        if (!match)
-        {
+        if (!match) {
             throw new RuntimeException("The password doesn't have one upper letter and one lower letter at least");
         }
     }
@@ -39,7 +38,12 @@ public class PasswordPersona extends StringValueObject {
     }
 
     private void SymbolsRule(String value) {
-        List<String> symbols = new ArrayList<>(){{ add("*"); add("&"); add("="); add("$");}};
+        List<String> symbols = new ArrayList<>() {{
+            add("*");
+            add("&");
+            add("=");
+            add("$");
+        }};
         Optional<String> result = symbols.stream().filter(w -> value.contains(w)).findFirst();
 
         //TODO: Corregir el error de isEmpty

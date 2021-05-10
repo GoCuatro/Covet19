@@ -24,7 +24,7 @@ public class AdminGetController {
     public ResponseEntity<HashMap<String, Object>> execute(@PathVariable String id) {
         try {
             Optional<Admin> admin = findAdmin.execute(id);
-            if(admin.isEmpty()){
+            if (admin.isEmpty()) {
                 return ResponseEntity.status(404).body(null);
             }
             return ResponseEntity.ok(admin.get().data());

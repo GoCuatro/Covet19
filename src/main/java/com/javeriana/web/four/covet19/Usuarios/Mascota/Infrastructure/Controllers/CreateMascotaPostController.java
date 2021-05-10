@@ -18,9 +18,10 @@ public class CreateMascotaPostController {
 
     @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request) {
-        creator.execute(request.getId(),request.getNombre(),request.getEdad(),request.getPeso(),request.getTipo(),request.getRaza());
+        creator.execute(request.getId(), request.getNombre(), request.getEdad(), request.getPeso(), request.getTipo(), request.getRaza());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
+
     static class Request {
         private String id;
         private String nombre;
@@ -60,6 +61,7 @@ public class CreateMascotaPostController {
         public void getRaza(String raza) {
             this.raza = raza;
         }
+
         public Integer getEdad() {
             return edad;
         }
@@ -67,6 +69,7 @@ public class CreateMascotaPostController {
         public void setEdad(Integer edad) {
             this.edad = edad;
         }
+
         public Double getPeso() {
             return peso;
         }

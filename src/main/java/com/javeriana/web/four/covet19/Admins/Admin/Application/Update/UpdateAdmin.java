@@ -18,11 +18,11 @@ public class UpdateAdmin {
     }
 
     public void execute(UpdateAdminRequest request) {
-        if(request.getId().isEmpty()){
+        if (request.getId().isEmpty()) {
             throw new NotFound("Falta el id del admin");
         }
         Optional<Admin> admin = new FindAdmin(repository).execute(request.getId().get());
-        if(admin.isEmpty()){
+        if (admin.isEmpty()) {
             throw new NotFound("No se ha encontrado el admin");
         }
         if (request.getNombre().isPresent()) {

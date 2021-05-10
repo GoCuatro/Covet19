@@ -7,7 +7,7 @@ import java.util.UUID;
 public class CustomUUID implements Serializable {
 
     private final String value;
-    
+
 
     public CustomUUID(String value) {
 //        this.validate(value);
@@ -22,13 +22,10 @@ public class CustomUUID implements Serializable {
         return value;
     }
 
-    private void validateUUIDFormatRule(String value)
-    {
+    private void validateUUIDFormatRule(String value) {
         try {
             UUID.fromString(value);
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             throw new UUIDNotValid("The UUID has not valid format");
         }
     }

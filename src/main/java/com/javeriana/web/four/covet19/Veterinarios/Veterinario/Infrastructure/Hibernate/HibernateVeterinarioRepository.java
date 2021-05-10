@@ -14,7 +14,7 @@ import java.util.Optional;
 @Transactional("transactional-manager")
 public class HibernateVeterinarioRepository implements VeterinarioRepository {
     protected final SessionFactory sessionFactory;
-    protected final Class<Veterinario>  aggregateClass;
+    protected final Class<Veterinario> aggregateClass;
 
     public HibernateVeterinarioRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

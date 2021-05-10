@@ -12,12 +12,13 @@ public class EliminarCitaVeterinario {
     public EliminarCitaVeterinario(VeterinarioRepository repository) {
         this.repository = repository;
     }
-    public void execute (String idVeterinario, String idCita){
+
+    public void execute(String idVeterinario, String idCita) {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
-        if (veterinario.isEmpty()){
+        if (veterinario.isEmpty()) {
             throw new RuntimeException("el veterinario con Id: " + idVeterinario + " no existe");
         }
-        Veterinario finalVeterinario= veterinario.get();
+        Veterinario finalVeterinario = veterinario.get();
         finalVeterinario.eliminarCita(CitaDetails.createCitaId(idCita));
         repository.update(finalVeterinario);
     }

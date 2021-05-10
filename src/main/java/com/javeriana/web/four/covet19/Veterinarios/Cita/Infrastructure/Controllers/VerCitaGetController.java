@@ -19,9 +19,8 @@ public class VerCitaGetController {
     @Autowired
     private CitaVerCita verCita;
 
-    @GetMapping(value="/{idCita}")
-    public ResponseEntity<HashMap> execute(@PathVariable("idCita") String idCita)
-    {
+    @GetMapping(value = "/{idCita}")
+    public ResponseEntity<HashMap> execute(@PathVariable("idCita") String idCita) {
         Cita cita = verCita.execute(idCita);
         return ResponseEntity.status(HttpStatus.OK).body(cita.data());
     }

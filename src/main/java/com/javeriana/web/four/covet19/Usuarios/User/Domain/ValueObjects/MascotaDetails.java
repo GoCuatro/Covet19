@@ -18,11 +18,14 @@ public class MascotaDetails {
         this.razaMascota = razaMascota;
     }
 
-    public HashMap<String, Object> data(){
+    public MascotaDetails() {
+    }
+
+    public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idMascota);
             put("edad", edadMascota);
-            put("nombre", nombreMascota );
+            put("nombre", nombreMascota);
             put("tipo", tipoMascota);
             put("raza", razaMascota);
         }};
@@ -34,12 +37,12 @@ public class MascotaDetails {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MascotaDetails that = (MascotaDetails) o;
-        return Objects.equals(idMascota, that.idMascota) && Objects.equals(nombreMascota, that.nombreMascota) && Objects.equals(edadMascota, that.edadMascota) && Objects.equals(tipoMascota, that.tipoMascota)&& Objects.equals(razaMascota, that.razaMascota);
+        return Objects.equals(idMascota, that.idMascota) && Objects.equals(nombreMascota, that.nombreMascota) && Objects.equals(edadMascota, that.edadMascota) && Objects.equals(tipoMascota, that.tipoMascota) && Objects.equals(razaMascota, that.razaMascota);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idMascota, edadMascota, nombreMascota, tipoMascota,razaMascota);
+        return Objects.hash(idMascota, edadMascota, nombreMascota, tipoMascota, razaMascota);
     }
 
     public String getIdMascota() {
@@ -49,6 +52,4 @@ public class MascotaDetails {
     public boolean equalsIdMascota(MascotaDetails mascotaDetails) {
         return this.idMascota.equals(mascotaDetails.getIdMascota());
     }
-
-    public MascotaDetails () {}
 }

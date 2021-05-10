@@ -24,7 +24,7 @@ public class CreatePedidoPostController {
     }
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity execute(@RequestBody Request request){
+    public ResponseEntity execute(@RequestBody Request request) {
         try {
             User user = userFinder.execute(request.id);
             createPedido.execute(user);
@@ -37,7 +37,7 @@ public class CreatePedidoPostController {
     }
 
 
-    static class Request{
+    static class Request {
         private String id;
 
         public String getId() {

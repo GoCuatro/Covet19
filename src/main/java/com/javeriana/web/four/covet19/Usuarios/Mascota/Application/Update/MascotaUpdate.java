@@ -25,8 +25,7 @@ public class MascotaUpdate {
             int edad
     ) {
         Optional<Mascota> mascota = repository.find(id);
-        if (mascota.isEmpty())
-        {
+        if (mascota.isEmpty()) {
             throw new MascotaNotExist("The mascota " + id + " not exists");
         }
         Mascota mascotaTemp = mascota.get();

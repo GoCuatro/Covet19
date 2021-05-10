@@ -13,11 +13,9 @@ public class CitaAll {
         this.repository = repository;
     }
 
-    public List<Cita> execute()
-    {
+    public List<Cita> execute() {
         Optional<List<Cita>> citas = repository.all();
-        if (citas.isEmpty())
-        {
+        if (citas.isEmpty()) {
             throw new RuntimeException("Error");
         }
         return citas.get();

@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class AgendaCustomDetail implements UserType {
     @Override
     public int[] sqlTypes() {
-        return new int[] {Types.LONGNVARCHAR};
+        return new int[]{Types.LONGNVARCHAR};
     }
 
     @Override
@@ -43,7 +43,7 @@ public class AgendaCustomDetail implements UserType {
         List<CitaDetails> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
-            if(value.isPresent()) {
+            if (value.isPresent()) {
                 List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(cita ->
                         new CitaDetails((String) cita.get("id"),
@@ -51,8 +51,7 @@ public class AgendaCustomDetail implements UserType {
                                 (String) cita.get("fecha"),
                                 (String) cita.get("idMascota"))).collect(Collectors.toList());
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new HibernateException("Error at reading map", e);
         }
         return Optional.ofNullable(response);
@@ -62,17 +61,15 @@ public class AgendaCustomDetail implements UserType {
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
         Optional<List<CitaDetails>> citas = (value == null) ? Optional.empty() : (Optional<List<CitaDetails>>) value;
         try {
-            if(citas.isEmpty()) {
+            if (citas.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
-            }
-            else {
+            } else {
                 ObjectMapper mapper = new ObjectMapper();
                 List<HashMap<String, Object>> objects = citas.get().stream().map(cita -> cita.data()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new HibernateException("Exception serializing value " + value, e);
         }
     }

@@ -17,9 +17,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAfter(new JWTAuthFilter(), UsernamePasswordAuthenticationFilter.class);
         SecurityDirectives.directives.forEach(xmlSecurityDirective -> {
             try {
-                if(xmlSecurityDirective.getMethod() == null){
+                if (xmlSecurityDirective.getMethod() == null) {
                     obj.authorizeRequests().antMatchers(xmlSecurityDirective.getEndpoint()).hasAuthority(xmlSecurityDirective.getAuthority());
-                }else{
+                } else {
                     obj.authorizeRequests().antMatchers(xmlSecurityDirective.getMethod(), xmlSecurityDirective.getEndpoint()).hasAuthority(xmlSecurityDirective.getAuthority());
                 }
             } catch (Exception e) {

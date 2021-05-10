@@ -24,11 +24,9 @@ public class CitaAgregarDiagnostico {
         this.modificarCitaMascota = modificarCitaMascota;
     }
 
-    public void execute(String idCita, String diagnostico)
-    {
+    public void execute(String idCita, String diagnostico) {
         Optional<Cita> cita = repository.find(idCita);
-        if (cita.isEmpty())
-        {
+        if (cita.isEmpty()) {
             throw new CitaNoExiste(idCita);
         }
         Cita finalCita = cita.get();

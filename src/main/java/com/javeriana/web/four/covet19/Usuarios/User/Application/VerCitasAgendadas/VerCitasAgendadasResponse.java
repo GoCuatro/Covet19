@@ -12,8 +12,9 @@ public class VerCitasAgendadasResponse {
     public VerCitasAgendadasResponse(List<Cita> citas) {
         this.citas = citas;
     }
-    public List<HashMap> response(){
-        List<HashMap> response = citas.stream().map(c ->c.data()).collect(Collectors.toList());
+
+    public List<HashMap> response() {
+        List<HashMap> response = citas.stream().map(c -> c.data()).collect(Collectors.toList());
         return response;
     }
 }

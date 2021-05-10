@@ -18,9 +18,8 @@ public class FinalizarPedidoByIdGetController {
     @Autowired
     private PedidoFinderFinalizar finder;
 
-    @GetMapping(value="/finalizar/{id}")
-    public ResponseEntity<HashMap> execute(@PathVariable("id") String id)
-    {
+    @GetMapping(value = "/finalizar/{id}")
+    public ResponseEntity<HashMap> execute(@PathVariable("id") String id) {
         finder.execute(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }

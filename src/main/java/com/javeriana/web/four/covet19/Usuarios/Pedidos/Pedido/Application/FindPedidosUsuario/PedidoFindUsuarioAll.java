@@ -13,11 +13,9 @@ public class PedidoFindUsuarioAll {
         this.repository = repository;
     }
 
-    public List<Pedido> execute()
-    {
+    public List<Pedido> execute() {
         Optional<List<Pedido>> pedidos = repository.all();
-        if (pedidos.isEmpty())
-        {
+        if (pedidos.isEmpty()) {
             throw new RuntimeException("Error");
         }
         return pedidos.get();

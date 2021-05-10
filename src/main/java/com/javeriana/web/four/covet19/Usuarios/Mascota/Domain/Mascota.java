@@ -35,6 +35,10 @@ public class Mascota {
         this.razaMascota = razaMascota;
         this.historialClinicoMascota = Optional.ofNullable(citaHistorialMascota);
     }
+
+    private Mascota() {
+    }
+
     public static Mascota create(
             IdMascota idMascota,
             EdadMascota edadMascota,
@@ -42,8 +46,9 @@ public class Mascota {
             PesoMascota pesoMascota,
             TipoMascota tipoMascota,
             RazaMascota razaMascota) {
-        return new Mascota(idMascota,edadMascota, nombreMascota, pesoMascota,tipoMascota, razaMascota, null);
+        return new Mascota(idMascota, edadMascota, nombreMascota, pesoMascota, tipoMascota, razaMascota, null);
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -57,8 +62,7 @@ public class Mascota {
                 Objects.equals(historialClinicoMascota, mascota.historialClinicoMascota);
     }
 
-    public HashMap<String, Object> data()
-    {
+    public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idMascota.value());
             put("nombre", nombreMascota.value());
@@ -74,22 +78,19 @@ public class Mascota {
 
     public Optional<List<HashMap<String, Object>>> getHistorialClinico() {
         Optional<List<HashMap<String, Object>>> response = Optional.empty();
-        if(this.historialClinicoMascota.isPresent()) {
+        if (this.historialClinicoMascota.isPresent()) {
             response = Optional.of(this.historialClinicoMascota.get().stream().map(cita -> cita.data()).collect(Collectors.toList()));
         }
         return response;
     }
 
-    public void update(Mascota mascota){
+    public void update(Mascota mascota) {
         this.idMascota = mascota.idMascota;
         this.edadMascota = mascota.edadMascota;
         this.nombreMascota = mascota.nombreMascota;
         this.pesoMascota = mascota.pesoMascota;
         this.tipoMascota = mascota.tipoMascota;
         this.razaMascota = mascota.razaMascota;
-    }
-
-    private Mascota(){
     }
 
     public void updateCitaDiagnostico(String idCita, String diagnostico) {
@@ -99,6 +100,7 @@ public class Mascota {
         historialActual.updateDiagnostico(diagnostico);
         this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
     }
+
     public void updateCitaFecha(String idCita, String fecha) {
         List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
         CitaHistorialMascota historialActual = citasDetailsList.stream().
@@ -106,6 +108,7 @@ public class Mascota {
         historialActual.updateFecha(fecha);
         this.historialClinicoMascota = Optional.ofNullable(citasDetailsList);
     }
+
     public void agregarCita(String idCita, String diagnostico, String fecha, String idVeterinario) {
         List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
         CitaHistorialMascota citaNueva = new CitaHistorialMascota(idCita, diagnostico, fecha, idVeterinario);
@@ -118,9 +121,7 @@ public class Mascota {
     }
 
 
-
-
-    public  void eliminarCita(CitaHistorialMascota eliminarCita){
+    public void eliminarCita(CitaHistorialMascota eliminarCita) {
         List<CitaHistorialMascota> citasDetailsList = this.historialClinicoMascota.get();
         CitaHistorialMascota eliminar = citasDetailsList.stream().filter(cita -> cita.equalsIdCita(eliminarCita)).findFirst().get();
         citasDetailsList.remove(eliminar);

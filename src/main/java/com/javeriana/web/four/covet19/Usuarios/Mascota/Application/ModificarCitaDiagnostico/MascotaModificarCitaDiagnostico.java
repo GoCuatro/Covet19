@@ -13,11 +13,9 @@ public class MascotaModificarCitaDiagnostico {
         this.repository = repository;
     }
 
-    public void execute(String idMascota, String idCita, String diagnostico)
-    {
+    public void execute(String idMascota, String idCita, String diagnostico) {
         Optional<Mascota> mascota = repository.find(idMascota);
-        if (mascota.isEmpty())
-        {
+        if (mascota.isEmpty()) {
             throw new RuntimeException("La Mascota con Id: " + idMascota + " no existe");
         }
         Mascota finalMascota = mascota.get();

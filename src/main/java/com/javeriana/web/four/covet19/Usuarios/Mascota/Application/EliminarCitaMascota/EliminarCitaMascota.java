@@ -13,9 +13,9 @@ public class EliminarCitaMascota {
         this.repository = repository;
     }
 
-    public void execute(String idMascota, String idCita){
+    public void execute(String idMascota, String idCita) {
         Optional<Mascota> mascota = repository.find(idMascota);
-        if (mascota.isEmpty()){
+        if (mascota.isEmpty()) {
             throw new RuntimeException("la mascota con Id: " + idMascota + " no existe");
         }
         Mascota finalMascota = mascota.get();

@@ -18,10 +18,6 @@ public abstract class DomainEvent {
         this.occurredOn = this.dateToString(LocalDateTime.now());
     }
 
-    protected String dateToString(LocalDateTime dateTime) {
-        return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
-    }
-
     public DomainEvent(String aggregateId, String eventId, String occurredOn) {
         this.aggregateId = aggregateId;
         this.eventId = eventId;
@@ -29,6 +25,10 @@ public abstract class DomainEvent {
     }
 
     protected DomainEvent() {
+    }
+
+    protected String dateToString(LocalDateTime dateTime) {
+        return dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE);
     }
 
     public String aggregateId() {

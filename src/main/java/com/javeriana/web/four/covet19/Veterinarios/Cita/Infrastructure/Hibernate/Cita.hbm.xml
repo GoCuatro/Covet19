@@ -9,23 +9,30 @@
             <key-property name="value" column="id" access="field" length="36"/>
         </composite-id>
 
-        <component name="diagnosticoCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.ValueObjects.DiagnosticoCita" access="field">
+        <component name="diagnosticoCita"
+                   class="com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.ValueObjects.DiagnosticoCita"
+                   access="field">
             <property name="value" column="diagnostico" access="field" type="string"/>
         </component>
 
-        <component name="fechaCita" class="com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.ValueObjects.FechaCita" access="field">
+        <component name="fechaCita"
+                   class="com.javeriana.web.four.covet19.Veterinarios.Cita.Domain.ValueObjects.FechaCita"
+                   access="field">
             <property name="value" column="fecha" access="field" type="timestamp"/>
         </component>
 
-        <component name="idVeterinario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona" access="field">
+        <component name="idVeterinario"
+                   class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona" access="field">
             <property name="value" column="idVeterinario" access="field" length="36"/>
         </component>
 
-        <component name="idMascota" class="com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota" access="field">
+        <component name="idMascota" class="com.javeriana.web.four.covet19.Shared.Domain.Mascota.IdMascota"
+                   access="field">
             <property name="value" column="idMascota" access="field" length="36"/>
         </component>
 
-        <component name="idUsuario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona" access="field">
+        <component name="idUsuario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona"
+                   access="field">
             <property name="value" column="idUsuario" access="field" length="36"/>
         </component>
 

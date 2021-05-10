@@ -41,6 +41,9 @@ public class Pedido extends AggregateRoot implements Serializable {
         this.totalPedido = totalPedido;
     }
 
+    private Pedido() {
+    }
+
     public static Pedido create(String idUsuario) {
         UUID uid = UUID.randomUUID();
         IdPedido idPedido = new IdPedido(uid.toString());
@@ -102,9 +105,6 @@ public class Pedido extends AggregateRoot implements Serializable {
 
     public Boolean getEnviadoPedido() {
         return this.enviadoPedido.value();
-    }
-
-    private Pedido() {
     }
 
     public String getIdUsiario() {

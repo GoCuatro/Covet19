@@ -14,9 +14,9 @@ public class DeleteProducto {
         this.repository = repository;
     }
 
-    public void execute(String id){
+    public void execute(String id) {
         Optional<Producto> producto = new FindProducto(repository).execute(id);
-        if(producto.isEmpty()){
+        if (producto.isEmpty()) {
             throw new NotFound("Producto no encontrado");
         }
         producto.get().deshabilitarProducto();

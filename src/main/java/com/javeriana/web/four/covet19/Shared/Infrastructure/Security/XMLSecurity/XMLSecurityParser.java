@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class XMLSecurityParser {
-    public static void read(){
+    public static void read() {
         XStream xstream = new XStream();
         xstream.alias("directive", XMLSecurityDirective.class);
         xstream.alias("directives", List.class);

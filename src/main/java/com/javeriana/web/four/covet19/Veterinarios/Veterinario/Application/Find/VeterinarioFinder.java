@@ -16,8 +16,7 @@ public class VeterinarioFinder {
 
     public Veterinario execute(String idVeterinario) {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
-        if (veterinario.isEmpty())
-        {
+        if (veterinario.isEmpty()) {
             throw new VeterinarioNoExiste(idVeterinario);
         }
         Veterinario finalVeterinario = veterinario.get();

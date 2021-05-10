@@ -15,7 +15,7 @@ public class AllProductos {
         this.repository = repository;
     }
 
-    public List<Producto> execute(){
+    public List<Producto> execute() {
         Optional<List<Producto>> productos = repository.all();
         return productos.orElseGet(ArrayList::new);
     }

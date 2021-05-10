@@ -10,9 +10,9 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource("classpath:dependencies.xml")
 public class Covet19Application {
 
-	public static void main(String[] args) {
-		XMLSecurityParser.read();
-		SpringApplication.run(Covet19Application.class, args);
-	}
+    public static void main(String[] args) {
+        XMLSecurityParser.read();
+        SpringApplication.run(Covet19Application.class, args);
+    }
 
 }

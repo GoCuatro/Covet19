@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class HistorialCustomDetail implements UserType {
     @Override
     public int[] sqlTypes() {
-        return new int[] {Types.LONGNVARCHAR};
+        return new int[]{Types.LONGNVARCHAR};
     }
 
     @Override
@@ -30,7 +30,7 @@ public class HistorialCustomDetail implements UserType {
 
     @Override
     public boolean equals(Object x, Object y) throws HibernateException {
-        return Objects.equals(x,y);
+        return Objects.equals(x, y);
     }
 
     @Override
@@ -43,8 +43,8 @@ public class HistorialCustomDetail implements UserType {
         List<CitaHistorialMascota> response = null;
         try {
             Optional<String> value = Optional.ofNullable(rs.getString(names[0]));
-            if(value.isPresent()){
-                List<HashMap<String,Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
+            if (value.isPresent()) {
+                List<HashMap<String, Object>> objects = new ObjectMapper().readValue(value.get(), List.class);
                 response = objects.stream().map(historia ->
                         new CitaHistorialMascota((String) historia.get("id"),
                                 (String) historia.get("diagnostico"),
@@ -61,18 +61,16 @@ public class HistorialCustomDetail implements UserType {
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
         Optional<List<CitaHistorialMascota>> historiales = (value == null) ? Optional.empty() : (Optional<List<CitaHistorialMascota>>) value;
-        try{
-            if(historiales.isEmpty()) {
+        try {
+            if (historiales.isEmpty()) {
                 st.setNull(index, Types.VARCHAR);
-            }
-            else {
+            } else {
                 ObjectMapper mapper = new ObjectMapper();
                 List<HashMap<String, Object>> objects = historiales.get().stream().map(historial -> historial.data()).collect(Collectors.toList());
                 String serializedList = mapper.writeValueAsString(objects).replace("\\", "");
                 st.setString(index, serializedList);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new HibernateException("Exception serializing value " + value, e);
         }
     }

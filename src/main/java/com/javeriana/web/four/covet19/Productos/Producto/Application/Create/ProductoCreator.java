@@ -15,7 +15,7 @@ public class ProductoCreator {
         this.repository = repository;
     }
 
-    public void execute(String id, String nombre, String descripcion, Double precio, String marca ){
+    public void execute(String id, String nombre, String descripcion, Double precio, String marca) {
         repository.save(Producto.create(new ProductoId(id), new NombreProducto(nombre), new DescripcionProducto(descripcion), new PrecioProducto(precio), new MarcaProducto(marca)));
     }
 }

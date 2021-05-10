@@ -15,11 +15,14 @@ public class CitaHistorialMascota {
         this.fecha = fecha;
         this.idVeterinario = idPersona;
     }
-    public CitaHistorialMascota(){}
+
+    public CitaHistorialMascota() {
+    }
 
     public static CitaHistorialMascota createCitaId(String idCita) {
         return new CitaHistorialMascota(idCita, null, null, null);
     }
+
     public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idHistorial);
@@ -54,13 +57,15 @@ public class CitaHistorialMascota {
     public boolean equalsIdCita(String idCita) {
         return this.idHistorial.equals(idCita);
     }
-    public boolean equalsIdCita( CitaHistorialMascota citaDetails) {
+
+    public boolean equalsIdCita(CitaHistorialMascota citaDetails) {
         return this.idHistorial.equals(citaDetails.getIdHistorial());
     }
 
     public void updateDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
+
     public void updateFecha(String fecha) {
         this.fecha = fecha;
     }

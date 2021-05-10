@@ -7,15 +7,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PedidoFindUsuarioResponse {
-    private List<Pedido> pedidos;
     private final String idUsuario;
+    private List<Pedido> pedidos;
+
     public PedidoFindUsuarioResponse(List<Pedido> pedidos, String idUsuario) {
 
         this.pedidos = pedidos;
         this.idUsuario = idUsuario;
     }
-    public List<HashMap> response()
-    {
+
+    public List<HashMap> response() {
         this.pedidos = this.pedidos.stream().filter(p -> p.getIdUsiario().equals(this.idUsuario)).collect(Collectors.toList());
         List<HashMap> response = this.pedidos.stream().map(p -> p.data()).collect(Collectors.toList());
         return response;

@@ -20,9 +20,8 @@ public class FindMascotasUserByIdGetController {
     @Autowired
     private UserFinderMascotas finder;
 
-    @GetMapping(value="/findMascotas/{id}")
-    public ResponseEntity<List<HashMap>> execute(@PathVariable("id") String id)
-    {
+    @GetMapping(value = "/findMascotas/{id}")
+    public ResponseEntity<List<HashMap>> execute(@PathVariable("id") String id) {
         UserFinderMascotasResponse response = new UserFinderMascotasResponse(finder.execute(id));
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }

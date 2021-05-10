@@ -19,9 +19,8 @@ public class FindMascotaByIdGetController {
     @Autowired
     private MascotaFinder finder;
 
-    @GetMapping(value="/{id}")
-    public ResponseEntity<HashMap> execute(@PathVariable("id") String id)
-    {
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<HashMap> execute(@PathVariable("id") String id) {
         Mascota mascota = finder.execute(id);
         return ResponseEntity.status(HttpStatus.OK).body(mascota.data());
     }

@@ -23,8 +23,7 @@ public class UserModifier {
         this.validator = new UserValidateWords(service);
     }
 
-    public void execute(String userId, String userFirstName)
-    {
+    public void execute(String userId, String userFirstName) {
         validator.execute(new NombrePersona(userFirstName).value());
         Optional<User> actualUser = finder.execute(userId);
         User oldUser = actualUser.get();

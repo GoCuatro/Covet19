@@ -4,7 +4,8 @@ import com.javeriana.web.four.covet19.Shared.Domain.StringValueObject;
 
 public class TarjetaProfesionalVeterinario extends StringValueObject {
 
-    private TarjetaProfesionalVeterinario() {}
+    private TarjetaProfesionalVeterinario() {
+    }
 
     public TarjetaProfesionalVeterinario(String tarjeta) {
         this.validate(tarjeta);

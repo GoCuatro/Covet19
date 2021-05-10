@@ -19,14 +19,15 @@ public class AgendarCitaPostController {
     private AgendarCita creator;
 
     @PostMapping(value = "/new", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity execute(@RequestBody Request request){
+    public ResponseEntity execute(@RequestBody Request request) {
         HttpStatus codigo = HttpStatus.CREATED;
 
         creator.execute(request.getId(), request.getDiagnostico(), request.getFecha(),
                 request.getIdVeterinario(), request.getIdMascota(), request.getIdUsuario());
 
-        return  ResponseEntity.status(codigo).body(null);
+        return ResponseEntity.status(codigo).body(null);
     }
+
     static class Request {
 
         private String id;

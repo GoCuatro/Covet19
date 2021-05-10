@@ -27,13 +27,10 @@ public class LoginPostController {
 
     @Autowired
     private final Login login;
-
+    private final String PASS = "pandillaDeCuatro";
+    private final long VALIDITY = 24 * 60 * 60 * 1000;
     @Autowired
     private Environment env;
-
-    private final String PASS = "pandillaDeCuatro";
-
-    private final long VALIDITY = 24 * 60 * 60 * 1000;
 
     public LoginPostController(Login login) {
         this.login = login;

@@ -27,17 +27,14 @@ public class BadWordsService implements ValidateWordService {
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
             Response responseObject = new ObjectMapper().readValue(response.body(), Response.class);
             return responseObject.getBad();
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return false;
         }
     }
 }
 
-final class Response
-{
+final class Response {
     @JsonProperty("censored-content")
     private String censored;
 

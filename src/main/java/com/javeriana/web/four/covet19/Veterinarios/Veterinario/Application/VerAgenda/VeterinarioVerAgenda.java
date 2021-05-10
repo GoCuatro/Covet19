@@ -16,16 +16,14 @@ public class VeterinarioVerAgenda {
         this.repository = repository;
     }
 
-    public List<CitaDetails> execute(String idVeterinario)
-    {
+    public List<CitaDetails> execute(String idVeterinario) {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
-        if (veterinario.isEmpty())
-        {
+        if (veterinario.isEmpty()) {
             throw new VeterinarioNoExiste(idVeterinario);
         }
         List<CitaDetails> result = new ArrayList<>();
         Veterinario finalVeterinario = veterinario.get();
-        if(!finalVeterinario.getAgenda().isEmpty()) {
+        if (!finalVeterinario.getAgenda().isEmpty()) {
             result = finalVeterinario.getAgenda().get();
         }
         return result;

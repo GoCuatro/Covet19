@@ -21,8 +21,7 @@ public class VerVeterinariosGetController {
     private VeterinarioVerVeterinarios verVeterinarios;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<HashMap>> execute()
-    {
+    public ResponseEntity<List<HashMap>> execute() {
         VeterinarioVerVeterinariosResponse response = new VeterinarioVerVeterinariosResponse(verVeterinarios.execute());
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }

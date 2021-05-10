@@ -16,7 +16,7 @@ import java.util.Optional;
 public class HibernateMascotaRepository implements MascotaRepository {
 
     protected final SessionFactory sessionFactory;
-    protected final Class<Mascota>  aggregateClass;
+    protected final Class<Mascota> aggregateClass;
 
     public HibernateMascotaRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

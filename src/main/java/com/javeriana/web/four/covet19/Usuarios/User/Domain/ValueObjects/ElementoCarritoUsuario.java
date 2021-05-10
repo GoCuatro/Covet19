@@ -20,6 +20,9 @@ public class ElementoCarritoUsuario {
         this.precioProducto = precioProducto;
     }
 
+    private ElementoCarritoUsuario() {
+    }
+
     public static ElementoCarritoUsuario create(long cantidad, String idProducto, String nombreProducto, String descripcionProducto, String marcaProducto, Double precioProducto) {
         return new ElementoCarritoUsuario(cantidad, idProducto, nombreProducto, descripcionProducto, marcaProducto, precioProducto);
     }
@@ -28,10 +31,9 @@ public class ElementoCarritoUsuario {
         return new ElementoCarritoUsuario(0, idProducto, null, null, null, null);
     }
 
-    public HashMap<String, Object> data()
-    {
-        HashMap<String, Object> data = new HashMap<String, Object>(){{
-            put("idProducto",idProducto);
+    public HashMap<String, Object> data() {
+        HashMap<String, Object> data = new HashMap<String, Object>() {{
+            put("idProducto", idProducto);
             put("descripcionProducto", descripcionProducto);
             put("marcaProducto", marcaProducto);
             put("nombreProducto", nombreProducto);
@@ -40,6 +42,7 @@ public class ElementoCarritoUsuario {
         }};
         return data;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -47,7 +50,6 @@ public class ElementoCarritoUsuario {
         ElementoCarritoUsuario that = (ElementoCarritoUsuario) o;
         return Objects.equals(idProducto, that.idProducto);
     }
-    private ElementoCarritoUsuario(){}
 
     public String getIdProducto() {
         return this.idProducto;
@@ -64,7 +66,7 @@ public class ElementoCarritoUsuario {
         Double precio = this.precioProducto / this.cantidad;
         this.cantidad -= elementoCarritoDetails.cantidad;
         this.precioProducto = precio * this.cantidad;
-        if(cantidad <= 0) {
+        if (cantidad <= 0) {
             delete = true;
         }
         return delete;

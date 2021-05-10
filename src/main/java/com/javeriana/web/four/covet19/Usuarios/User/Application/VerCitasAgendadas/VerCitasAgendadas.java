@@ -18,9 +18,10 @@ public class VerCitasAgendadas {
         this.repository = repository;
         this.citas = citas;
     }
-    public List<Cita> execute(String idUsuario){
+
+    public List<Cita> execute(String idUsuario) {
         Optional<User> usuario = repository.find(idUsuario);
-        if(usuario.isEmpty()){
+        if (usuario.isEmpty()) {
             throw new UserNotExist(idUsuario);
         }
         List<Cita> totalCitas = citas.execute();

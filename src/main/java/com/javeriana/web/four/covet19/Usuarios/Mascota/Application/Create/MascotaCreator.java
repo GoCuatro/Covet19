@@ -9,8 +9,11 @@ public class MascotaCreator {
 
     private HibernateMascotaRepository repository;
 
-    public MascotaCreator(HibernateMascotaRepository repository){
+    public MascotaCreator(HibernateMascotaRepository repository) {
         this.repository = repository;
+    }
+
+    public MascotaCreator() {
     }
 
     public void execute(String idMascota,
@@ -18,8 +21,7 @@ public class MascotaCreator {
                         int edadMascota,
                         double pesoMascota,
                         String tipoMascota,
-                        String razaMascota)
-    {
+                        String razaMascota) {
         Mascota mascota = Mascota.create(
                 new IdMascota(idMascota),
                 new EdadMascota(edadMascota),
@@ -29,7 +31,5 @@ public class MascotaCreator {
                 new RazaMascota(razaMascota)
         );
         repository.save(mascota);
-    }
-    public MascotaCreator(){
     }
 }

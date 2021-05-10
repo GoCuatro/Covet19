@@ -21,11 +21,11 @@ public class AllProductosAvaliablesGetController {
     private AllAvaliableProductos allAvaliableProductos;
 
     @GetMapping(value = "/catalogo", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<HashMap<String, Object>>> execute(){
-        try{
+    public ResponseEntity<List<HashMap<String, Object>>> execute() {
+        try {
             List<HashMap<String, Object>> productos = allAvaliableProductos.execute().stream().map(Producto::data).collect(Collectors.toList());
             return ResponseEntity.ok(productos);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return ResponseEntity.status(400).body(null);
         }

@@ -21,8 +21,7 @@ public class EliminarElementoCarritoGetController {
     private UserEliminarElementoCarrito eliminarElementoCarrito;
 
     @GetMapping(value = "/remove/{idProducto}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<HashMap<String, Object>>> execute(@PathVariable("idUser") String idUser, @PathVariable("idProducto") String idProducto)
-    {
+    public ResponseEntity<List<HashMap<String, Object>>> execute(@PathVariable("idUser") String idUser, @PathVariable("idProducto") String idProducto) {
         eliminarElementoCarrito.execute(idUser, idProducto);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }

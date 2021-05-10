@@ -53,6 +53,9 @@ public class Veterinario extends AggregateRoot implements AuthEntity {
         this.agendaVeterinario = Optional.ofNullable(agendaVeterinario);
     }
 
+    private Veterinario() {
+    }
+
     public static Veterinario create(
             IdPersona idPersona,
             CedulaPersona cedulaPersona,
@@ -169,9 +172,6 @@ public class Veterinario extends AggregateRoot implements AuthEntity {
             put("tarjetaProfesional", tarjetaProfesionalVeterinario.value());
             put("agenda", getAgendaVeterinario());
         }};
-    }
-
-    private Veterinario() {
     }
 
     public String getCorreoVeterinario() {

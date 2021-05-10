@@ -50,6 +50,9 @@ public class User extends AggregateRoot implements AuthEntity {
         this.userMascotas = Optional.ofNullable(userMascotas);
     }
 
+    private User() {
+    }
+
     public static User create(
             IdPersona idPersona,
             NombrePersona nombrePersona,
@@ -199,9 +202,6 @@ public class User extends AggregateRoot implements AuthEntity {
         this.userCedule = user.userCedule;
         this.userAdresss = user.userAdresss;
         this.userBirth = user.userBirth;
-    }
-
-    private User() {
     }
 
     @Override

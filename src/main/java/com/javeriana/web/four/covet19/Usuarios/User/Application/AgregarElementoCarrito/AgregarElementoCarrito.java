@@ -20,26 +20,24 @@ public class AgregarElementoCarrito {
         this.findProducto = findProducto;
     }
 
-    public void execute(String idUsuario, String idProducto,long cantidad){
+    public void execute(String idUsuario, String idProducto, long cantidad) {
         Optional<User> usuario = repository.find(idUsuario);
-        if (usuario.isEmpty())
-        {
+        if (usuario.isEmpty()) {
             throw new UserNotExist(idUsuario);
         }
         Optional<Producto> producto = findProducto.execute(idProducto);
-        if (producto.isEmpty())
-        {
-            throw new RuntimeException("el producto con identificador "+ idProducto + " no es existe");
+        if (producto.isEmpty()) {
+            throw new RuntimeException("el producto con identificador " + idProducto + " no es existe");
         }
         User finalUser = usuario.get();
         Producto elemento = producto.get();
-        if (!elemento.disponibilidad( (int) cantidad)) {
+        if (!elemento.disponibilidad((int) cantidad)) {
             throw new RuntimeException("no hay unidades suficientes disponibles");
         }
         HashMap<String, Object> infoP = elemento.data();
-        ElementoCarritoUsuario element = new ElementoCarritoUsuario(cantidad, String.valueOf(infoP.get("id")),String.valueOf(infoP.get("nombre")),
-                                                                    String.valueOf(infoP.get("descripcion")), String.valueOf(infoP.get("marca")), (double) infoP.get("precio"));
+        ElementoCarritoUsuario element = new ElementoCarritoUsuario(cantidad, String.valueOf(infoP.get("id")), String.valueOf(infoP.get("nombre")),
+                String.valueOf(infoP.get("descripcion")), String.valueOf(infoP.get("marca")), (double) infoP.get("precio"));
         finalUser.addElementoCarrito(element);
-        repository.update( finalUser.getUserId().toString(),finalUser);
+        repository.update(finalUser.getUserId().toString(), finalUser);
     }
 }

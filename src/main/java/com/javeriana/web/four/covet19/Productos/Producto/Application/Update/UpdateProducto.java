@@ -15,24 +15,24 @@ public class UpdateProducto {
         this.repository = repository;
     }
 
-    public void execute(UpdateProductoRequest updateProductoRequest){
-        if(updateProductoRequest.getId().isEmpty()){
+    public void execute(UpdateProductoRequest updateProductoRequest) {
+        if (updateProductoRequest.getId().isEmpty()) {
             throw new NotFound("Falta el id del producto");
         }
         Optional<Producto> producto = new FindProducto(repository).execute(updateProductoRequest.getId().get());
-        if(producto.isEmpty()){
+        if (producto.isEmpty()) {
             throw new NotFound("Producto no encontrado");
         }
-        if(updateProductoRequest.getNombre().isPresent()){
+        if (updateProductoRequest.getNombre().isPresent()) {
             producto.get().updateNombreProducto(updateProductoRequest.getNombre().get());
         }
-        if(updateProductoRequest.getDescripcion().isPresent()){
+        if (updateProductoRequest.getDescripcion().isPresent()) {
             producto.get().updateDescripcionProducto(updateProductoRequest.getDescripcion().get());
         }
-        if(updateProductoRequest.getPrecio().isPresent()){
+        if (updateProductoRequest.getPrecio().isPresent()) {
             producto.get().updatePrecioProducto(updateProductoRequest.getPrecio().get());
         }
-        if(updateProductoRequest.getMarca().isPresent()){
+        if (updateProductoRequest.getMarca().isPresent()) {
             producto.get().updateMarcaProducto(updateProductoRequest.getMarca().get());
         }
         repository.update(producto.get());

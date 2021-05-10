@@ -22,21 +22,20 @@ public class UpdateVeterinarioPostController {
     private VeterinarioUpdate update;
 
     @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity execute(@RequestBody Request request)
-    {
+    public ResponseEntity execute(@RequestBody Request request) {
         HttpStatus codigo = HttpStatus.CREATED;
         try {
             Date fecha = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(request.getFechaNacimiento());
             update.execute(
-                request.getId(),
-                request.getCedula(),
-                request.getCorreo(),
-                request.getDireccion(),
-                fecha,
-                request.getNombre(),
-                request.getPassword(),
-                request.getTelefono(),
-                request.getTarjetaProfesional());
+                    request.getId(),
+                    request.getCedula(),
+                    request.getCorreo(),
+                    request.getDireccion(),
+                    fecha,
+                    request.getNombre(),
+                    request.getPassword(),
+                    request.getTelefono(),
+                    request.getTarjetaProfesional());
         } catch (ParseException e) {
             codigo = HttpStatus.INTERNAL_SERVER_ERROR;
             e.printStackTrace();

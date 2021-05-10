@@ -31,8 +31,7 @@ public class UpdateUser {
             String fechaNacimiento
     ) {
         Optional<User> user = repository.find(id);
-        if (user.isEmpty())
-        {
+        if (user.isEmpty()) {
             throw new UserNotExist("The user " + id + " not exists");
         }
         User userTemp = user.get();
@@ -49,6 +48,6 @@ public class UpdateUser {
                         new FechaNacimientoPersona(fechaNacimiento),
                         null,
                         null));
-        repository.update(null,userTemp);
+        repository.update(null, userTemp);
     }
 }

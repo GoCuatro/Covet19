@@ -17,13 +17,13 @@ import java.util.Optional;
 
 public class CitaUpdate {
 
-    private CitaRepository repository;
-    private MascotaModificarCitaDiagnostico diagnosticoMascota;
-    private VeterinarioModificarCitaDiagnostico diagnosticoVeterinario;
-    private MascotaModificarFechaCita fechaCitaMascota;
-    private VeterinarioModificarFechaCita fechaCitaVeterinario;
+    private final CitaRepository repository;
+    private final MascotaModificarCitaDiagnostico diagnosticoMascota;
+    private final VeterinarioModificarCitaDiagnostico diagnosticoVeterinario;
+    private final MascotaModificarFechaCita fechaCitaMascota;
+    private final VeterinarioModificarFechaCita fechaCitaVeterinario;
 
-    public CitaUpdate(CitaRepository repository, MascotaModificarCitaDiagnostico diagnosticoMascota, VeterinarioModificarCitaDiagnostico diagnosticoVeterinario, MascotaModificarFechaCita fechaCitaMascota, VeterinarioModificarFechaCita fechaCitaVeterinario ){
+    public CitaUpdate(CitaRepository repository, MascotaModificarCitaDiagnostico diagnosticoMascota, VeterinarioModificarCitaDiagnostico diagnosticoVeterinario, MascotaModificarFechaCita fechaCitaMascota, VeterinarioModificarFechaCita fechaCitaVeterinario) {
         this.repository = repository;
         this.diagnosticoMascota = diagnosticoMascota;
         this.diagnosticoVeterinario = diagnosticoVeterinario;
@@ -35,21 +35,21 @@ public class CitaUpdate {
             String idCita,
             String diagnostico,
             String fechaCita
-    ){
+    ) {
         Optional<Cita> cita = repository.find(idCita);
-         if (cita.isEmpty()){
-             throw new CitaNotExist("la cita " + idCita + "not existe");
-         }
-         Cita citaTemp = cita.get();
+        if (cita.isEmpty()) {
+            throw new CitaNotExist("la cita " + idCita + "not existe");
+        }
+        Cita citaTemp = cita.get();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date fecha = formato.parse(fechaCita);
-            fechaCitaMascota.execute(citaTemp.getIdMascota(), idCita,fechaCita);
+            fechaCitaMascota.execute(citaTemp.getIdMascota(), idCita, fechaCita);
             diagnosticoVeterinario.execute(citaTemp.getIdVeterinario(), idCita, diagnostico);
             diagnosticoMascota.execute(citaTemp.getIdMascota(), idCita, diagnostico);
-            fechaCitaVeterinario.execute(citaTemp.getIdVeterinario(),idCita, fechaCita);
+            fechaCitaVeterinario.execute(citaTemp.getIdVeterinario(), idCita, fechaCita);
             citaTemp.update(new DiagnosticoCita(diagnostico),
-                        new FechaCita(fecha));
+                    new FechaCita(fecha));
             repository.update(citaTemp);
         } catch (ParseException e) {
             e.printStackTrace();

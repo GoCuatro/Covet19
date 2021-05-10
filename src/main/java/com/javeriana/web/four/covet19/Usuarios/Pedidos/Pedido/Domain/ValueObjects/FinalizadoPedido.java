@@ -6,7 +6,8 @@ import java.io.Serializable;
 
 
 public class FinalizadoPedido extends BooleanValueObject implements Serializable {
-    private FinalizadoPedido() {}
+    private FinalizadoPedido() {
+    }
 
     public FinalizadoPedido(Boolean finalizado) {
         value = finalizado;

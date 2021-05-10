@@ -6,5 +6,6 @@ import java.util.Optional;
 
 public interface IndexRepository {
     Optional<Index> find(String email);
+
     void save(Index index);
 }

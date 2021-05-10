@@ -17,16 +17,14 @@ public class UserVerCarrito {
         this.repository = repository;
     }
 
-    public List<HashMap<String, Object>> execute(String idUsuario)
-    {
+    public List<HashMap<String, Object>> execute(String idUsuario) {
         Optional<User> usuario = repository.find(idUsuario);
-        if (usuario.isEmpty())
-        {
+        if (usuario.isEmpty()) {
             throw new UserNotExist(idUsuario);
         }
         List<HashMap<String, Object>> result = new ArrayList<>();
         User finalUser = usuario.get();
-        if(!finalUser.getUserCarrito().isEmpty()) {
+        if (!finalUser.getUserCarrito().isEmpty()) {
             result = finalUser.getUserCarrito().get();
         }
         return result;

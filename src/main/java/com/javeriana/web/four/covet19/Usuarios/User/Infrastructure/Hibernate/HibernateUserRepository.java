@@ -12,7 +12,7 @@ import java.util.Optional;
 @Transactional("transactional-manager")
 public class HibernateUserRepository implements UserRepository {
     protected final SessionFactory sessionFactory;
-    protected final Class<User>  aggregateClass;
+    protected final Class<User> aggregateClass;
 
     public HibernateUserRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -21,7 +21,7 @@ public class HibernateUserRepository implements UserRepository {
 
     @Override
     public void update(String userId, User user) {
-    this.sessionFactory.getCurrentSession().update(user);
+        this.sessionFactory.getCurrentSession().update(user);
     }
 
     @Override

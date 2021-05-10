@@ -18,10 +18,10 @@ public class CreateProductoPostController {
     private ProductoCreator creator;
 
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity execute(@RequestBody Request request){
-        try{
+    public ResponseEntity execute(@RequestBody Request request) {
+        try {
             creator.execute(request.id, request.nombre, request.descripcion, request.precio, request.marca);
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(400).body(e.getMessage());
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(null);

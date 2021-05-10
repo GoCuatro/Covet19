@@ -22,12 +22,12 @@ public class PedidoFinderFinalizar {
             throw new PedidoNotExist("The pedido " + id + " not exists");
         }
         Pedido pedidoUpdate = pedido.get();
-        if(!pedidoUpdate.getfinalizadoPedido() && pedidoUpdate.getEnviadoPedido()){
+        if (!pedidoUpdate.getfinalizadoPedido() && pedidoUpdate.getEnviadoPedido()) {
             pedidoUpdate.finalizarPedido();
             repository.update(pedidoUpdate);
-        }else if(pedidoUpdate.getfinalizadoPedido() ){
+        } else if (pedidoUpdate.getfinalizadoPedido()) {
             throw new PedidoFinalizado("The pedido " + id + " is already finished");
-        }else {
+        } else {
             throw new PedidoEnviado("The pedido " + id + " has not been sent ");
         }
 

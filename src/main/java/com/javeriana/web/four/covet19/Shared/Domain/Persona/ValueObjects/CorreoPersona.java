@@ -6,7 +6,8 @@ import java.io.Serializable;
 
 public class CorreoPersona extends StringValueObject implements Serializable {
 
-    private CorreoPersona() {}
+    private CorreoPersona() {
+    }
 
     public CorreoPersona(String correo) {
         this.validate(correo);

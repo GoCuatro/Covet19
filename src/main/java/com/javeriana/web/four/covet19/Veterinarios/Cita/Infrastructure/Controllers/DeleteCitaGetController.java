@@ -16,7 +16,7 @@ public class DeleteCitaGetController {
     private DeleteCita eliminarCita;
 
     @GetMapping(value = "/delete/{idCita}")
-    public void execute(@PathVariable("idCita") String idCita){
+    public void execute(@PathVariable("idCita") String idCita) {
         HttpStatus codigo = HttpStatus.CREATED;
         eliminarCita.execute(idCita);
     }

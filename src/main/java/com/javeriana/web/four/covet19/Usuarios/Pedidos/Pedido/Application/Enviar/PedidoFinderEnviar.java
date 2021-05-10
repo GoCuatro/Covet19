@@ -21,10 +21,10 @@ public class PedidoFinderEnviar {
             throw new PedidoNotExist("The pedido " + id + " not exists");
         }
         Pedido pedidoUpdate = pedido.get();
-        if(!pedidoUpdate.getEnviadoPedido()){
+        if (!pedidoUpdate.getEnviadoPedido()) {
             pedidoUpdate.enviarPedido();
             repository.update(pedidoUpdate);
-        }else{
+        } else {
             throw new PedidoEnviado("The pedido " + id + " is already sent");
         }
 

@@ -12,8 +12,8 @@ public class MarcaProducto extends StringValueObject {
     public MarcaProducto() {
     }
 
-    public void validate(String value){
-        if(value.equals("")){
+    public void validate(String value) {
+        if (value.equals("")) {
             throw new NonValue("La marca no puede estar vacia");
         }
     }

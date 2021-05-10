@@ -30,8 +30,7 @@ public class VeterinarioUpdate {
 
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
 
-        if (veterinario.isEmpty())
-        {
+        if (veterinario.isEmpty()) {
             throw new VeterinarioNoExiste(idVeterinario);
         }
 

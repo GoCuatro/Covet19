@@ -13,8 +13,7 @@ public class UserFinderResponse implements Response {
         this.user = user;
     }
 
-    public HashMap response()
-    {
+    public HashMap response() {
         HashMap response = this.user.data();
         response.remove("id");
         return response;

@@ -9,7 +9,7 @@ import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.Exceptions.Inc
 
 import java.util.HashMap;
 
-public class Admin extends AggregateRoot implements AuthEntity{
+public class Admin extends AggregateRoot implements AuthEntity {
     private IdPersona idAdmin;
     private CedulaPersona cedulaAdmin;
     private NombrePersona nombreAdmin;
@@ -33,18 +33,6 @@ public class Admin extends AggregateRoot implements AuthEntity{
     public Admin() {
     }
 
-    public HashMap<String, Object> data() {
-        return new HashMap<>() {{
-            put("id", idAdmin.value());
-            put("cedula", cedulaAdmin.value());
-            put("nombre", nombreAdmin.value());
-            put("telefono", telefonoAdmin.value());
-            put("correo", correoAdmin.value());
-            put("direccion", direccionAdmin.value());
-            put("fechaNacimiento", fechaNacimientoAdmin.value());
-        }};
-    }
-
     public static Admin create(String idAdmin, long cedulaAdmin, String nombreAdmin, long telefonoAdmin, String correoAdmin, String direccionAdmin, String passwordAdmin, String fechaNacimientoAdmin) {
         Admin newAdmin = new Admin(new IdPersona(idAdmin),
                 new CedulaPersona(cedulaAdmin),
@@ -58,6 +46,18 @@ public class Admin extends AggregateRoot implements AuthEntity{
         return newAdmin;
     }
 
+    public HashMap<String, Object> data() {
+        return new HashMap<>() {{
+            put("id", idAdmin.value());
+            put("cedula", cedulaAdmin.value());
+            put("nombre", nombreAdmin.value());
+            put("telefono", telefonoAdmin.value());
+            put("correo", correoAdmin.value());
+            put("direccion", direccionAdmin.value());
+            put("fechaNacimiento", fechaNacimientoAdmin.value());
+        }};
+    }
+
     @Override
     public AuthCredentials getCredentials(String supposedPass) throws IncorrectCredentials {
         if (passwordAdmin.equals(new PasswordPersona(supposedPass))) {
@@ -68,31 +68,31 @@ public class Admin extends AggregateRoot implements AuthEntity{
         }
     }
 
-    public void updateCedula(long cedula){
+    public void updateCedula(long cedula) {
         this.cedulaAdmin = new CedulaPersona(cedula);
     }
 
-    public void updateNombre(String nombre){
+    public void updateNombre(String nombre) {
         this.nombreAdmin = new NombrePersona(nombre);
     }
 
-    public void updateCorreo(String correo){
+    public void updateCorreo(String correo) {
         this.correoAdmin = new CorreoPersona(correo);
     }
 
-    public void updateDireccion(String direccion){
+    public void updateDireccion(String direccion) {
         this.direccionAdmin = new DireccionPersona(direccion);
     }
 
-    public void updatePassword(String password){
+    public void updatePassword(String password) {
         this.passwordAdmin = new PasswordPersona(password);
     }
 
-    public void updateFechaNacimiento(String fechaNacimiento){
+    public void updateFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimientoAdmin = new FechaNacimientoPersona(fechaNacimiento);
     }
 
-    public void updateTelefonoAdmin(long telefono){
+    public void updateTelefonoAdmin(long telefono) {
         this.telefonoAdmin = new TelefonoPersona(telefono);
     }
 }

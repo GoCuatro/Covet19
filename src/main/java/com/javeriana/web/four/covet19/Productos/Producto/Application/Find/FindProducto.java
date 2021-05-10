@@ -12,7 +12,7 @@ public class FindProducto {
         this.repository = repository;
     }
 
-    public Optional<Producto> execute(String productoId){
+    public Optional<Producto> execute(String productoId) {
         return this.repository.find(productoId);
     }
 }

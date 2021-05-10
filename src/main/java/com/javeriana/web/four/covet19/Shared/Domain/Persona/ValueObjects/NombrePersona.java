@@ -4,7 +4,8 @@ import com.javeriana.web.four.covet19.Shared.Domain.StringValueObject;
 
 public class NombrePersona extends StringValueObject {
 
-    private NombrePersona() {}
+    private NombrePersona() {
+    }
 
     public NombrePersona(String nombre) {
         this.validate(nombre);

@@ -23,44 +23,44 @@ public class UpdateAdminRequest {
         return id;
     }
 
-    public Optional<String> getNombre() {
-        return nombre;
-    }
-
-    public Optional<Long> getTelefono() {
-        return telefono;
-    }
-
-    public Optional<String> getDireccion() {
-        return direccion;
-    }
-
-    public Optional<String> getPass() {
-        return pass;
-    }
-
-    public Optional<String> getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
     public void setId(String id) {
         this.id = Optional.ofNullable(id);
+    }
+
+    public Optional<String> getNombre() {
+        return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = Optional.ofNullable(nombre);
     }
 
+    public Optional<Long> getTelefono() {
+        return telefono;
+    }
+
     public void setTelefono(Long telefono) {
         this.telefono = Optional.ofNullable(telefono);
+    }
+
+    public Optional<String> getDireccion() {
+        return direccion;
     }
 
     public void setDireccion(String direccion) {
         this.direccion = Optional.ofNullable(direccion);
     }
 
+    public Optional<String> getPass() {
+        return pass;
+    }
+
     public void setPass(String pass) {
         this.pass = Optional.ofNullable(pass);
+    }
+
+    public Optional<String> getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
     public void setFechaNacimiento(String fechaNacimiento) {

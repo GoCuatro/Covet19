@@ -11,10 +11,8 @@ public class UserValidateWords {
         this.service = service;
     }
 
-    public void execute (String word)
-    {
-        if (service.validate(word))
-        {
+    public void execute(String word) {
+        if (service.validate(word)) {
             throw new BadWordsError("The nickname contains bad words");
         }
     }

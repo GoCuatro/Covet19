@@ -15,8 +15,7 @@ public class UpdateCitaPostController {
     private CitaUpdate update;
 
     @PostMapping(value = "/{idCita}/update", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity execute(@RequestBody Request request, @PathVariable("idCita") String idCita)
-    {
+    public ResponseEntity execute(@RequestBody Request request, @PathVariable("idCita") String idCita) {
         HttpStatus codigo = HttpStatus.CREATED;
         update.execute(idCita, request.getDiagnostico(), request.getFecha());
         return ResponseEntity.status(codigo).body(null);

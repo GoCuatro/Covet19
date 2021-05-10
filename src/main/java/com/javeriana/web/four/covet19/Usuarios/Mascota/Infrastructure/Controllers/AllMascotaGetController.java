@@ -20,8 +20,7 @@ public class AllMascotaGetController {
     private MascotaAll mascotaAll;
 
     @GetMapping
-    public ResponseEntity<List<HashMap>> execute()
-    {
+    public ResponseEntity<List<HashMap>> execute() {
         MascotaAllResponse response = new MascotaAllResponse(mascotaAll.execute());
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }

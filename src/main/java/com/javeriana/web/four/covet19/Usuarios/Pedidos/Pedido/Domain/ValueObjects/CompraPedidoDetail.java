@@ -21,6 +21,9 @@ public class CompraPedidoDetail implements Serializable {
         this.cantidad = cantidad;
     }
 
+    private CompraPedidoDetail() {
+    }
+
     public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", id);
@@ -69,7 +72,5 @@ public class CompraPedidoDetail implements Serializable {
     public long getCantidad() {
         return cantidad;
     }
-
-    private CompraPedidoDetail () {}
 
 }

@@ -21,8 +21,7 @@ public class FindVeterinarioGetController {
     private VeterinarioFinder finder;
 
     @GetMapping(value = "/{idVet}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<HashMap> execute(@PathVariable("idVet") String idVeterinario)
-    {
+    public ResponseEntity<HashMap> execute(@PathVariable("idVet") String idVeterinario) {
         VeterinarioFinderResponse response = new VeterinarioFinderResponse(finder.execute(idVeterinario));
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }

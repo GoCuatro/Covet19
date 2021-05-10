@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--Repositorios-->
@@ -53,7 +53,8 @@
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
-    <bean id="EliminarCitaMascota" class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.EliminarCitaMascota.EliminarCitaMascota">
+    <bean id="EliminarCitaMascota"
+          class="com.javeriana.web.four.covet19.Usuarios.Mascota.Application.EliminarCitaMascota.EliminarCitaMascota">
         <constructor-arg ref="HibernateMascotaRepository"/>
     </bean>
 
@@ -160,7 +161,7 @@
     </bean>
 
 
-    <!--Productos-->    
+    <!--Productos-->
 
     <bean id="ProductoCreator"
           class="com.javeriana.web.four.covet19.Productos.Producto.Application.Create.ProductoCreator">
@@ -299,7 +300,8 @@
         <constructor-arg ref="HibernateUserRepository"/>
         <constructor-arg ref="FindProducto"/>
     </bean>
-    <bean id="VerCitasAgendadas" class="com.javeriana.web.four.covet19.Usuarios.User.Application.VerCitasAgendadas.VerCitasAgendadas">
+    <bean id="VerCitasAgendadas"
+          class="com.javeriana.web.four.covet19.Usuarios.User.Application.VerCitasAgendadas.VerCitasAgendadas">
         <constructor-arg ref="HibernateUserRepository"/>
         <constructor-arg ref="CitaAll"/>
     </bean>

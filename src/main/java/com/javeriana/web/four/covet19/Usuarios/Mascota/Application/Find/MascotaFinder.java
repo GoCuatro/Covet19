@@ -11,11 +11,10 @@ public class MascotaFinder {
     public MascotaFinder(MascotaRepository repository) {
         this.repository = repository;
     }
-    public Mascota execute(String id)
-    {
+
+    public Mascota execute(String id) {
         Optional<Mascota> result = repository.find(id);
-        if (result.isEmpty())
-        {
+        if (result.isEmpty()) {
             throw new RuntimeException("Error");
         }
         Mascota mascota = result.get();

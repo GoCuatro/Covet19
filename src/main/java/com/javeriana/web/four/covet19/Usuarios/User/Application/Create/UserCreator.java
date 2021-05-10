@@ -27,25 +27,22 @@ public class UserCreator {
     }
 
     public void execute(String userId, String userFirstName, String userPassword,
-                        String  userMail, long userPhone, long userCedule,
-                        String userAdresss, Date userBirth)
-    {
+                        String userMail, long userPhone, long userCedule,
+                        String userAdresss, Date userBirth) {
         this.validate(userId);
         validator.execute(new NombrePersona(userFirstName).value());
         User user = User.create(new IdPersona(userId), new NombrePersona(userFirstName),
-                new PasswordPersona(userPassword) , new CorreoPersona(userMail),
+                new PasswordPersona(userPassword), new CorreoPersona(userMail),
                 new TelefonoPersona(userPhone), new CedulaPersona(userCedule),
                 new DireccionPersona(userAdresss), new FechaNacimientoPersona(userBirth));
         repository.save(user);
         eventBus.publish(user.pullDomainEvents());
     }
 
-    private void validate(String UserId)
-    {
-        try
-        {
+    private void validate(String UserId) {
+        try {
             this.finder.execute(UserId);
+        } catch (UserNotExist exception) {
         }
-        catch (UserNotExist exception) { }
     }
 }

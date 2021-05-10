@@ -20,9 +20,8 @@ public class FindPedidoUsarioGetController {
     @Autowired
     private PedidoFindUsuarioAll finder;
 
-    @GetMapping(value="/usuarios/{id}")
-    public ResponseEntity<List<HashMap>> execute(@PathVariable("id") String id)
-    {
+    @GetMapping(value = "/usuarios/{id}")
+    public ResponseEntity<List<HashMap>> execute(@PathVariable("id") String id) {
         PedidoFindUsuarioResponse response = new PedidoFindUsuarioResponse(finder.execute(), id);
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }

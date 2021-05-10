@@ -22,8 +22,7 @@ public class CreateVeterinarioPostController {
     private VeterinarioCreator creator;
 
     @PostMapping(value = "/new", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity execute(@RequestBody Request request)
-    {
+    public ResponseEntity execute(@RequestBody Request request) {
         HttpStatus codigo = HttpStatus.CREATED;
         try {
             Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(request.getFechaNacimiento());

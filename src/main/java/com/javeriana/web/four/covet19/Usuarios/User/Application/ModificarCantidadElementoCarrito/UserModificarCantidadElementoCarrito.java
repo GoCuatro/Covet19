@@ -15,18 +15,16 @@ public class UserModificarCantidadElementoCarrito {
         this.repository = repository;
     }
 
-    public void execute(String idUsuario, ElementoCarritoUsuario elementoCarritoUsuario, boolean esSuma)
-    {
+    public void execute(String idUsuario, ElementoCarritoUsuario elementoCarritoUsuario, boolean esSuma) {
         Optional<User> usuario = repository.find(idUsuario);
-        if (usuario.isEmpty())
-        {
+        if (usuario.isEmpty()) {
             throw new UserNotExist(idUsuario);
         }
 
         User finalUser = usuario.get();
         boolean delete = finalUser.updateElementoCarrito(elementoCarritoUsuario, esSuma);
 
-        if(delete) {
+        if (delete) {
             finalUser.deleteElementoCarrito(elementoCarritoUsuario);
         }
 

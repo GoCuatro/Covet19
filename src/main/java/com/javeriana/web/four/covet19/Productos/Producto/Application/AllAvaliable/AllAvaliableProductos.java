@@ -17,7 +17,7 @@ public class AllAvaliableProductos {
         this.repository = repository;
     }
 
-    public List<Producto> execute(){
+    public List<Producto> execute() {
         Optional<List<Producto>> productos = repository.all();
         List<Producto> filtrados = productos.orElseGet(ArrayList::new).stream().filter(Producto::isHabilitado).collect(Collectors.toList());
         return filtrados;

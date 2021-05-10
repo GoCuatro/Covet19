@@ -7,7 +7,10 @@ import java.util.Optional;
 
 public interface PedidoRepository {
     void update(Pedido pedido);
-    Optional<Pedido> find (String idPedido);
+
+    Optional<Pedido> find(String idPedido);
+
     void save(Pedido pedido);
+
     Optional<List<Pedido>> all();
 }

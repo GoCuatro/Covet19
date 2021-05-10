@@ -13,11 +13,9 @@ public class VeterinarioVerVeterinarios {
         this.repository = repository;
     }
 
-    public List<Veterinario> execute()
-    {
+    public List<Veterinario> execute() {
         Optional<List<Veterinario>> veterinarios = repository.all();
-        if (veterinarios.isEmpty())
-        {
+        if (veterinarios.isEmpty()) {
             throw new RuntimeException("No hay veterinarios");
         }
         List<Veterinario> result = veterinarios.get();

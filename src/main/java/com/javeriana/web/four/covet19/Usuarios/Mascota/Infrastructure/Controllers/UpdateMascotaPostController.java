@@ -18,9 +18,10 @@ public class UpdateMascotaPostController {
 
     @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody UpdateMascotaPostController.Request request) {
-        mascotaUpdate.execute(request.getId(),request.getTipo(),request.getRaza(), request.getNombre(),request.getPeso(), request.getEdad());
+        mascotaUpdate.execute(request.getId(), request.getTipo(), request.getRaza(), request.getNombre(), request.getPeso(), request.getEdad());
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
+
     static class Request {
         private String id;
         private String nombre;

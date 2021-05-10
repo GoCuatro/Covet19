@@ -5,7 +5,8 @@
 
 <hibernate-mapping>
     <class name="com.javeriana.web.four.covet19.Shared.Domain.Index.Domain.Index" table="EmailIndex">
-        <composite-id name="correoPersona" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.CorreoPersona"
+        <composite-id name="correoPersona"
+                      class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.CorreoPersona"
                       access="field">
             <key-property name="value" column="email" access="field" length="30"/>
         </composite-id>

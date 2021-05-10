@@ -29,6 +29,25 @@ public class MailSenderElasticEmail implements MailSender {
 
     static class ElasticEmailResponse {
 
+        private boolean sucess;
+        private ElasticEmailResponseData data;
+
+        public boolean isSucess() {
+            return sucess;
+        }
+
+        public void setSucess(boolean sucess) {
+            this.sucess = sucess;
+        }
+
+        public ElasticEmailResponseData getData() {
+            return data;
+        }
+
+        public void setData(ElasticEmailResponseData data) {
+            this.data = data;
+        }
+
         static class ElasticEmailResponseData {
             private String transactionid;
             private String messageid;
@@ -48,25 +67,6 @@ public class MailSenderElasticEmail implements MailSender {
             public void setMessageid(String messageid) {
                 this.messageid = messageid;
             }
-        }
-
-        private boolean sucess;
-        private ElasticEmailResponseData data;
-
-        public boolean isSucess() {
-            return sucess;
-        }
-
-        public void setSucess(boolean sucess) {
-            this.sucess = sucess;
-        }
-
-        public ElasticEmailResponseData getData() {
-            return data;
-        }
-
-        public void setData(ElasticEmailResponseData data) {
-            this.data = data;
         }
     }
 }

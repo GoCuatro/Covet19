@@ -13,8 +13,7 @@ public class MascotaAllResponse {
         this.mascotas = mascotas;
     }
 
-    public List<HashMap> response()
-    {
+    public List<HashMap> response() {
         List<HashMap> response = mascotas.stream().map(p -> p.data()).collect(Collectors.toList());
         return response;
     }

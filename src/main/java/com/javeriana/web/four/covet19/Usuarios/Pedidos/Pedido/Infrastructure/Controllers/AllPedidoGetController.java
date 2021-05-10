@@ -20,8 +20,7 @@ public class AllPedidoGetController {
     private PedidoAll pedidoAll;
 
     @GetMapping
-    public ResponseEntity<List<HashMap>> execute()
-    {
+    public ResponseEntity<List<HashMap>> execute() {
         PedidoAllResponse response = new PedidoAllResponse(pedidoAll.execute());
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }

@@ -18,17 +18,19 @@ public class UserFinderMascotas {
         this.repository = repository;
     }
 
+    public UserFinderMascotas() {
+    }
+
     public List<MascotaDetails> execute(String userId) {
         List<MascotaDetails> userMascotas = new ArrayList<>();
         Optional<User> user = repository.find(userId);
-        if(user.isEmpty()){
+        if (user.isEmpty()) {
             throw new UserNotExist("User not exist");
         }
         User userFinal = user.get();
-        if(!userFinal.getUserMascotas().isEmpty()) {
+        if (!userFinal.getUserMascotas().isEmpty()) {
             userMascotas = userFinal.getUserMascotasDetails().get();
         }
         return userMascotas;
     }
-    public UserFinderMascotas(){}
 }

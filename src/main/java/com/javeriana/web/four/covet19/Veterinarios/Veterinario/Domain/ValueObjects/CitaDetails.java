@@ -15,9 +15,14 @@ public class CitaDetails {
         this.fecha = fecha;
         this.idMascota = idMascota;
     }
+
+    private CitaDetails() {
+    }
+
     public static CitaDetails createCitaId(String idCita) {
         return new CitaDetails(idCita, null, null, null);
     }
+
     public HashMap<String, Object> data() {
         HashMap<String, Object> data = new HashMap<String, Object>() {{
             put("id", idCita);
@@ -53,11 +58,10 @@ public class CitaDetails {
         return this.idCita.equals(idCita);
     }
 
-    private CitaDetails () {}
-
     public void updateDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
+
     public void updateFecha(String fecha) {
         this.fecha = fecha;
     }

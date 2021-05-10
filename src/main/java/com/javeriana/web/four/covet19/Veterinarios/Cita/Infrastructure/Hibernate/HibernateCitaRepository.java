@@ -45,8 +45,9 @@ public class HibernateCitaRepository implements CitaRepository {
         Query query = sessionFactory.getCurrentSession().createQuery("From Cita");
         return Optional.ofNullable(query.list());
     }
+
     @Override
-    public void delete(Cita cita){
+    public void delete(Cita cita) {
         this.sessionFactory.getCurrentSession().delete(cita);
     }
 }

@@ -24,7 +24,7 @@ public class CreatePedido {
         this.eventBus = eventBus;
     }
 
-    public void execute(User user){
+    public void execute(User user) {
         Optional<List<HashMap<String, Object>>> carrito = user.getUserCarrito();
         Pedido pedido = Pedido.create(user.getUserId().value());
         carrito.ifPresent(hashMaps -> hashMaps.stream().map(producto -> new CompraPedidoDetail((String) producto.get("idProducto"),
@@ -33,11 +33,11 @@ public class CreatePedido {
                 (double) producto.get("precioProducto"),
                 (String) producto.get("marcaProducto"),
                 (long) producto.get("cantidad"))).forEach(compraPedidoDetail -> {
-                    if(consumer.execute(compraPedidoDetail.getId(), (int) compraPedidoDetail.getCantidad())){
-                        pedido.consumirProducto(compraPedidoDetail);
-                    }else{
-                        throw new NotEnoughStock("No hay suficiente cantidad de " + compraPedidoDetail.getNombre());
-                    }
+            if (consumer.execute(compraPedidoDetail.getId(), (int) compraPedidoDetail.getCantidad())) {
+                pedido.consumirProducto(compraPedidoDetail);
+            } else {
+                throw new NotEnoughStock("No hay suficiente cantidad de " + compraPedidoDetail.getNombre());
+            }
         }));
         repository.save(pedido);
         pedido.sendTo(user.getUserMail().value());

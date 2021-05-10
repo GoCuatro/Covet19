@@ -9,12 +9,14 @@ public class MascotaFinderResponse implements Response {
 
     private final Mascota mascota;
     private HashMap<String, Object> response;
+
+    public MascotaFinderResponse(Mascota mascota) {
+        this.mascota = mascota;
+    }
+
     @Override
     public HashMap<String, Object> response() {
         this.response = mascota.data();
         return this.response;
-    }
-    public MascotaFinderResponse(Mascota mascota) {
-        this.mascota = mascota;
     }
 }

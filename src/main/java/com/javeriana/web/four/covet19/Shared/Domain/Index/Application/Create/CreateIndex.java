@@ -10,7 +10,7 @@ public class CreateIndex {
         this.indexRepository = indexRepository;
     }
 
-    public void execute(String email, String referenceId, String rol){
+    public void execute(String email, String referenceId, String rol) {
         indexRepository.save(Index.create(email, referenceId, rol));
     }
 }

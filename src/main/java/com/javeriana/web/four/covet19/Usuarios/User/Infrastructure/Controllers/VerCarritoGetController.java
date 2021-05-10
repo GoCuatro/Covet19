@@ -21,8 +21,7 @@ public class VerCarritoGetController {
     private UserVerCarrito verCarrito;
 
     @GetMapping(value = "/{id}/carrito", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<HashMap<String, Object>>> execute(@PathVariable("id") String idUser)
-    {
+    public ResponseEntity<List<HashMap<String, Object>>> execute(@PathVariable("id") String idUser) {
         return ResponseEntity.status(HttpStatus.OK).body(verCarrito.execute(idUser));
     }
 }

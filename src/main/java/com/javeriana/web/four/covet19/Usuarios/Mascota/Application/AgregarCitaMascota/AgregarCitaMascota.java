@@ -7,16 +7,15 @@ import java.util.Optional;
 
 public class AgregarCitaMascota {
 
-    private MascotaRepository repository;
+    private final MascotaRepository repository;
 
     public AgregarCitaMascota(MascotaRepository repository) {
         this.repository = repository;
     }
 
-    public  void execute (String idMascota, String idCita, String diagnostico, String fecha, String idVeterinario){
+    public void execute(String idMascota, String idCita, String diagnostico, String fecha, String idVeterinario) {
         Optional<Mascota> mascota = repository.find(idMascota);
-        if (mascota.isEmpty())
-        {
+        if (mascota.isEmpty()) {
             throw new RuntimeException("La Mascota con Id: " + idMascota + " no existe");
         }
         Mascota finalMascota = mascota.get();

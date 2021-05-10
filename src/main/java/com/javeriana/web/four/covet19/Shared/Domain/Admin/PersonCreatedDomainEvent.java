@@ -44,7 +44,7 @@ public class PersonCreatedDomainEvent extends DomainEvent {
 
     @Override
     public HashMap<String, Serializable> toPrimitive() {
-        return new HashMap<String, Serializable>(){{
+        return new HashMap<String, Serializable>() {{
             put("email", email);
             put("rol", rol);
         }};

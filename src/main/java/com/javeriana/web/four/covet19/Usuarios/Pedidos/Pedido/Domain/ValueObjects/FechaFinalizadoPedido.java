@@ -20,7 +20,7 @@ public class FechaFinalizadoPedido extends DateValueObject implements Serializab
         Calendar currentCalendar = Calendar.getInstance();
         Date indefinido = new Date();
         indefinido.setTime(1L);
-        if(fecha.compareTo(indefinido) == 0){
+        if (fecha.compareTo(indefinido) == 0) {
             return;
         }
         if (fecha.compareTo(currentCalendar.getTime()) < 0) {

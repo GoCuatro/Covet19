@@ -12,8 +12,8 @@ public class PedidoAllResponse {
     public PedidoAllResponse(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-    public List<HashMap> response()
-    {
+
+    public List<HashMap> response() {
         List<HashMap> response = pedidos.stream().map(p -> p.data()).collect(Collectors.toList());
         return response;
     }

@@ -14,7 +14,7 @@ import java.util.Optional;
 @Transactional("transactional-manager")
 public class HibernatePedidoRepository implements PedidoRepository {
     protected final SessionFactory sessionFactory;
-    protected final Class<Pedido>  aggregateClass;
+    protected final Class<Pedido> aggregateClass;
 
     public HibernatePedidoRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

@@ -24,12 +24,12 @@ public class UpdateUserPostController {
 
     @PostMapping(value = "/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody UpdateUserPostController.Request request) {
-        updateUser.execute(request.getId(),request.getNombre(),request.getPassword(),request.getCorreo(),request.getTelefono(),request.getCedula(),request.getDireccion(),request.getFechaNacimiento());
+        updateUser.execute(request.getId(), request.getNombre(), request.getPassword(), request.getCorreo(), request.getTelefono(), request.getCedula(), request.getDireccion(), request.getFechaNacimiento());
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
+
     @ExceptionHandler({UUIDNotValid.class, UpperLowerError.class, NotSymbolsFound.class, LengthNotValid.class})
-    public ResponseEntity<HashMap> hanldleDataErrors(RuntimeException exception)
-    {
+    public ResponseEntity<HashMap> hanldleDataErrors(RuntimeException exception) {
         HashMap<String, String> response = new HashMap<String, String>() {{
             put("error", exception.getMessage());
         }};
@@ -37,8 +37,7 @@ public class UpdateUserPostController {
     }
 
     @ExceptionHandler(BadWordsError.class)
-    public ResponseEntity<HashMap> hanldleBadWords(BadWordsError exception)
-    {
+    public ResponseEntity<HashMap> hanldleBadWords(BadWordsError exception) {
         HashMap<String, String> response = new HashMap<String, String>() {{
             put("error", exception.getMessage());
         }};

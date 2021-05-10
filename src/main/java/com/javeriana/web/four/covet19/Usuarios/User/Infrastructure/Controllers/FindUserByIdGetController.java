@@ -13,21 +13,18 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping(value = "/users")
-public class FindUserByIdGetController
-{
+public class FindUserByIdGetController {
     @Autowired
     private UserFinder finder;
 
-    @GetMapping(value="find/{id}")
-    public ResponseEntity<HashMap> execute(@PathVariable("id") String id)
-    {
+    @GetMapping(value = "find/{id}")
+    public ResponseEntity<HashMap> execute(@PathVariable("id") String id) {
         UserFinderResponse response = new UserFinderResponse(finder.execute(id));
         return ResponseEntity.status(HttpStatus.OK).body(response.response());
     }
 
     @ExceptionHandler(UserNotExist.class)
-    public ResponseEntity<HashMap> handleUserNotExist(UserNotExist exception)
-    {
+    public ResponseEntity<HashMap> handleUserNotExist(UserNotExist exception) {
         HashMap<String, String> response = new HashMap<>() {{
             put("error", exception.getMessage());
         }};
@@ -35,8 +32,7 @@ public class FindUserByIdGetController
     }
 
     @ExceptionHandler(UUIDNotValid.class)
-    public ResponseEntity<HashMap> handleUUIDNotValid(UUIDNotValid exception)
-    {
+    public ResponseEntity<HashMap> handleUUIDNotValid(UUIDNotValid exception) {
         HashMap<String, String> response = new HashMap<>() {{
             put("error", exception.getMessage());
         }};

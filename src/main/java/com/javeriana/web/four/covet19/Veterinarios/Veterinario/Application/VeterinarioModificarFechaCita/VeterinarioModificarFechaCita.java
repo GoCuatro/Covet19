@@ -7,15 +7,15 @@ import com.javeriana.web.four.covet19.Veterinarios.Veterinario.Domain.Veterinari
 import java.util.Optional;
 
 public class VeterinarioModificarFechaCita {
-    private VeterinarioRepository repository;
+    private final VeterinarioRepository repository;
 
     public VeterinarioModificarFechaCita(VeterinarioRepository repository) {
         this.repository = repository;
     }
-    public void execute(String idVeterinario, String idCita, String fechaCita){
+
+    public void execute(String idVeterinario, String idCita, String fechaCita) {
         Optional<Veterinario> veterinario = repository.find(idVeterinario);
-        if (veterinario.isEmpty())
-        {
+        if (veterinario.isEmpty()) {
             throw new VeterinarioNoExiste(idVeterinario);
         }
         Veterinario finalVeterinario = veterinario.get();

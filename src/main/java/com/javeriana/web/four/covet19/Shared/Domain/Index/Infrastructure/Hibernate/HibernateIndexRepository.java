@@ -13,7 +13,7 @@ import java.util.Optional;
 public class HibernateIndexRepository implements IndexRepository {
 
     protected final SessionFactory sessionFactory;
-    protected final Class<Index>  aggregateClass;
+    protected final Class<Index> aggregateClass;
 
     public HibernateIndexRepository(@Qualifier("session-factory") SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;

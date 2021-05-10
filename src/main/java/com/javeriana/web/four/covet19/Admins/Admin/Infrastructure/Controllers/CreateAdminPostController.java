@@ -29,7 +29,7 @@ public class CreateAdminPostController {
         }
     }
 
-    static class Request{
+    static class Request {
         private String id;
         private long cedula;
         private String nombre;

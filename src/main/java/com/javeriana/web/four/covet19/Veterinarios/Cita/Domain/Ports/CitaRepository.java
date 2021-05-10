@@ -7,8 +7,12 @@ import java.util.Optional;
 
 public interface CitaRepository {
     void update(Cita cita);
-    Optional<Cita> find (String idCita);
+
+    Optional<Cita> find(String idCita);
+
     void save(Cita cita);
+
     Optional<List<Cita>> all();
+
     void delete(Cita cita);
 }

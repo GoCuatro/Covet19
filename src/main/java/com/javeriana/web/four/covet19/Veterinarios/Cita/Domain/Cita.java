@@ -27,31 +27,34 @@ public class Cita extends AggregateRoot {
         this.idUsuario = idUsuario;
     }
 
+    private Cita() {
+    }
+
     public static Cita create(IdCita idCita, DiagnosticoCita diagnosticoCita, FechaCita fechaCita, IdPersona idVeterinario, IdMascota idMascota, IdPersona idUsuario) {
         return new Cita(idCita, diagnosticoCita, fechaCita, idVeterinario, idMascota, idUsuario);
     }
 
-    public void notifyCreation(){
+    public void notifyCreation() {
         this.record(new CitaCreatedDomainEvent(idCita.value(), idMascota.value(), idVeterinario.value(), idUsuario.value(), fechaCita.value()));
     }
+
     public void update(
             DiagnosticoCita diagnosticoCita,
             FechaCita fechaCita
-    ){
+    ) {
         this.diagnosticoCita = diagnosticoCita;
         this.fechaCita = fechaCita;
 
     }
 
-
     public HashMap<String, String> data() {
-        HashMap<String, String> data = new HashMap<>(){{
+        HashMap<String, String> data = new HashMap<>() {{
             put("id", idCita.value());
             put("diagnostico", diagnosticoCita.value());
             put("fecha", fechaCita.value().toString());
             put("idVeterinario", idVeterinario.value());
             put("idMascota", idMascota.value());
-            put("idUsuario",idUsuario.value());
+            put("idUsuario", idUsuario.value());
         }};
         return data;
     }
@@ -60,8 +63,6 @@ public class Cita extends AggregateRoot {
         this.diagnosticoCita = diagnosticoCita;
     }
 
-    private Cita() {}
-
     public String getIdVeterinario() {
         return idVeterinario.value();
     }
@@ -69,6 +70,7 @@ public class Cita extends AggregateRoot {
     public String getIdMascota() {
         return idMascota.value();
     }
+
     public String getIdUsuario() {
         return idUsuario.value();
     }

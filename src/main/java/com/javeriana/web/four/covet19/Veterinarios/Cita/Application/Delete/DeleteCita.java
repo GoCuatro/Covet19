@@ -18,14 +18,15 @@ public class DeleteCita {
         this.eliminarCitaVeterinario = eliminarCitaVeterinario;
         this.eliminarCitaMascota = eliminarCitaMascota;
     }
-    public void execute(String idCita){
+
+    public void execute(String idCita) {
         Optional<Cita> eliminarCita = repository.find(idCita);
-        if (eliminarCita.isEmpty()){
+        if (eliminarCita.isEmpty()) {
             throw new CitaNoExiste(idCita);
         }
         Cita eliminar = eliminarCita.get();
         eliminarCitaVeterinario.execute(eliminar.getIdVeterinario(), idCita);
-        eliminarCitaMascota.execute(eliminar.getIdMascota(),idCita);
+        eliminarCitaMascota.execute(eliminar.getIdMascota(), idCita);
         repository.delete(eliminar);
 
     }
