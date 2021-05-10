@@ -1,5 +1,4 @@
 <directives>
-  <directive endpoint="/mail/send"/>
   <directive endpoint="/producto" authority="ROLE_ADMIN" method="PATCH"/>
   <directive endpoint="/producto" authority="ROLE_ADMIN" method="DELETE"/>
   <!--directive endpoint="/admin" authority="ROLE_ADMIN"/-->
