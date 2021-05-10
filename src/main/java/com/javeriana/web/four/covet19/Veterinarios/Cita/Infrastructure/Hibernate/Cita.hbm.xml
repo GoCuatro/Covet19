@@ -25,5 +25,9 @@
             <property name="value" column="idMascota" access="field" length="36"/>
         </component>
 
+        <component name="idUsuario" class="com.javeriana.web.four.covet19.Shared.Domain.Persona.ValueObjects.IdPersona" access="field">
+            <property name="value" column="idUsuario" access="field" length="36"/>
+        </component>
+
     </class>
 </hibernate-mapping>

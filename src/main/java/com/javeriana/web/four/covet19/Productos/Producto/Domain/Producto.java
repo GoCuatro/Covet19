@@ -99,4 +99,7 @@ public class Producto {
         }
         return disponible;
     }
+    public boolean habilitado(){
+      return this.habilitadoProducto.value();
+    }
 }
