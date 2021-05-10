@@ -1,6 +1,6 @@
 package com.javeriana.web.four.covet19.Veterinarios.Cita.Infrastructure.Controllers;
 
-import com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AñadirDiagnostico.CitaAgregarDiagnostico;
+import com.javeriana.web.four.covet19.Veterinarios.Cita.Application.AgregarDiagnostico.CitaAgregarDiagnostico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
