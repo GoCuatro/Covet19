@@ -154,4 +154,11 @@ public class Veterinario {
 
     private Veterinario() {}
 
+    public String getCorreoVeterinario() {
+        return correoVeterinario.value();
+    }
+
+    public String getNombreVeterinario() {
+        return nombreVeterinario.value();
+    }
 }
