@@ -27,5 +27,4 @@
   <directive endpoint="/pedidos/enviar/{id}" authority="ROLE_ADMIN"/>
   <directive endpoint="/pedidos/usuarios/{id}" authority="ROLE_USER"/>
   <directive endpoint="/users/*" authority="ROLE_USER"/>
-
 </directives>
