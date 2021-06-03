@@ -42,5 +42,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
             }
         });
         obj.authorizeRequests().antMatchers("*").permitAll();
+        http.cors();
     }
 }
