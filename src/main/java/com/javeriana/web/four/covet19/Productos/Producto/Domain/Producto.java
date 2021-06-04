@@ -35,6 +35,7 @@ public class Producto {
             put("descripcion", descripcionProducto.value());
             put("precio", precioProducto.value());
             put("marca", marcaProducto.value());
+            put("inventario", inventarioProducto.value());
         }};
     }
 
