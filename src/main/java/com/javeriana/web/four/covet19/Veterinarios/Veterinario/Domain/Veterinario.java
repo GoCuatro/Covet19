@@ -191,4 +191,11 @@ public class Veterinario extends AggregateRoot implements AuthEntity {
             throw new IncorrectCredentials("Credenciales incorrectas");
         }
     }
+
+    @Override
+    public HashMap<String, Object> dataToAuth() {
+        HashMap<String, Object> ret = this.data();
+        ret.put("rol", "vet");
+        return ret;
+    }
 }

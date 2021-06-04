@@ -68,6 +68,13 @@ public class Admin extends AggregateRoot implements AuthEntity{
         }
     }
 
+    @Override
+    public HashMap<String, Object> dataToAuth() {
+        HashMap<String, Object> ret = this.data();
+        ret.put("rol", "admin");
+        return ret;
+    }
+
     public void updateCedula(long cedula){
         this.cedulaAdmin = new CedulaPersona(cedula);
     }

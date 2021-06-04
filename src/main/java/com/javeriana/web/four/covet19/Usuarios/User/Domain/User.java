@@ -151,8 +151,9 @@ public class User extends AggregateRoot implements AuthEntity {
             for (MascotaDetails mascotaTemporal : mascotas) {
                 if (mascotaTemporal.getIdMascota().equals(mascota.getIdMascota())) {
                     mascotasTempo.add(mascota);
-                    flag = true;;
-                }else{
+                    flag = true;
+                    ;
+                } else {
                     mascotasTempo.add(mascotaTemporal);
                 }
 
@@ -166,6 +167,7 @@ public class User extends AggregateRoot implements AuthEntity {
         }
         return flag;
     }
+
     public void addMascotasDetails(MascotaDetails mascotaDetails) {
         List<MascotaDetails> mascotaDetailsList =
                 this.userMascotas.isEmpty() ? new ArrayList<>() : this.userMascotas.get();
@@ -236,6 +238,13 @@ public class User extends AggregateRoot implements AuthEntity {
         } else {
             throw new IncorrectCredentials("Credenciales incorrectas");
         }
+    }
+
+    @Override
+    public HashMap<String, Object> dataToAuth() {
+        HashMap<String, Object> ret = this.data();
+        ret.put("rol", "user");
+        return ret;
     }
 
     public void consumeProducto(String idProducto, int quantity) {

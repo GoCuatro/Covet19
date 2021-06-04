@@ -2,7 +2,7 @@ package com.javeriana.web.four.covet19.Shared.Infrastructure.Security.Controller
 
 
 import com.javeriana.web.four.covet19.Shared.Application.Login;
-import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthCredentials;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthResponse;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,17 +43,20 @@ public class LoginPostController {
     @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request) {
         try {
-            AuthCredentials credentials = login.execute(request.email, request.pass);
-            List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(credentials.getAuthorities());
+            AuthResponse authResponse = login.execute(request.email, request.pass);
+            List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList(authResponse.getCredentials().getAuthorities());
             String token = Jwts.builder()
-                    .setId(credentials.getSubject())
-                    .setSubject(credentials.getSubject())
+                    .setId(authResponse.getCredentials().getSubject())
+                    .setSubject(authResponse.getCredentials().getSubject())
                     .claim("authorities", grantedAuthorities.stream().map(GrantedAuthority::getAuthority)
                             .collect(Collectors.toList()))
                     .setIssuedAt(new Date())
                     .setExpiration(new Date(System.currentTimeMillis() + VALIDITY))
                     .signWith(SignatureAlgorithm.HS512, PASS.getBytes()).compact();
-            return ResponseEntity.status(HttpStatus.OK).body(token);
+            HashMap<String, Object> response = new HashMap<>();
+            response.put("token", token);
+            response.put("user", authResponse.getEntity().dataToAuth());
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);
