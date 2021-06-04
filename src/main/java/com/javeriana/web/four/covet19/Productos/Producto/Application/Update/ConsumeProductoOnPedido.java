@@ -5,9 +5,11 @@ import com.javeriana.web.four.covet19.Productos.Producto.Infrastructure.Hibernat
 import com.javeriana.web.four.covet19.Shared.Domain.Bus.Event.DomainEventSubscriber;
 import com.javeriana.web.four.covet19.Shared.Domain.Productos.ProductoConsumedDomainEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 
 import java.util.Optional;
 
+@Async
 @DomainEventSubscriber({ProductoConsumedDomainEvent.class})
 public class ConsumeProductoOnPedido {
 

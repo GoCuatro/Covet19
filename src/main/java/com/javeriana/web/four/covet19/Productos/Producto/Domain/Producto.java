@@ -89,17 +89,23 @@ public class Producto {
         return inventarioProducto.value() > quantity;
     }
 
-    public void consume(int quantity){
+    public void consume(int quantity) {
         this.inventarioProducto = new InventarioProducto(this.inventarioProducto.value() - quantity);
     }
-    public boolean disponibilidad(int cantidad){
+
+    public boolean disponibilidad(int cantidad) {
         boolean disponible = false;
-        if(this.inventarioProducto.value()>cantidad){
+        if (this.inventarioProducto.value() > cantidad) {
             disponible = true;
         }
         return disponible;
     }
-    public boolean habilitado(){
-      return this.habilitadoProducto.value();
+
+    public boolean habilitado() {
+        return this.habilitadoProducto.value();
+    }
+
+    public void loadStock(int quantity) {
+        this.inventarioProducto = new InventarioProducto(this.inventarioProducto.value() + quantity);
     }
 }
