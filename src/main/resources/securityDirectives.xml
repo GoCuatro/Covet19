@@ -11,7 +11,7 @@
   <!--<directive endpoint="/veterinarios" authority="ROLE_ADMIN"/> -->
  <directive endpoint="/veterinarios/{idVet}" authority="ROLE_ADMIN"/>
  <directive endpoint="/veterinarios/{idVet}" authority="ROLE_VETERINARIO"/>
- <directive endpoint="/citas/new" authority="ROLE_USER"/>
+ <directive endpoint="/cita" authority="ROLE_USER"/>
  <directive endpoint="/citas/agregarDiagnostico" authority="ROLE_VETERINARIO"/>
  <directive endpoint="/citas/delete/{idCita}" authority="ROLE_USER"/>
  <directive endpoint="/citas/{idCita}/update" authority="ROLE_USER"/>

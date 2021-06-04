@@ -1,8 +1,10 @@
 package com.javeriana.web.four.covet19.Shared.Infrastructure.Security.Controllers;
 
 
+import com.javeriana.web.four.covet19.Productos.Producto.Application.Exceptions.NotFound;
 import com.javeriana.web.four.covet19.Shared.Application.Login;
 import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.AuthResponse;
+import com.javeriana.web.four.covet19.Shared.Domain.Security.Auth.Exceptions.IncorrectCredentials;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +59,14 @@ public class LoginPostController {
             response.put("token", token);
             response.put("user", authResponse.getEntity().dataToAuth());
             return ResponseEntity.status(HttpStatus.OK).body(response);
+        } catch (IncorrectCredentials ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(403).body(null);
+        } catch (NotFound ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(404).body(null);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(e);
             return ResponseEntity.status(400).body(null);
         }
     }

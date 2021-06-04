@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/citas")
+@RequestMapping(value = "/cita")
 public class AgendarCitaPostController {
 
     @Autowired
     private AgendarCita creator;
 
-    @PostMapping(value = "/new", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request){
         HttpStatus codigo = HttpStatus.CREATED;
 

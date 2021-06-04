@@ -15,28 +15,27 @@ import java.util.Date;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/user")
 public final class CreateUserPostController {
 
     @Autowired
     private UserCreator creator;
 
-    @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity execute(@RequestBody Request request) {
-        HttpStatus code= HttpStatus.CREATED;
         try {
             Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(request.getFecha());
             creator.execute(request.getId(), request.getNombre(), request.getPassword(), request.getCorreo(), request.getTelefono(), request.getCedula(), request.getDireccion(), fecha);
+            System.out.println("Estoy llegando antes de devolver");
+            return ResponseEntity.status(HttpStatus.CREATED).body(null);
         } catch (ParseException e) {
-            code= HttpStatus.INTERNAL_SERVER_ERROR;
             e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
-        return ResponseEntity.status(code).body(null);
     }
 
     @ExceptionHandler({UUIDNotValid.class, UpperLowerError.class, NotSymbolsFound.class, LengthNotValid.class})
-    public ResponseEntity<HashMap> hanldleDataErrors(RuntimeException exception)
-    {
+    public ResponseEntity<HashMap> hanldleDataErrors(RuntimeException exception) {
         HashMap<String, String> response = new HashMap<String, String>() {{
             put("error", exception.getMessage());
         }};
@@ -44,8 +43,7 @@ public final class CreateUserPostController {
     }
 
     @ExceptionHandler(BadWordsError.class)
-    public ResponseEntity<HashMap> hanldleBadWords(BadWordsError exception)
-    {
+    public ResponseEntity<HashMap> hanldleBadWords(BadWordsError exception) {
         HashMap<String, String> response = new HashMap<String, String>() {{
             put("error", exception.getMessage());
         }};
@@ -53,8 +51,7 @@ public final class CreateUserPostController {
     }
 
     @ExceptionHandler(UserAlreadyExists.class)
-    public ResponseEntity<HashMap> hanldleUserAlreadyExist(UserAlreadyExists exception)
-    {
+    public ResponseEntity<HashMap> hanldleUserAlreadyExist(UserAlreadyExists exception) {
         HashMap<String, String> response = new HashMap<String, String>() {{
             put("error", exception.getMessage());
         }};
@@ -90,35 +87,67 @@ class Request {
         this.mascotas = mascotas;
     }
 
-    public String getId() { return id; }
+    public String getId() {
+        return id;
+    }
 
-    public void setId(String id) { this.id = id; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    public String getNombre() { return nombre; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public String getPassword() { return password; }
+    public String getPassword() {
+        return password;
+    }
 
-    public void setPassword(String password) { this.password = password; }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-    public String getCorreo() { return correo; }
+    public String getCorreo() {
+        return correo;
+    }
 
-    public void setCorreo(String correo) { this.correo = correo; }
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
-    public Long getTelefono() { return telefono; }
+    public Long getTelefono() {
+        return telefono;
+    }
 
-    public void setTelefono(Long telefono) { this.telefono = telefono; }
+    public void setTelefono(Long telefono) {
+        this.telefono = telefono;
+    }
 
-    public Long getCedula() { return cedula; }
+    public Long getCedula() {
+        return cedula;
+    }
 
-    public void setCedula(Long cedula) { this.cedula = cedula; }
+    public void setCedula(Long cedula) {
+        this.cedula = cedula;
+    }
 
-    public String getDireccion() { return direccion; }
+    public String getDireccion() {
+        return direccion;
+    }
 
-    public void setDireccion(String direccion) { this.direccion = direccion; }
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
 
-    public String getFecha() { return fecha; }
+    public String getFecha() {
+        return fecha;
+    }
 
-    public void setFecha(String fecha) { this.fecha = fecha; }
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 }

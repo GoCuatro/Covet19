@@ -4,10 +4,7 @@ import com.javeriana.web.four.covet19.Productos.Producto.Application.Delete.Dele
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/producto")
@@ -16,8 +13,8 @@ public class DeleteDeleteController {
     @Autowired
     private DeleteProducto deleteProducto;
 
-    @DeleteMapping(value = "")
-    public ResponseEntity execute(@RequestParam String id) {
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity execute(@PathVariable String id) {
         try {
             deleteProducto.execute(id);
         } catch (Exception e) {
