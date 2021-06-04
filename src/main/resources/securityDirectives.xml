@@ -11,12 +11,12 @@
   <!--<directive endpoint="/veterinarios" authority="ROLE_ADMIN"/> -->
  <directive endpoint="/veterinarios/{idVet}" authority="ROLE_ADMIN"/>
  <directive endpoint="/veterinarios/{idVet}" authority="ROLE_VETERINARIO"/>
- <directive endpoint="/cita" authority="ROLE_USER"/>
+ <!--<directive endpoint="/citas/new" authority="ROLE_USER"/>-->
  <directive endpoint="/citas/agregarDiagnostico" authority="ROLE_VETERINARIO"/>
  <directive endpoint="/citas/delete/{idCita}" authority="ROLE_USER"/>
  <directive endpoint="/citas/{idCita}/update" authority="ROLE_USER"/>
- <directive endpoint="/citas/{idCita}" authority="ROLE_USER"/>
- <directive endpoint="/citas/{idCita}" authority="ROLE_VETERINARIO"/>
+ <directive endpoint="/citas/ver/{idCita}" authority="ROLE_USER"/>
+<!-- <directive endpoint="/citas/{idCita}" authority="ROLE_VETERINARIO"/>-->
  <directive endpoint="/mascotas" authority="ROLE_ADMIN"/>
  <directive endpoint="/mascotas/create" authority="ROLE_USER"/>
  <directive endpoint="/mascotas/{id}" authority="ROLE_USER"/>
