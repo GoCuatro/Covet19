@@ -19,7 +19,7 @@ public class VerCitaGetController {
     @Autowired
     private CitaVerCita verCita;
 
-    @GetMapping(value="/{idCita}")
+    @GetMapping(value="/ver/{idCita}")
     public ResponseEntity<HashMap> execute(@PathVariable("idCita") String idCita)
     {
         Cita cita = verCita.execute(idCita);
