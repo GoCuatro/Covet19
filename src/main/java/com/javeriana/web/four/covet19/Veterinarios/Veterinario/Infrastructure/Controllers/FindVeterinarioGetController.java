@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping(value = "/veterinarios")
+@RequestMapping(value = "/veterinario")
 public class FindVeterinarioGetController {
 
     @Autowired
